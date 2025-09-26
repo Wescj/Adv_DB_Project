@@ -1,0 +1,123 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="8E77FA80-E0C2-B8AF-3260-587007E31E6E" name="Task_Progress">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>6B474660-9E03-D8CC-25EA-61D51AEBCE24</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Progress_ID" id="41A51D64-A4D3-7BAB-FAA7-C45D72F03EBE">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>64E9F9CC-DB9D-1321-56B9-2606A45A66D6</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Date" id="7EF3AE78-2554-A566-B699-1956AEDDE0BC">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>3E908F6F-25B7-4795-CE27-A4405BEAA051</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<domain>731DC873-1A11-30BA-4A6A-ACD3E5B6B425</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Percent_Complete" id="A199D86F-DC81-34FA-AA49-0E3AC87D91E3">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>0C194897-C988-3FA6-73EE-F9F01AB027AE</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>4677C488-9E5B-3264-8F65-E354D61850EF</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="EstimatedCompletion" id="3D433142-EB59-79A2-2476-DBCE70BE3236">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>1290A661-1B5C-8911-8824-3521EECF0F46</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<domain>731DC873-1A11-30BA-4A6A-ACD3E5B6B425</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Photo" id="7210B24A-1ABA-D47F-F44E-6D7D6E9811FB">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>4F49BDED-F2A8-C85C-6A3B-C716C2B27AB6</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT029</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Stage" id="7B9FB4AB-6567-8369-325D-AD5E23E364C4">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>AC37B8FB-4196-2537-D796-A3D4536FAA4F</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>40F19CAA-37C0-838C-74B7-66E70E0B4608</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="HouseTask_HouseTask_ID" id="C9CBD9E4-F1E4-2677-4B68-05CB23ED1685">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:26:08 UTC</createdTime>
+<generatorID>D2650FEC-302D-02A5-F6FC-22A932953147</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1468DF46-DC90-ABEC-6D2E-B9339D9AA5D8" referredColumn="CD6F650A-BC86-9082-275A-426C6D3B5194"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="017083BE-EDAA-E3C4-09E1-D035FBA6D205" name="Task_Progress_PK">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>DBD0AF28-A76E-EC63-E330-9B0BBC58EC5D</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="41A51D64-A4D3-7BAB-FAA7-C45D72F03EBE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="38215641-5329-DA24-1E6F-B3C5D436C3C7" name="Task_Progress_HouseTask_FK">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:26:08 UTC</createdTime>
+<generatorID>60191B3C-8481-5BC2-66A0-808D0AF9481E</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C9CBD9E4-F1E4-2677-4B68-05CB23ED1685"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

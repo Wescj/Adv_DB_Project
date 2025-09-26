@@ -1,0 +1,248 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="7D629681-5E50-E38A-C897-7D06FCDB8E09" name="Sale">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>C61D73DD-E111-5FB4-E11B-309726E9D135</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Sale_ID" id="1C11D095-2D68-23CC-30DD-607DAC52B1A0">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>2451D940-FAE0-F38D-774D-8DD7F867CC01</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Date" id="F23348BE-EF4E-A037-70E4-F92DEC99970D">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>82EE1FEC-4F85-2B77-B588-B7E9D74B194F</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<domain>731DC873-1A11-30BA-4A6A-ACD3E5B6B425</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="BasePrice" id="A9AA32E4-B978-351B-AFF1-087CDB025B4E">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>EEA959D1-2F32-2A66-D6B1-108A8A807F94</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>9C8E6B37-9E30-E5EE-B303-1E98AEE1E1DE</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Financing_Method" id="3E000A17-3046-F044-D807-F57875ABE61F">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>82FA5317-1026-3945-689E-678520D73D24</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>18408D0F-E79F-8C21-7924-16D86427B20F</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="EscrowDeposit" id="BEEC2968-916F-DF8B-3A02-F229E88E13CE">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>FA63D6B2-058D-72B4-F7C9-1F55F1C1DD67</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C5D72779-FB96-2EDA-50C3-269E0E5DE212</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="EstimatedCompletion" id="6D51A386-36A9-4C84-E748-84066418FACC">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>0B654589-3155-33D3-9B82-A0F128814989</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<domain>731DC873-1A11-30BA-4A6A-ACD3E5B6B425</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ReceivedSubdivision" id="D7731CD0-9C29-2446-B76C-CA3FCCF0643D">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>FEA8EEA9-150C-709A-6118-6D96A32652D7</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<domain>ACD9F1BD-4337-8E9B-EC2D-48937E009F66</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ReceivedDisclosureForm" id="64B7644B-AAD4-7016-E0C1-1150C1ED15A1">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>833EA67A-E36F-C6BB-7CF1-3F575AACF971</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<domain>ACD9F1BD-4337-8E9B-EC2D-48937E009F66</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ReceivedContractCopy" id="2226F982-38BB-5E3C-A244-BAF670E7CB72">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>1C17EDF4-1028-1F8A-28F9-1E4381456D1C</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<domain>ACD9F1BD-4337-8E9B-EC2D-48937E009F66</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="House_House_ID" id="5ABBEE22-5CCE-4D10-DCDD-35B234E6095B">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:15:21 UTC</createdTime>
+<generatorID>E403A55D-DA75-29AD-EB41-CC95FFBE740E</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="6F3BAA07-BADA-56A1-B20E-C58327C3D550" referredColumn="6390626D-9FE1-A753-1FFF-64A564FD374C"/>
+</associations>
+</Column>
+<Column name="Buyer_Buyer_ID" id="0AA3E9C6-76C1-A2D5-3579-18F3EBA25EF5">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:15:57 UTC</createdTime>
+<generatorID>43A3388B-6E38-D68E-6E8D-E0EEF99CA59A</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="0BCF9E4D-2D45-53CD-3EA6-B0A750AB1CF5" referredColumn="CF9614EE-1DAA-6C7B-0779-EC4AA0272754"/>
+</associations>
+</Column>
+<Column name="EscrowAgent_EscrowAgent_ID" id="F8938080-E62E-CA5F-6A5E-34229314B70E">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:19:39 UTC</createdTime>
+<generatorID>EA513BE1-9398-F663-B36F-C246F4133328</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="21392ED1-F870-DBEA-82A7-50D7C3081465" referredColumn="A0F3CE86-ACC6-22E6-1770-B1D2A4B6CC26"/>
+</associations>
+</Column>
+<Column name="Employee_Employee_ID" id="8F0A03AA-D5B1-7478-BFF4-5BEFB73265E0">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:19:55 UTC</createdTime>
+<generatorID>FFAE46D0-DA3D-EFEC-32E2-A1AFE47B0020</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7D82473F-C8CA-94F2-64B4-692418C8346D" referredColumn="C8CB7197-7702-1826-5204-044899972996"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="529B6402-79FD-9CF2-ACBE-969BD5757D7A" name="Sale_PK">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>2FB042F1-4DBF-8C6B-A1A5-1941EE17EA38</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1C11D095-2D68-23CC-30DD-607DAC52B1A0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E0555F3C-1EB6-08B8-9AF0-3BCA31C981CE" name="Sale__IDX">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:15:21 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>A32D77DF-03C1-745B-0001-9DA804353DEC</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="5ABBEE22-5CCE-4D10-DCDD-35B234E6095B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3DDB396A-7810-2BA0-6E48-392F17CBB739" name="Sale_House_FK">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:15:21 UTC</createdTime>
+<generatorID>A32D77DF-03C1-745B-0001-9DA804353DEC</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5ABBEE22-5CCE-4D10-DCDD-35B234E6095B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D3599CC0-2187-8FB8-EA1A-6585F50611B4" name="Sale_Buyer_FK">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:15:57 UTC</createdTime>
+<generatorID>38A54ECA-B1B9-76CD-B0A2-F36E500B66DE</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0AA3E9C6-76C1-A2D5-3579-18F3EBA25EF5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0F809B8A-1091-72BB-438C-47C276852132" name="Sale_EscrowAgent_FK">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:19:39 UTC</createdTime>
+<generatorID>BDF432B3-2573-F0D6-9175-067C76515001</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F8938080-E62E-CA5F-6A5E-34229314B70E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3D95BC6C-5F5A-F252-77BA-78274C56A568" name="Sale_Employee_FK">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:19:55 UTC</createdTime>
+<generatorID>CC9E7C51-AE28-87C4-26EE-3F1CBDFDEA61</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8F0A03AA-D5B1-7478-BFF4-5BEFB73265E0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

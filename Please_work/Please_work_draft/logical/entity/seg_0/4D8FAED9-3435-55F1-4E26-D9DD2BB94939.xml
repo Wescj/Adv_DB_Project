@@ -1,0 +1,137 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="4D8FAED9-3435-55F1-4E26-D9DD2BB94939" name="Buyer">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 15:08:12 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="Buyer_ID" id="88734143-BB26-0BE4-47D2-EDD92949CDBC">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 15:08:25 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Name" id="88000348-9D9C-BC56-EB3D-0E534C8A7E39">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 15:08:36 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>AC010510-C767-F4BF-92EF-4FCE02F4A804</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Address" id="457658BF-286C-687F-E505-F7999CC23679">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 15:08:51 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LogDes-1768A872-F385-FDBA-D95E-0CB63F5908E2@LOGDT10045</logicalDatatype>
+<domain>F0272D57-A4AE-C6F6-650D-AB111469186A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="City" id="CA52D2C2-C149-F306-EA68-58ED78E4227C">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 15:08:55 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>A330E5D4-B07F-FB39-247D-0CD7A55C1429</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="State" id="3D0D87C6-6BC2-F184-9891-DCB1CCF8E273">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 15:08:58 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>479D9D88-91C5-1191-F7D2-A53FE33BB6D1</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ZIP" id="ED8EC9D0-DC76-453D-28B1-24DABDF53F71">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 15:09:02 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>0C1B2C24-E643-702E-979D-9DB93C36E630</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Phone" id="D8C05D71-D486-5787-D51D-006BE2ABF738">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 15:09:04 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>31D8D032-2AD2-9327-7607-70BACF3B5E60</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Email" id="8ED867F6-489E-D83D-94B2-8392AD1DB76C">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 15:09:08 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>EC04FDBF-7AB2-AD94-A753-5101242C016D</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="E458FD3F-9C6D-1CB5-534D-D826484E6B0C" name="Buyer PK">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 15:08:32 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>88734143-BB26-0BE4-47D2-EDD92949CDBC</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

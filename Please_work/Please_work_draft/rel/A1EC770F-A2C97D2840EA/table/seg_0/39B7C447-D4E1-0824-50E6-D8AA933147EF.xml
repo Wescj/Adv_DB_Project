@@ -1,0 +1,99 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="39B7C447-D4E1-0824-50E6-D8AA933147EF" name="Decorator_Session">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>6EFE7CCF-5502-0F44-5CFA-8A662B93C744</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="DecoratorSession_ID" id="86B83818-2085-BF5D-0A74-948341F8C51E">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>464457D9-E4AD-4BCB-DE5A-E03CEE8CA443</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Date" id="21C47B37-F462-FCFF-BCDD-19CF9B169D03">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>36CDB03A-CB18-6117-C0FF-FE7236C5C29C</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<domain>731DC873-1A11-30BA-4A6A-ACD3E5B6B425</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Stage" id="65930B0F-3788-EA5D-7085-9C7EF7D872CF">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>7212FB43-6C5C-2236-9C44-B38713A17F24</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>40F19CAA-37C0-838C-74B7-66E70E0B4608</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="HouseTask_HouseTask_ID" id="C0E77558-91E8-A019-CE18-32426C3DFF08">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:22:50 UTC</createdTime>
+<generatorID>49AF5FF2-0730-2927-92EB-4DF04C8897EC</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B5C54FAA-B778-BF8D-F4CF-EA457042CE1A" referredColumn="CD6F650A-BC86-9082-275A-426C6D3B5194"/>
+</associations>
+</Column>
+<Column name="Approval" id="8B3A0BBB-CB9E-D4A0-FE13-43329F377671">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:37:58 UTC</createdTime>
+<generatorID>2AC68DD1-F21D-F36B-04A2-2BB18649FF62</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<domain>ACD9F1BD-4337-8E9B-EC2D-48937E009F66</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="FFAE1628-0BD2-08EC-850C-4E10089F39FA" name="Decorator_Session_PK">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>759E0888-598A-708C-183D-202B81950A7F</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="86B83818-2085-BF5D-0A74-948341F8C51E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7A43E040-9C55-045C-638F-9ECDF6C3EB76" name="Decorator_Session_HouseTask_FK">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:22:50 UTC</createdTime>
+<generatorID>CCC1F32D-B7FF-DDB0-36A1-5A87486F0CE6</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C0E77558-91E8-A019-CE18-32426C3DFF08"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

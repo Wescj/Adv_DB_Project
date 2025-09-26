@@ -1,0 +1,97 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="EFBAF696-9FCD-3D65-4C26-3C2225674CDD" name="Option_Stage_Price">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 15:59:55 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="Cost" id="EA05981F-83D5-1409-1069-3BB51663BFAE">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:01:28 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>9C8E6B37-9E30-E5EE-B303-1E98AEE1E1DE</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Revision_Date" id="A3011F4B-0AEA-D6D6-7373-1591F36D5DE1">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:01:35 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<domain>731DC873-1A11-30BA-4A6A-ACD3E5B6B425</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Stage" id="05B68FA1-F949-D8AF-EE45-B673669C0A47">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:01:44 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>40F19CAA-37C0-838C-74B7-66E70E0B4608</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Option_ID" id="E2817667-5EC7-EAD0-D5D2-0755B6996B91">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-23 00:35:17 UTC</createdTime>
+<generatorID>A030AB21-EBAD-CF42-450B-002CEE2ED00C</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<referedAttribute>9B43142A-5CFE-066D-4B70-61060C51A072</referedAttribute>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="OSP_ID" id="6DB5E945-191E-E8BE-D7A6-ED70F8FF85DC">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-23 00:36:30 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="21B6E42E-342E-E60B-6AFA-9812E99B10E8" name="Option_Stage_Price PK">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 22:43:12 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>6DB5E945-191E-E8BE-D7A6-ED70F8FF85DC</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

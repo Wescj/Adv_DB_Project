@@ -1,0 +1,87 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="076DAB65-9278-285F-0904-CDD6C38E32D8" name="Option">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>DE994848-19D3-3411-FF06-C122A4DD0A91</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Option_ID" id="3F71E866-4265-E96D-CD99-03E07A961107">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>9B43142A-5CFE-066D-4B70-61060C51A072</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Option_Code" id="17DABEE8-2C5A-FAD6-153C-88C912F435B4">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>55C86B8E-686B-41BB-50E2-9054B4D9D939</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>AC010510-C767-F4BF-92EF-4FCE02F4A804</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Description" id="DB4BF0A2-85C4-526F-878F-4C1C26040987">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>1895E97C-A4F2-E1DF-68FF-C8057CB0DD89</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>18408D0F-E79F-8C21-7924-16D86427B20F</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="OptionCategory_Category_ID" id="18E8E251-2CE1-0661-97CD-3F0C65D81EBF">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:27:37 UTC</createdTime>
+<generatorID>FADF7849-443E-2FF4-38CB-FDD9D008F235</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AED0FFEC-8734-3E37-DFFE-A6275192ED6B" referredColumn="93E5E053-3674-729F-DEFE-D12EF671203C"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="CEBEB8D8-8539-B04A-25E3-BB5900E0BF5B" name="Option_PK">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>8B85F5D2-2013-6B2F-6E70-1C4013D84B4E</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3F71E866-4265-E96D-CD99-03E07A961107"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="38178627-D44F-EDE2-201F-FFA6814D68BA" name="OptionCategory_FK">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:27:37 UTC</createdTime>
+<generatorID>A15C2EF7-B050-5241-46E0-EEB35ED2DB8F</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="18E8E251-2CE1-0661-97CD-3F0C65D81EBF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

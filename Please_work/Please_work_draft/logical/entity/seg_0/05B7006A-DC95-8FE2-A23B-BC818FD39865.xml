@@ -1,0 +1,98 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="05B7006A-DC95-8FE2-A23B-BC818FD39865" name="Bank_Worker">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 21:47:26 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="Worker_ID" id="401D507A-D085-5FEE-D694-46357324F9AA">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 21:47:32 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Name" id="0224C67A-314F-AC04-2850-FF506845291B">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 21:47:40 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>AC010510-C767-F4BF-92EF-4FCE02F4A804</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Phone_number" id="D237B6BA-F840-4A0B-EE11-B1119989FB88">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 21:47:45 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>31D8D032-2AD2-9327-7607-70BACF3B5E60</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Fax_number" id="246672DA-6B95-06D9-3D72-A74B64286FE6">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 21:48:39 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>31D8D032-2AD2-9327-7607-70BACF3B5E60</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Bank_ID" id="4D9664C8-CD28-8EB2-A450-F6766F6CD221">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 21:49:02 UTC</createdTime>
+<generatorID>D9400F1F-8711-AEF7-4B62-D509C7F09AB7</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<referedAttribute>0094313B-3A24-8124-ACC4-2AC638B67D17</referedAttribute>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="299ECAEA-21FB-0E30-3FE5-780421707E08" name="Bank_Worker PK">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 21:47:39 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>401D507A-D085-5FEE-D694-46357324F9AA</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

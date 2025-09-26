@@ -1,0 +1,114 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="EEAB06CB-D92B-D256-3349-334AE295FF29" name="House">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 14:57:15 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="House_ID" id="AB85E75B-EEA3-7639-DA9A-505A7B683216">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 14:57:20 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="CurrentConstructionStage" id="DE43C46B-A2BD-41B3-5B98-61C0FCB9725B">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 14:57:32 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>40F19CAA-37C0-838C-74B7-66E70E0B4608</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="EstimatedCompletion" id="23DBEFAD-E7EF-9666-C8CD-7A12B08A1FF9">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 14:58:00 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<domain>731DC873-1A11-30BA-4A6A-ACD3E5B6B425</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Lot_ID" id="CA669BD0-E037-4EA2-85F2-8E34CA36A235">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:11:26 UTC</createdTime>
+<generatorID>818490FB-8B80-B763-FC3D-785928D77E53</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<referedAttribute>974E4837-486A-671C-0E1A-F5E9A6AA338B</referedAttribute>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Style_ID" id="B4761A00-CB46-2178-1B9B-2A77C7D413B7">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:12:51 UTC</createdTime>
+<generatorID>7940A33E-F3A5-C012-9C6C-F882E57262FE</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<referedAttribute>ABFC9E2E-7327-CC34-260B-C48E473C48D3</referedAttribute>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Elevation_ID" id="0FC99AC2-F811-A2D3-8C01-5F5990961E77">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 21:34:29 UTC</createdTime>
+<generatorID>C9451064-A4A8-56BE-AAC7-9938B8156D06</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<referedAttribute>46010A78-F883-F050-6CB0-AF5F413DA5D2</referedAttribute>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="FAE9270D-D2FD-04F7-B66B-DD5BEB24A2F9" name="House PK">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 14:57:25 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>AB85E75B-EEA3-7639-DA9A-505A7B683216</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

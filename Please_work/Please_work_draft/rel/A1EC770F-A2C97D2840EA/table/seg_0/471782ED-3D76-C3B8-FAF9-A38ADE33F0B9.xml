@@ -1,0 +1,85 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="471782ED-3D76-C3B8-FAF9-A38ADE33F0B9" name="Subdivision">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>7FAA4502-40D3-3CC5-5322-D1AC22BCDBB3</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Subdivision_ID" id="460BCDF4-A429-1E34-0296-7B25D6E189C0">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>69049685-1A18-EAFC-2409-07D6C23BCB5B</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Name" id="F67CE2E9-9E78-B937-E7E4-BAE616CF239F">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>74B669B5-2D43-C1AF-F19F-ADEFD6A2DD12</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>A330E5D4-B07F-FB39-247D-0CD7A55C1429</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="City" id="76717E4F-045C-593A-C306-B949D6019C54">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>9F468541-D3F5-148E-59D7-4E60EC06C3DA</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>A330E5D4-B07F-FB39-247D-0CD7A55C1429</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="State" id="2C01B8F8-280B-169A-EA73-50D64A2C4A95">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>E0C27916-5D9E-A0D6-23B1-B2CFDEDFAFD0</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>479D9D88-91C5-1191-F7D2-A53FE33BB6D1</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ZIP" id="985AA9AF-B49B-24CE-9B6E-1D3D2042AFA5">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>8667E77A-AA0D-075D-9DB4-19CE4738FB01</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>0C1B2C24-E643-702E-979D-9DB93C36E630</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="7BF5CCB7-EAA3-F586-C3F6-190273CEDF29" name="Subdivision_PK">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>80FC8897-8382-2DCC-A835-CAE63AD8577B</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="460BCDF4-A429-1E34-0296-7B25D6E189C0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

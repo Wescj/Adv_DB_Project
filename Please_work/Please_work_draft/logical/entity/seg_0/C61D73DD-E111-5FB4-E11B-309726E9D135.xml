@@ -1,0 +1,207 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="C61D73DD-E111-5FB4-E11B-309726E9D135" name="Sale">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 15:01:40 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="Sale_ID" id="2451D940-FAE0-F38D-774D-8DD7F867CC01">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 15:01:58 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Date" id="82EE1FEC-4F85-2B77-B588-B7E9D74B194F">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 15:02:25 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<domain>731DC873-1A11-30BA-4A6A-ACD3E5B6B425</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Financing_Method" id="82FA5317-1026-3945-689E-678520D73D24">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 15:02:54 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>18408D0F-E79F-8C21-7924-16D86427B20F</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="EscrowDeposit" id="FA63D6B2-058D-72B4-F7C9-1F55F1C1DD67">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 15:03:06 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C5D72779-FB96-2EDA-50C3-269E0E5DE212</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="EstimatedCompletion" id="0B654589-3155-33D3-9B82-A0F128814989">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 15:03:24 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<domain>731DC873-1A11-30BA-4A6A-ACD3E5B6B425</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ReceivedSubdivision" id="FEA8EEA9-150C-709A-6118-6D96A32652D7">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 15:04:57 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<domain>ACD9F1BD-4337-8E9B-EC2D-48937E009F66</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ReceivedDisclosureForm" id="833EA67A-E36F-C6BB-7CF1-3F575AACF971">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 15:05:22 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<domain>ACD9F1BD-4337-8E9B-EC2D-48937E009F66</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ReceivedContractCopy" id="1C17EDF4-1028-1F8A-28F9-1E4381456D1C">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 15:06:15 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<domain>ACD9F1BD-4337-8E9B-EC2D-48937E009F66</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Buyer_ID" id="43A3388B-6E38-D68E-6E8D-E0EEF99CA59A">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:15:47 UTC</createdTime>
+<generatorID>38A54ECA-B1B9-76CD-B0A2-F36E500B66DE</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<referedAttribute>88734143-BB26-0BE4-47D2-EDD92949CDBC</referedAttribute>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="EscrowAgent_ID" id="EA513BE1-9398-F663-B36F-C246F4133328">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:19:31 UTC</createdTime>
+<generatorID>BDF432B3-2573-F0D6-9175-067C76515001</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<referedAttribute>923FA707-F242-76C7-83F1-163643616F2A</referedAttribute>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Employee_ID" id="FFAE46D0-DA3D-EFEC-32E2-A1AFE47B0020">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:19:48 UTC</createdTime>
+<generatorID>CC9E7C51-AE28-87C4-26EE-3F1CBDFDEA61</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<referedAttribute>868F893C-388D-034C-8723-5F72B4C8E25E</referedAttribute>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="House_ID" id="1664B265-DF74-C6C6-966A-2626FC9A87E7">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 21:36:43 UTC</createdTime>
+<generatorID>5F398A51-31BB-CD45-297C-8AF7C4D3CD31</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<referedAttribute>AB85E75B-EEA3-7639-DA9A-505A7B683216</referedAttribute>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Worker_ID" id="F8DB5FD4-54A9-F39F-3740-3C7EEAA2E2DB">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 21:49:14 UTC</createdTime>
+<generatorID>95B4C7B1-4FFA-9D75-82E5-58E7B23F17AF</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<referedAttribute>401D507A-D085-5FEE-D694-46357324F9AA</referedAttribute>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="2FB042F1-4DBF-8C6B-A1A5-1941EE17EA38" name="Sale PK">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 15:03:40 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>2451D940-FAE0-F38D-774D-8DD7F867CC01</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

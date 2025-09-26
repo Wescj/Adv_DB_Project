@@ -1,0 +1,99 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="B1A1EB97-1751-4055-3B91-193A1E0A75DD" name="Elevation">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 14:58:28 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="Elevation_ID" id="46010A78-F883-F050-6CB0-AF5F413DA5D2">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 14:58:34 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ElevationCode" id="E78BCEAF-395F-2B73-0CD3-F251CE554789">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 14:58:44 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>AC010510-C767-F4BF-92EF-4FCE02F4A804</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Description" id="EAFE3804-E7E2-9EBF-5FD1-CD1FC2EA59BD">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 14:58:55 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>18408D0F-E79F-8C21-7924-16D86427B20F</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="AdditionalCostSketch" id="C6540F49-0326-75D7-5109-0EDA11EB3902">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 14:59:09 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT029</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Style_ID" id="7D0E3241-B6B9-7250-FD09-96D43CC291C0">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:13:27 UTC</createdTime>
+<generatorID>32BAED5F-80C9-695F-118C-02A607DA287B</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<referedAttribute>ABFC9E2E-7327-CC34-260B-C48E473C48D3</referedAttribute>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="BE17CA5D-CCC6-8B21-F1ED-58D6AF9CAFD4" name="Elevation PK">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 14:58:43 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>46010A78-F883-F050-6CB0-AF5F413DA5D2</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

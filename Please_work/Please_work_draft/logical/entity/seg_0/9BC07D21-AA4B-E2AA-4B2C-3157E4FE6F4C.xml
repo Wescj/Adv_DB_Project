@@ -1,0 +1,85 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="9BC07D21-AA4B-E2AA-4B2C-3157E4FE6F4C" name="Task_Progress">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 22:20:11 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="Progress_ID" id="6F6E3493-2CAB-ECFD-8877-43A90FE97639">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 22:20:19 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Percentage_Complete" id="84B62718-C41F-9373-F14F-F75B7E89BA92">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 22:20:23 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>4677C488-9E5B-3264-8F65-E354D61850EF</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="EstimatedCompletionDate" id="925DA278-136D-62B9-C0EF-F45C612BCCFF">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 22:20:38 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<domain>731DC873-1A11-30BA-4A6A-ACD3E5B6B425</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="HouseTask_ID" id="4C1B4989-7553-D5E5-66AC-574A8E1EC8BC">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 22:21:01 UTC</createdTime>
+<generatorID>9BB69138-9BAA-C13A-D2C9-449434C18EF9</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<referedAttribute>4DAD96B4-61B8-7E5C-71EC-34061C84D119</referedAttribute>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="1264144B-CCB1-4B23-BE68-7DAF42EB29E3" name="Task_Progress PK">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 22:20:52 UTC</createdTime>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<engineerTo>
+<item key="A1EC770F-7933-316B-D2F7-A2C97D2840EA" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>6F6E3493-2CAB-ECFD-8877-43A90FE97639</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

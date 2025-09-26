@@ -1,0 +1,99 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="1F7BD5C4-7FF7-B2BE-3780-83D49975C29C" name="Elevation">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>B1A1EB97-1751-4055-3B91-193A1E0A75DD</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Elevation_ID" id="17AEF4AD-F221-9284-3DAD-5A85B4DA697A">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>46010A78-F883-F050-6CB0-AF5F413DA5D2</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ElevationCode" id="F447BD8F-BFCA-55ED-5ABE-BEDE47DDC9F4">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>E78BCEAF-395F-2B73-0CD3-F251CE554789</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>AC010510-C767-F4BF-92EF-4FCE02F4A804</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Description" id="9438C7E1-0AE1-B4D8-C3A6-BF44B0CEC486">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>EAFE3804-E7E2-9EBF-5FD1-CD1FC2EA59BD</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>18408D0F-E79F-8C21-7924-16D86427B20F</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="AdditionalCostSketch" id="A31CA492-1A3D-12F8-61EC-965CC52C4DB6">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>C6540F49-0326-75D7-5109-0EDA11EB3902</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>18408D0F-E79F-8C21-7924-16D86427B20F</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="HouseStyle_Style_ID" id="5E8283DD-2867-0432-3E1D-65B2CFF54508">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:13:35 UTC</createdTime>
+<generatorID>7D0E3241-B6B9-7250-FD09-96D43CC291C0</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3FB2941E-6254-7F71-3093-5AA05ED63013" referredColumn="C9D0CF9D-6D52-B505-9563-ACE77C24C102"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="1FAF948A-EE27-89C7-B815-4DD86AF0C46C" name="Elevation_PK">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>BE17CA5D-CCC6-8B21-F1ED-58D6AF9CAFD4</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="17AEF4AD-F221-9284-3DAD-5A85B4DA697A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7DC2A84A-7E5C-7D28-EE14-1B31C304BE09" name="Elevation_HouseStyle_FK">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:13:35 UTC</createdTime>
+<generatorID>32BAED5F-80C9-695F-118C-02A607DA287B</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5E8283DD-2867-0432-3E1D-65B2CFF54508"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

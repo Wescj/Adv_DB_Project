@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="0347E884-39D5-2E43-A2C4-E15B6BC622AF" containerWithKeyObject="BEED9D09-5096-C2EC-D49A-F99FF50C2D93" localFKIndex="BABBC9A9-DCEE-C0B2-2FEB-F9D1CDC32CB7" name="House_HouseStyle_FK">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:12:59 UTC</createdTime>
+<generatorID>7940A33E-F3A5-C012-9C6C-F882E57262FE</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<referredTableLongName>HouseStyle</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>7F41F131-5028-361B-4D14-E4F835D06289</referredTableID>
+<keyObject>33F67CA1-C1ED-8924-25FC-82911E7D29DB</keyObject>
+<referredKeyID>33F67CA1-C1ED-8924-25FC-82911E7D29DB</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>Style_ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

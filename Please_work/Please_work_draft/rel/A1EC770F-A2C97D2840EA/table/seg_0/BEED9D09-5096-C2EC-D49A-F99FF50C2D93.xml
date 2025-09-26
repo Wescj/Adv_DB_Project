@@ -1,0 +1,139 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="BEED9D09-5096-C2EC-D49A-F99FF50C2D93" name="House">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>EEAB06CB-D92B-D256-3349-334AE295FF29</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="House_ID" id="6390626D-9FE1-A753-1FFF-64A564FD374C">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>AB85E75B-EEA3-7639-DA9A-505A7B683216</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CurrentConstructionStage" id="4A58EDD6-770B-F670-7A18-3DB163232135">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>DE43C46B-A2BD-41B3-5B98-61C0FCB9725B</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>40F19CAA-37C0-838C-74B7-66E70E0B4608</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="EstimatedCompletion" id="65DD6D4B-85BA-F4E6-F152-A150AE1D0F63">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>23DBEFAD-E7EF-9666-C8CD-7A12B08A1FF9</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<domain>731DC873-1A11-30BA-4A6A-ACD3E5B6B425</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Lot_Lot_ID" id="91F60AE2-8F35-5BD5-2ACD-7CDB42AC668F">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:11:39 UTC</createdTime>
+<generatorID>CA669BD0-E037-4EA2-85F2-8E34CA36A235</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F90B6E2C-C0FF-0BCA-5642-BEC3747E2936" referredColumn="BC3A9502-6914-AF3B-0BF9-219D45362B04"/>
+</associations>
+</Column>
+<Column name="HouseStyle_Style_ID" id="0A30E559-2558-9003-0BBA-FFB562B214B6">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:12:59 UTC</createdTime>
+<generatorID>B4761A00-CB46-2178-1B9B-2A77C7D413B7</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="0347E884-39D5-2E43-A2C4-E15B6BC622AF" referredColumn="C9D0CF9D-6D52-B505-9563-ACE77C24C102"/>
+</associations>
+</Column>
+<Column name="Elevation_Elevation_ID" id="DDD5369B-020F-663D-923B-75F06EC13745">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:13:35 UTC</createdTime>
+<generatorID>0E79CED6-BED9-1954-FB97-E72FB6BBC5A7</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>AF0E176A-0405-2387-0E67-137C5EB6DC7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="792ACD7A-A9DF-3CFD-36D8-2A7E800C05F9" referredColumn="17AEF4AD-F221-9284-3DAD-5A85B4DA697A"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="1DA401E5-2F03-64A9-384F-82C10BFED064" name="House_PK">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:08:42 UTC</createdTime>
+<generatorID>FAE9270D-D2FD-04F7-B66B-DD5BEB24A2F9</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6390626D-9FE1-A753-1FFF-64A564FD374C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4D1C371B-5A0E-DF54-ED68-084D2F0865CF" name="House_Lot_FK">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:11:39 UTC</createdTime>
+<generatorID>818490FB-8B80-B763-FC3D-785928D77E53</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="91F60AE2-8F35-5BD5-2ACD-7CDB42AC668F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BABBC9A9-DCEE-C0B2-2FEB-F9D1CDC32CB7" name="House_HouseStyle_FK">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:12:59 UTC</createdTime>
+<generatorID>7940A33E-F3A5-C012-9C6C-F882E57262FE</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0A30E559-2558-9003-0BBA-FFB562B214B6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B87B0131-1CFE-1AE7-48E8-D27892DA9EDD" name="House_Elevation_FK">
+<createdBy>bergasanargya</createdBy>
+<createdTime>2025-09-19 16:13:35 UTC</createdTime>
+<generatorID>014AB869-42FE-8952-4176-BB4918DB69CC</generatorID>
+<ownerDesignName>ERD_Draft_1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DDD5369B-020F-663D-923B-75F06EC13745"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
