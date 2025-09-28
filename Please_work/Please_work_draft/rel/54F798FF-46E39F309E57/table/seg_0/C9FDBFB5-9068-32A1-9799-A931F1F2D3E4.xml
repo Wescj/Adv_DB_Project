@@ -1,0 +1,97 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C9FDBFB5-9068-32A1-9799-A931F1F2D3E4" name="Bank">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>7F1C822E-C222-B47E-E910-53F048951892</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Bank_ID" id="07B589D3-AB86-245E-AA23-40A63DE71B53">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>0094313B-3A24-8124-ACC4-2AC638B67D17</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Name" id="85D48DCF-220A-283B-242B-F3F166E68045">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>1C283FD6-C55E-69CE-78E1-F7A61BEBA8C1</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Address" id="B32D7408-2029-1F49-B5D2-6F169CAA2E85">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>DE03A9D3-3D41-7635-3D9D-DD4A162E2E4D</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LogDes-1768A872-F385-FDBA-D95E-0CB63F5908E2@LOGDT10045</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ZIP" id="CC0BB28A-2BB4-9936-F439-95E9050F0B4C">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>186E805B-DAB4-351A-ACC8-A298040B0BB7</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="State" id="8FE17967-BD7D-4766-0B36-C0B4C91F8F96">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>1EDF83DC-05F5-92D4-2255-C91D8DD06A87</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Phone_number" id="33427323-8925-08BA-FC1E-54D863206155">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>E837AFA5-D987-0AE1-044B-A53B689E8CCD</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E93D70CE-ED54-D1FE-A9D2-A979BB9DCA53" name="Bank_PK">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>F91EFD2C-CBD8-2C59-BCBB-5EEC7F692E9F</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="07B589D3-AB86-245E-AA23-40A63DE71B53"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

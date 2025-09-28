@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="2475AF30-3EE8-31DE-251E-857F8ABCD39A" containerWithKeyObject="24399FFC-B7F1-D05F-0DFF-42604E5F2792" localFKIndex="36CE4352-9BF6-2984-A3F7-6B9986551BC1" name="Lot_Subdivision_FK">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>F45C1BF1-E2C9-0B90-2AEA-FE4249958D47</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<referredTableLongName>Subdivision</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>7315BF2F-0508-2535-5127-18818E331D60</referredTableID>
+<keyObject>922B23E4-88C8-7D7E-038F-BAD56D259862</keyObject>
+<referredKeyID>922B23E4-88C8-7D7E-038F-BAD56D259862</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>Subdivision_ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

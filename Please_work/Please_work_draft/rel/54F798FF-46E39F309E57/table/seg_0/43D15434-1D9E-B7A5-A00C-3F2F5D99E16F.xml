@@ -1,0 +1,109 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="43D15434-1D9E-B7A5-A00C-3F2F5D99E16F" name="EscrowAgent">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>D8B2A4FB-46A4-16FB-53D0-75E0083D3202</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="EscrowAgent_ID" id="424C2486-530E-24A9-4298-64B74E780051">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>923FA707-F242-76C7-83F1-163643616F2A</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Name" id="FCFA0EB9-3BD8-1E16-19F2-ACD4E3F28C93">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>6F5C94DF-AD19-F38E-3F44-D9F0F93C2656</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Address" id="9CCDBDF6-B1A2-F80F-380F-310E1B72070D">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>B9BFA1F4-1292-75A7-A8F0-6E538447B5B9</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LogDes-1768A872-F385-FDBA-D95E-0CB63F5908E2@LOGDT10045</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="City" id="C240A9F8-E6A6-7604-BE76-688F698BDCCA">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>682CF27A-97BF-A657-57D7-8E344626574E</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="State" id="58A831C8-FD93-74EE-7C12-076692D5482F">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>9F9E584E-774A-ABDA-D4DD-9FDFC1425C02</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ZIP" id="35B2A8EC-6F8A-C582-3DDC-A42498330D0B">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>7C24E8EC-0075-20FD-234A-9945ADE01E0F</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Phone_number" id="1B8EB54C-0FFD-231B-01C6-DDDFC9E99716">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>4277FA6B-03BE-3B14-73F8-853339C10EBD</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="F6096FE6-BD47-53FF-9A7D-D793964B6DF3" name="EscrowAgent_PK">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>935E13D5-A36B-C360-317E-A6903AFD4C62</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="424C2486-530E-24A9-4298-64B74E780051"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

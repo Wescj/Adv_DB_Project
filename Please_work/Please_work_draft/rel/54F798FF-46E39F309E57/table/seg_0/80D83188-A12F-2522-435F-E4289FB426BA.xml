@@ -1,0 +1,99 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="80D83188-A12F-2522-435F-E4289FB426BA" name="Bank_Worker">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>05B7006A-DC95-8FE2-A23B-BC818FD39865</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Worker_ID" id="C026E0B8-3A09-9E09-A19E-7E088FE4F36E">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>401D507A-D085-5FEE-D694-46357324F9AA</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Name" id="B64306A3-AD59-BF33-6918-A88BD3300C4A">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>0224C67A-314F-AC04-2850-FF506845291B</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Phone_number" id="82417E61-4494-EE25-FE71-6C2E79F80036">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>D237B6BA-F840-4A0B-EE11-B1119989FB88</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Fax_number" id="CDC87C71-D651-888A-69DD-F1E3F5240360">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>246672DA-6B95-06D9-3D72-A74B64286FE6</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Bank_Bank_ID" id="C8756211-107D-CD90-C593-49F109D6DFE1">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>4D9664C8-CD28-8EB2-A450-F6766F6CD221</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="9BAC6CC5-18DE-C090-81F7-7386C2F0D715" referredColumn="07B589D3-AB86-245E-AA23-40A63DE71B53"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="89773295-9931-16EB-AF86-0680D984F5DA" name="Bank_Worker_PK">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>299ECAEA-21FB-0E30-3FE5-780421707E08</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C026E0B8-3A09-9E09-A19E-7E088FE4F36E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E49DECE6-E2E0-A6BC-AF94-D64C2D8A142D" name="Bank_Worker_Bank_FK">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>D9400F1F-8711-AEF7-4B62-D509C7F09AB7</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C8756211-107D-CD90-C593-49F109D6DFE1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

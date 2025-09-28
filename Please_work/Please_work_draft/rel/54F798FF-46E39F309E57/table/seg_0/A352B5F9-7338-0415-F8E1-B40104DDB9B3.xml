@@ -1,0 +1,98 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A352B5F9-7338-0415-F8E1-B40104DDB9B3" name="Option_Stage_Price">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>EFBAF696-9FCD-3D65-4C26-3C2225674CDD</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Cost" id="0C7DCA06-C447-CE1E-2A45-70C9D9301310">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>EA05981F-83D5-1409-1069-3BB51663BFAE</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Revision_Date" id="B67934A6-65BE-99D7-9286-299FA5DFF240">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>A3011F4B-0AEA-D6D6-7373-1591F36D5DE1</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Stage" id="5501DAB9-4925-7ECA-FA4D-3FF0DF4AB871">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>05B68FA1-F949-D8AF-EE45-B673669C0A47</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Option_Option_ID" id="58A22EF9-2AF9-5583-46B4-893970180487">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>E2817667-5EC7-EAD0-D5D2-0755B6996B91</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="DB33FD01-C25A-0894-A1D3-A6FDD4A7A852" referredColumn="0046F3F3-0B7F-8535-BD17-7693E275DD39"/>
+</associations>
+</Column>
+<Column name="OSP_ID" id="AF19B4FE-EA63-D6D0-4972-BE08E89CDE3A">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>6DB5E945-191E-E8BE-D7A6-ED70F8FF85DC</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="B981FA75-8D85-2214-885C-342DB602A9A6" name="Option_Stage_Price_PK">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>21B6E42E-342E-E60B-6AFA-9812E99B10E8</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AF19B4FE-EA63-D6D0-4972-BE08E89CDE3A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3862EC44-6058-B1EC-8E4A-C3EBD105E651" name="Option_Stage_Price_Option_FK">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>A030AB21-EBAD-CF42-450B-002CEE2ED00C</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="58A22EF9-2AF9-5583-46B4-893970180487"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

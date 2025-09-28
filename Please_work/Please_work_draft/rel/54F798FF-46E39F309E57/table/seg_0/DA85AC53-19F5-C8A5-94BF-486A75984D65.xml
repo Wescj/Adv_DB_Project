@@ -1,0 +1,185 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="DA85AC53-19F5-C8A5-94BF-486A75984D65" name="HouseTask">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>2C91ECC6-53BA-FB98-0A8A-CF345022854D</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="HouseTask_ID" id="69ECE796-6A6F-8E55-A375-EDCF47F51F4D">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>4DAD96B4-61B8-7E5C-71EC-34061C84D119</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Stage" id="8CD83EC3-EDBE-0866-CDBB-702743CCDFFF">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>6D20CEDC-C02A-B0C2-2063-010343C20427</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Required" id="7EA6EE8C-3F0D-EA68-A672-D603A235F225">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>DCC94EF8-4780-D9A2-7271-B0EA2729F31D</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PlannedStart" id="2F876EC1-B90A-C042-2BFD-1280EDE2F5F7">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>7A5E9A13-ECC7-D8F7-E2FF-DA00B9510A60</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PlannedEnd" id="559EE906-4AB5-147C-63EB-A0909E3CB076">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>F7AF0596-6097-B3C7-5263-BEFE6B8FA05A</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Notes" id="0AD7C4CD-07B2-9E51-F323-D3F31E12832C">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>7BA52559-5749-36AC-7508-0E357BEA4076</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="House_House_ID" id="C5E97E88-1900-8E54-9CBA-8310CB9D8689">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>01F071F5-01E6-45F6-BD5F-9B65AC2DDD34</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3C1D33B3-53B3-75ED-2271-DC68318384C3" referredColumn="D360C11D-5CE5-01E1-CDBA-5C205F40F94B"/>
+</associations>
+</Column>
+<Column name="Employee_Employee_ID" id="EEAB1439-E9C8-48EE-FD69-DE6234F3BB2B">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>209B35B5-78B0-6F4F-1B4C-E6E80E2B7DCE</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="6F8260F0-CF22-7945-EFE7-CF44C627600D" referredColumn="86AE53DB-B2D6-35E0-E43E-FE3ED9D35C2E"/>
+</associations>
+</Column>
+<Column name="PlannedCost" id="DBFFA1EA-E552-070D-2875-61B860859915">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>13112927-9366-DC99-92FB-856BC1CD8FBE</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ActualCost" id="C93CE074-0DEE-95E2-7D96-9D64B52D3228">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>983D586D-88D7-1A67-5AA3-CE1C515021D3</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Percent_Complete" id="47BA78BC-D50E-9DC7-99A8-B5527EAE4663">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>62D80D4A-8402-FF6B-AA2B-5EC99A813D00</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="6D06B706-C01B-93C4-A6AC-F562AD8E41D1" name="HouseTask_PK">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>BDD7C3C5-75FB-2039-0811-D40A56D5A146</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="69ECE796-6A6F-8E55-A375-EDCF47F51F4D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="748D1D77-575F-8B76-6E11-4DA701FAF58F" name="HouseTask_House_FK">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>36A78C0F-CD70-9F31-BAA8-2D92E964A9E1</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C5E97E88-1900-8E54-9CBA-8310CB9D8689"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="55A6739C-E9D2-CC04-8913-BC1EB3E6232F" name="HouseTask_Employee_FK">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>B815E18C-7F81-71F6-953F-1D7B7A495993</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EEAB1439-E9C8-48EE-FD69-DE6234F3BB2B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

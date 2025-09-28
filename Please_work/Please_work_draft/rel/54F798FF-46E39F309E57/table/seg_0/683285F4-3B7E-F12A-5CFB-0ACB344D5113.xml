@@ -1,0 +1,113 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="683285F4-3B7E-F12A-5CFB-0ACB344D5113" name="Photo">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>96E13FB8-8B6C-CEC7-2E1F-C2A58C615713</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Photo_ID" id="2BAC42C4-C658-19A3-5AB1-21421DA72A8F">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>E395BFE1-A890-314B-F388-B9926295FEB3</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Date_Uploaded" id="096BB073-0C4C-1A7C-F844-DE4DE2D2710C">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>3757D65F-DFC0-744E-CFC4-50A86B66B120</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="URL" id="8FA5EF4B-B73E-7C68-06F7-D88FB8F0DAB9">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>0BF7CFF0-C413-1563-1FF0-9CB92673DEC9</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="HouseTask_HouseTask_ID" id="5F3B4D2F-63BB-CAB4-F4C9-6580747EB4AF">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>80764D45-6725-593D-F924-A7E62B5F2FA9</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="9BD9781B-8E9B-350C-5A56-5B4C225898E4" referredColumn="69ECE796-6A6F-8E55-A375-EDCF47F51F4D"/>
+</associations>
+</Column>
+<Column name="Task_Progress_Progress_ID" id="FBEF0DEA-E35C-EAB2-63FB-7F10A1E824EF">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>2E8FA068-71A3-6AC4-1832-2E212CF7854B</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="28A71E54-E21B-948E-C2B7-DF068B776DD0" referredColumn="15FE0CED-D1FD-82DD-ABCF-4DEBA57E8C98"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C226C1C1-EDE1-9339-5A94-4FB49883479C" name="Photo_PK">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>376B8732-B6CB-1839-37EE-64892FA7B5ED</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2BAC42C4-C658-19A3-5AB1-21421DA72A8F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1BA53408-6F58-E325-EC6F-C41D2144D8DD" name="Photo_HouseTask_FK">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>5D4C17E8-7082-05F7-54AA-E76CF756CD2F</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5F3B4D2F-63BB-CAB4-F4C9-6580747EB4AF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E3F8A4EE-63B2-16FD-3E6D-14900F0F7EB8" name="Photo_Task_Progress_FK">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>51D10655-20FC-385E-CFB7-19B32D8830F1</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FBEF0DEA-E35C-EAB2-63FB-7F10A1E824EF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

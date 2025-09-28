@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="9BD9781B-8E9B-350C-5A56-5B4C225898E4" containerWithKeyObject="683285F4-3B7E-F12A-5CFB-0ACB344D5113" localFKIndex="1BA53408-6F58-E325-EC6F-C41D2144D8DD" name="Photo_HouseTask_FK">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>5D4C17E8-7082-05F7-54AA-E76CF756CD2F</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<referredTableLongName>HouseTask</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>DA85AC53-19F5-C8A5-94BF-486A75984D65</referredTableID>
+<keyObject>6D06B706-C01B-93C4-A6AC-F562AD8E41D1</keyObject>
+<referredKeyID>6D06B706-C01B-93C4-A6AC-F562AD8E41D1</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>HouseTask_ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

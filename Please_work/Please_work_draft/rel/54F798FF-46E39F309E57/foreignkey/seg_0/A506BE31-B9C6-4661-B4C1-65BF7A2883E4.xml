@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="A506BE31-B9C6-4661-B4C1-65BF7A2883E4" containerWithKeyObject="5344C500-63C5-EC9E-BAA6-25B9A4777D3D" localFKIndex="AFD9602E-A628-A7ED-6944-AB0AE6C21202" name="Decorator_Choice_Option_FK">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>06AC32E8-CF4A-4B93-B93A-488E33936D47</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<referredTableLongName>Option</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>114B3792-8297-BA82-0C0F-22FFD7C964B4</referredTableID>
+<keyObject>6F48DD95-B4F3-0E5D-5D44-C45F9F57EF4C</keyObject>
+<referredKeyID>6F48DD95-B4F3-0E5D-5D44-C45F9F57EF4C</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>Option_ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

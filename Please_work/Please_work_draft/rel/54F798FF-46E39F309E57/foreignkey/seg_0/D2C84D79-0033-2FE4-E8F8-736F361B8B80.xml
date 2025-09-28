@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="D2C84D79-0033-2FE4-E8F8-736F361B8B80" containerWithKeyObject="E154F858-1727-56F7-D720-858B24423CC4" localFKIndex="A098EE61-8F52-4229-583E-557B381E6479" name="Sale_EscrowAgent_FK">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>BDF432B3-2573-F0D6-9175-067C76515001</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<referredTableLongName>EscrowAgent</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>43D15434-1D9E-B7A5-A00C-3F2F5D99E16F</referredTableID>
+<keyObject>F6096FE6-BD47-53FF-9A7D-D793964B6DF3</keyObject>
+<referredKeyID>F6096FE6-BD47-53FF-9A7D-D793964B6DF3</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>EscrowAgent_ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

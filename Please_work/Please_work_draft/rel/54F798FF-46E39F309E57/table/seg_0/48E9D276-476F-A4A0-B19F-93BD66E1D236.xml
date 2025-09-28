@@ -1,0 +1,150 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="48E9D276-476F-A4A0-B19F-93BD66E1D236" name="House">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>EEAB06CB-D92B-D256-3349-334AE295FF29</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="House_ID" id="D360C11D-5CE5-01E1-CDBA-5C205F40F94B">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>AB85E75B-EEA3-7639-DA9A-505A7B683216</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CurrentConstructionStage" id="D688D0AC-A5A7-1466-13DB-BD8B89735238">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>DE43C46B-A2BD-41B3-5B98-61C0FCB9725B</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="EstimatedCompletion" id="0D353763-68C7-093B-251F-3026CF84C165">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>23DBEFAD-E7EF-9666-C8CD-7A12B08A1FF9</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Lot_Lot_ID" id="4878921B-098C-3A24-E981-2BB7BBC03A0E">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>CA669BD0-E037-4EA2-85F2-8E34CA36A235</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A7786EF3-0BB2-AE72-6E08-5B82E8AD566A" referredColumn="4BAF1D2F-A40F-D21C-B600-4D25F356DD45"/>
+</associations>
+</Column>
+<Column name="HouseStyle_Style_ID" id="92626B0E-1462-8C09-C3E1-814DF3AEBCAD">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>B4761A00-CB46-2178-1B9B-2A77C7D413B7</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F56D7DF4-CC38-65CD-6D7D-1F96189E668B" referredColumn="F7079F31-698F-E3D0-19D4-462337A007D4"/>
+</associations>
+</Column>
+<Column name="Elevation_Elevation_ID" id="2FF6EC2A-F586-6575-1CF1-832970CFC861">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>0FC99AC2-F811-A2D3-8C01-5F5990961E77</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="76F93C13-AE46-BA76-DA30-2A265B7B8728" referredColumn="81A3B10E-657C-C017-C309-048945C9553E"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="5BB29C41-E255-1CFC-E866-4217A438109E" name="House_PK">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>FAE9270D-D2FD-04F7-B66B-DD5BEB24A2F9</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D360C11D-5CE5-01E1-CDBA-5C205F40F94B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E7F205A4-67A6-3942-55C5-0A188FEC72CF" name="House__IDX">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>C9451064-A4A8-56BE-AAC7-9938B8156D06</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="2FF6EC2A-F586-6575-1CF1-832970CFC861"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C9E505AC-0E1B-CEDB-CD38-2ED46DD5F72F" name="House_Lot_FK">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>818490FB-8B80-B763-FC3D-785928D77E53</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4878921B-098C-3A24-E981-2BB7BBC03A0E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3B083483-B594-3E38-8ACC-B12C37138BDA" name="House_HouseStyle_FK">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>7940A33E-F3A5-C012-9C6C-F882E57262FE</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="92626B0E-1462-8C09-C3E1-814DF3AEBCAD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D872D32C-743E-46F3-F3C0-32EB5927EFAA" name="House_Elevation_FK">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>C9451064-A4A8-56BE-AAC7-9938B8156D06</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2FF6EC2A-F586-6575-1CF1-832970CFC861"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

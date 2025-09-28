@@ -1,0 +1,251 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E154F858-1727-56F7-D720-858B24423CC4" name="Sale">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>C61D73DD-E111-5FB4-E11B-309726E9D135</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Sale_ID" id="7173954A-B74D-A9FC-BBDA-D392C7C285A6">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>2451D940-FAE0-F38D-774D-8DD7F867CC01</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Date" id="F483C421-FD8A-9B6B-DE2A-BB3A9F5859E2">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>82EE1FEC-4F85-2B77-B588-B7E9D74B194F</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Financing_Method" id="CB066D98-C5AD-7398-033B-C7219C2DC356">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>82FA5317-1026-3945-689E-678520D73D24</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="EscrowDeposit" id="B9167668-AB72-D4A1-CB83-38FC2B5D667D">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>FA63D6B2-058D-72B4-F7C9-1F55F1C1DD67</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="EstimatedCompletion" id="0CA491D5-BDAA-663B-4AB0-ED754AA8483C">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>0B654589-3155-33D3-9B82-A0F128814989</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ReceivedSubdivision" id="E19CFA15-4827-2C36-4E69-173DA30E7A3D">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>FEA8EEA9-150C-709A-6118-6D96A32652D7</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ReceivedDisclosureForm" id="4207307B-B537-2F64-A271-F2F38CBF6A37">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>833EA67A-E36F-C6BB-7CF1-3F575AACF971</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ReceivedContractCopy" id="96EB799B-AFA4-7075-6FB6-0396A601B5F5">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>1C17EDF4-1028-1F8A-28F9-1E4381456D1C</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Buyer_Buyer_ID" id="5BE50980-A988-9EA5-2F63-F562F085792C">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>43A3388B-6E38-D68E-6E8D-E0EEF99CA59A</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AB1B79B4-B112-C5A6-7A6F-94556A3DBCFB" referredColumn="AAD5B3DB-7F0A-FA23-D1BE-49DD3CC72C17"/>
+</associations>
+</Column>
+<Column name="EscrowAgent_EscrowAgent_ID" id="4E8D8621-ABCA-5CDA-CBF6-BCFDB1E98337">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>EA513BE1-9398-F663-B36F-C246F4133328</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D2C84D79-0033-2FE4-E8F8-736F361B8B80" referredColumn="424C2486-530E-24A9-4298-64B74E780051"/>
+</associations>
+</Column>
+<Column name="Employee_Employee_ID" id="CFB4CA8C-1296-A94E-E8E8-C02555314A1B">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>FFAE46D0-DA3D-EFEC-32E2-A1AFE47B0020</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="2B922141-09F7-B07B-B93B-FBD63BFDCBF6" referredColumn="86AE53DB-B2D6-35E0-E43E-FE3ED9D35C2E"/>
+</associations>
+</Column>
+<Column name="House_House_ID" id="C11999F5-44EB-49C7-06C1-1876A707E1C2">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>1664B265-DF74-C6C6-966A-2626FC9A87E7</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B16D21F7-8750-DCAD-DF3C-FAF35F50A8A1" referredColumn="D360C11D-5CE5-01E1-CDBA-5C205F40F94B"/>
+</associations>
+</Column>
+<Column name="Bank_Worker_Worker_ID" id="E7192132-A3A6-F9D8-7739-4CCF03518940">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>F8DB5FD4-54A9-F39F-3740-3C7EEAA2E2DB</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="175B880C-C2CD-83D2-8EEF-D4AAC05BAECA" referredColumn="C026E0B8-3A09-9E09-A19E-7E088FE4F36E"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="6D534003-7F71-96B7-2E96-6785402EF03E" name="Sale_PK">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>2FB042F1-4DBF-8C6B-A1A5-1941EE17EA38</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7173954A-B74D-A9FC-BBDA-D392C7C285A6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="099D52E5-2542-E267-7328-7A223FA6CD0C" name="Sale_House_FK">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>5F398A51-31BB-CD45-297C-8AF7C4D3CD31</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C11999F5-44EB-49C7-06C1-1876A707E1C2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4653C8E3-058A-069A-6C75-1716AAFF67B0" name="Sale_Bank_Worker_FK">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>95B4C7B1-4FFA-9D75-82E5-58E7B23F17AF</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E7192132-A3A6-F9D8-7739-4CCF03518940"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E3E1A62A-03EE-3059-1D9C-03CFF98F64E0" name="Sale_Buyer_FK">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>38A54ECA-B1B9-76CD-B0A2-F36E500B66DE</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5BE50980-A988-9EA5-2F63-F562F085792C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A098EE61-8F52-4229-583E-557B381E6479" name="Sale_EscrowAgent_FK">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>BDF432B3-2573-F0D6-9175-067C76515001</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4E8D8621-ABCA-5CDA-CBF6-BCFDB1E98337"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F50946F7-94CB-09FB-761D-DEAF92AD48A1" name="Sale_Employee_FK">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>CC9E7C51-AE28-87C4-26EE-3F1CBDFDEA61</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CFB4CA8C-1296-A94E-E8E8-C02555314A1B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

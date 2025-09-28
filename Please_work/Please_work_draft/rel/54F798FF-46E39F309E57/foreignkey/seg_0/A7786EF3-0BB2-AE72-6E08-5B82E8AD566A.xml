@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="A7786EF3-0BB2-AE72-6E08-5B82E8AD566A" containerWithKeyObject="48E9D276-476F-A4A0-B19F-93BD66E1D236" localFKIndex="C9E505AC-0E1B-CEDB-CD38-2ED46DD5F72F" name="House_Lot_FK">
+<createdBy>blackhorse</createdBy>
+<createdTime>2025-09-28 18:58:39 UTC</createdTime>
+<generatorID>818490FB-8B80-B763-FC3D-785928D77E53</generatorID>
+<ownerDesignName>Please_work_draft</ownerDesignName>
+<referredTableLongName>Lot</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>24399FFC-B7F1-D05F-0DFF-42604E5F2792</referredTableID>
+<keyObject>02C68C21-3901-E208-4F75-1DA1798D233F</keyObject>
+<referredKeyID>02C68C21-3901-E208-4F75-1DA1798D233F</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>Lot_ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

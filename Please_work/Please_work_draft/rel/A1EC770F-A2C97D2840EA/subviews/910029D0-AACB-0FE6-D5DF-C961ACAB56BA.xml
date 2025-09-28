@@ -45,7 +45,31 @@
 <OView class="oracle.dbtools.crest.swingui.TVNote" oid="51376E64-F184-4745-987C-7AFBA27BFD9E" otype="Note" vid="E80483EE-D0BC-4894-4F9F-219A5EA7FACC">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
 <bounds x="1621" y="168" width="491" height="361"/>
-<comment>Practical assumptions (state these on your diagram/report)&lt;br/&gt;&lt;br/&gt;One house per lot. A lot belongs to exactly one subdivision; a house is ultimately built on at most one lot.&lt;br/&gt;&lt;br/&gt;One elevation per built house. Houses are of a single style and a single elevation variant.&lt;br/&gt;&lt;br/&gt;Price snapshots. BasePrice is copied into the Sale at contract time; option prices are stage-dependent and stored in OptionStagePrice. DecoratorChoice stores the final chosen price as a snapshot.&lt;br/&gt;&lt;br/&gt;Contract timing. A sale/contract may occur before construction; therefore a House can exist with stage=0/“not started,” or you can allow Sale to exist before ConstructionProgress starts.&lt;br/&gt;&lt;br/&gt;Bank info is optional. A buyer may finance via one bank/contact captured on the Sale; modeling multiple lenders is out of scope.&lt;br/&gt;&lt;br/&gt;Documents received checkboxes on the Sale represent simple Booleans; if you need full audit, make a related table.&lt;br/&gt;&lt;br/&gt;Photos optional. The builder worries about time; we model photos as optional URLs/blobs on ConstructionProgress.&lt;br/&gt;&lt;br/&gt;Employees. Sales reps and (optional) construction managers are both in the Employee table; you can subtype if desired.&lt;br/&gt;&lt;br/&gt;Stages reference. Stages are a 1..7 fixed lookup; tasks are representative “major tasks” per stage.&lt;br/&gt;&lt;br/&gt;Decorator sessions. Choices can be captured in multiple sessions over time; the session header carries the date, employee, and stage context.&lt;br/&gt;&lt;br/&gt;Why: real jobs differ; this lets you budget vs. track actuals without touching the template.&lt;br/&gt;&lt;br/&gt;BaseCost differs with Price given that Price is what the customer pays for an option of the task</comment>
+<comment>Practical assumptions (state these on your diagram/report)
+
+One house per lot. A lot belongs to exactly one subdivision; a house is ultimately built on at most one lot.
+
+One elevation per built house. Houses are of a single style and a single elevation variant.
+
+Price snapshots. BasePrice is copied into the Sale at contract time; option prices are stage-dependent and stored in OptionStagePrice. DecoratorChoice stores the final chosen price as a snapshot.
+
+Contract timing. A sale/contract may occur before construction; therefore a House can exist with stage=0/“not started,” or you can allow Sale to exist before ConstructionProgress starts.
+
+Bank info is optional. A buyer may finance via one bank/contact captured on the Sale; modeling multiple lenders is out of scope.
+
+Documents received checkboxes on the Sale represent simple Booleans; if you need full audit, make a related table.
+
+Photos optional. The builder worries about time; we model photos as optional URLs/blobs on ConstructionProgress.
+
+Employees. Sales reps and (optional) construction managers are both in the Employee table; you can subtype if desired.
+
+Stages reference. Stages are a 1..7 fixed lookup; tasks are representative “major tasks” per stage.
+
+Decorator sessions. Choices can be captured in multiple sessions over time; the session header carries the date, employee, and stage context.
+
+Why: real jobs differ; this lets you budget vs. track actuals without touching the template.
+
+BaseCost differs with Price given that Price is what the customer pays for an option of the task</comment>
 </OView>
 <OView class="oracle.dbtools.crest.swingui.relational.TVTable" oid="6189D621-A0B5-3AC1-B960-245B05B1D815" otype="Table" vid="E43A7E77-088D-560C-E050-3FEF6F9EB8FB">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
@@ -94,11 +118,19 @@
 <useDefaultColor>false</useDefaultColor>
 <backgroundColor>-154</backgroundColor>
 <foregroundColor>-16777216</foregroundColor>
-<comment>Stages (Example):&lt;br/&gt;1. Foundations Poured&lt;br/&gt;2. Foundations Cured &amp; Utilities In&lt;br/&gt;3. Framing Started&lt;br/&gt;4. Framing Complete (&quot;Shell&quot;)&lt;br/&gt;5. Rough-Ins&lt;br/&gt;6. Pre-drywall close-up&lt;br/&gt;7. Interior Walls Finished </comment>
+<comment>Stages (Example):
+1. Foundations Poured
+2. Foundations Cured &amp; Utilities In
+3. Framing Started
+4. Framing Complete (&quot;Shell&quot;)
+5. Rough-Ins
+6. Pre-drywall close-up
+7. Interior Walls Finished </comment>
 <fonts itemClass="oracle.dbtools.crest.model.design.FontObjectWr">
 <FontObject>
 <foType>Title</foType>
 <colorRGB>-16777216</colorRGB>
+<foTypeID>1</foTypeID>
 </FontObject>
 </fonts>
 </OView>

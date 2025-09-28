@@ -81,7 +81,41 @@
 <OView class="oracle.dbtools.crest.swingui.TVNote" oid="CDE103EC-E954-46BA-A786-7E2C9DEB15CB" otype="Note" vid="421A15E0-04D5-E571-BC43-D671EA809A4D">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
 <bounds x="1683" y="285" width="581" height="366"/>
-<comment>Practical assumptions (state these on your diagram/report)&lt;br/&gt;&lt;br/&gt;One house per lot. A lot belongs to exactly one subdivision; a house is ultimately built on at most one lot.&lt;br/&gt;&lt;br/&gt;One elevation per built house. Houses are of a single style and a single elevation variant.&lt;br/&gt;&lt;br/&gt;Price snapshots. BasePrice is copied into the Sale at contract time; option prices are stage-dependent and stored in OptionStagePrice. DecoratorChoice stores the final chosen price as a snapshot.&lt;br/&gt;&lt;br/&gt;Contract timing. A sale/contract may occur before construction; therefore a House can exist with stage=0/“not started,” or you can allow Sale to exist before ConstructionProgress starts.&lt;br/&gt;&lt;br/&gt;Bank info is optional. A buyer may finance via one bank/contact captured on the Sale; modeling multiple lenders is out of scope.&lt;br/&gt;&lt;br/&gt;Documents received checkboxes on the Sale represent simple Booleans; if you need full audit, make a related table.&lt;br/&gt;&lt;br/&gt;Photos optional. The builder worries about time; we model photos as optional URLs/blobs on ConstructionProgress.&lt;br/&gt;&lt;br/&gt;Employees. Sales reps and (optional) construction managers are both in the Employee table; you can subtype if desired.&lt;br/&gt;&lt;br/&gt;Stages reference. Stages are a 1..7 fixed lookup; tasks are representative “major tasks” per stage.&lt;br/&gt;&lt;br/&gt;Decorator sessions. Choices can be captured in multiple sessions over time; the session header carries the date, employee, and stage context.&lt;br/&gt;&lt;br/&gt;Why: real jobs differ; this lets you budget vs. track actuals without touching the template.&lt;br/&gt;&lt;br/&gt;BaseCost differs with Price given that Price is what the customer pays for an option of the task&lt;br/&gt;&lt;br/&gt;Decoration and Construction both require progress to be recorded&lt;br/&gt;&lt;br/&gt;Specific rooms cannot have decorators&lt;br/&gt;&lt;br/&gt;Assume all decorator prices are the same for every style&lt;br/&gt;&lt;br/&gt;Can only fill addresses and description to only 1000 characters&lt;br/&gt;&lt;br/&gt;ID&apos;s are only 10 digits</comment>
+<comment>Practical assumptions (state these on your diagram/report)
+
+One house per lot. A lot belongs to exactly one subdivision; a house is ultimately built on at most one lot.
+
+One elevation per built house. Houses are of a single style and a single elevation variant.
+
+Price snapshots. BasePrice is copied into the Sale at contract time; option prices are stage-dependent and stored in OptionStagePrice. DecoratorChoice stores the final chosen price as a snapshot.
+
+Contract timing. A sale/contract may occur before construction; therefore a House can exist with stage=0/“not started,” or you can allow Sale to exist before ConstructionProgress starts.
+
+Bank info is optional. A buyer may finance via one bank/contact captured on the Sale; modeling multiple lenders is out of scope.
+
+Documents received checkboxes on the Sale represent simple Booleans; if you need full audit, make a related table.
+
+Photos optional. The builder worries about time; we model photos as optional URLs/blobs on ConstructionProgress.
+
+Employees. Sales reps and (optional) construction managers are both in the Employee table; you can subtype if desired.
+
+Stages reference. Stages are a 1..7 fixed lookup; tasks are representative “major tasks” per stage.
+
+Decorator sessions. Choices can be captured in multiple sessions over time; the session header carries the date, employee, and stage context.
+
+Why: real jobs differ; this lets you budget vs. track actuals without touching the template.
+
+BaseCost differs with Price given that Price is what the customer pays for an option of the task
+
+Decoration and Construction both require progress to be recorded
+
+Specific rooms cannot have decorators
+
+Assume all decorator prices are the same for every style
+
+Can only fill addresses and description to only 1000 characters
+
+ID&apos;s are only 10 digits</comment>
 </OView>
 <OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="D8B2A4FB-46A4-16FB-53D0-75E0083D3202" otype="Entity" vid="AD184FE2-8A18-0A7E-F90A-904278C2227A">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
@@ -93,7 +127,7 @@
 </OView>
 <OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="DE994848-19D3-3411-FF06-C122A4DD0A91" otype="Entity" vid="B80228E6-6E59-009B-C380-82737E0641EE">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
-<bounds x="41" y="879" width="314" height="107"/>
+<bounds x="0" y="869" width="314" height="107"/>
 </OView>
 <OView class="oracle.dbtools.crest.swingui.TVNote" oid="E514C016-49C4-3F52-C336-7050933F81C8" otype="Note" vid="BD736575-84BD-825B-7490-2C9863C6D709">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
@@ -102,11 +136,19 @@
 <useDefaultColor>false</useDefaultColor>
 <backgroundColor>-154</backgroundColor>
 <foregroundColor>-16777216</foregroundColor>
-<comment>Stages: &lt;br/&gt;1. &lt;br/&gt;2. &lt;br/&gt;3. &lt;br/&gt;4. &lt;br/&gt;5. &lt;br/&gt;6. </comment>
+<comment>Stages (Example):
+1. Foundations Poured
+2. Foundations Cured &amp; Utilities In
+3. Framing Started
+4. Framing Complete (&quot;Shell&quot;)
+5. Rough-Ins
+6. Pre-drywall close-up
+7. Interior Walls Finished </comment>
 <fonts itemClass="oracle.dbtools.crest.model.design.FontObjectWr">
 <FontObject>
 <foType>Title</foType>
 <colorRGB>-16777216</colorRGB>
+<foTypeID>1</foTypeID>
 </FontObject>
 </fonts>
 </OView>
@@ -129,8 +171,8 @@
 <backgroundColor>-16777216</backgroundColor>
 <lineWidth>1</lineWidth>
 <points>
-<point x="355" y="947"/>
-<point x="868" y="947"/>
+<point x="314" y="922"/>
+<point x="868" y="922"/>
 </points>
 </Connector>
 <Connector class="oracle.dbtools.crest.swingui.logical.TVRelation" oid="0854E97F-FA08-991A-0BF6-77C2A4AB3DF4" otype="Relation" vid_source="0DA86336-D688-4A4A-3DF9-6F2DF1EB095D" vid_target="2809B081-77FD-B048-0D64-363A69CFC2ED">
@@ -174,8 +216,8 @@
 <backgroundColor>-16777216</backgroundColor>
 <lineWidth>1</lineWidth>
 <points>
-<point x="34" y="494"/>
-<point x="61" y="879"/>
+<point x="143" y="494"/>
+<point x="143" y="869"/>
 </points>
 </Connector>
 <Connector class="oracle.dbtools.crest.swingui.logical.TVRelation" oid="443272AE-7200-D6D4-A57F-A2EF8CE38227" otype="Relation" vid_source="D0418912-3D27-4CC0-C41F-3194683F267D" vid_target="991BDE62-1C5B-3700-7455-186D837325EB">
@@ -274,8 +316,8 @@
 <backgroundColor>-16777216</backgroundColor>
 <lineWidth>1</lineWidth>
 <points>
-<point x="355" y="976"/>
-<point x="478" y="976"/>
+<point x="314" y="971"/>
+<point x="478" y="971"/>
 </points>
 </Connector>
 <Connector class="oracle.dbtools.crest.swingui.logical.TVRelation" oid="A15C2EF7-B050-5241-46E0-EEB35ED2DB8F" otype="Relation" vid_source="89E9B108-F80D-C4A7-0CE1-0E72E9791AE4" vid_target="B80228E6-6E59-009B-C380-82737E0641EE">
@@ -283,8 +325,8 @@
 <backgroundColor>-16777216</backgroundColor>
 <lineWidth>1</lineWidth>
 <points>
-<point x="205" y="1030"/>
-<point x="205" y="986"/>
+<point x="199" y="1030"/>
+<point x="199" y="976"/>
 </points>
 </Connector>
 <Connector class="oracle.dbtools.crest.swingui.logical.TVRelation" oid="B815E18C-7F81-71F6-953F-1D7B7A495993" otype="Relation" vid_source="4CF6D735-BAA9-7E04-0C05-2A4CB63C583D" vid_target="0FCC7A91-682A-F288-0E7F-C687CD8DE5D7">
