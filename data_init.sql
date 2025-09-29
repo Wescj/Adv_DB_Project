@@ -1,102 +1,144 @@
 -- =============================
--- 1. Subdivision & School
+-- Subdivisions (2)
 -- =============================
 INSERT INTO subdivision (subdivision_id, name, city, state, zip)
-VALUES (1, 'Sunnyvale', 'Pittsburgh', 'PA', '15213');
+VALUES (100, 'Sunnyvale', 'Pittsburgh', 'PA', '15213');
 
-INSERT INTO school (school_id, name, address, type, subdivision_subdivision_id)
-VALUES (1, 'Lincoln High', '123 Main St', 'High School', 1);
-
--- =============================
--- 2. Lot & HouseStyle & Elevation
--- =============================
-INSERT INTO lot (lot_id, address, city, state, zip, lotsize, description, lotpremium, subdivision_subdivision_id)
-VALUES (1, '456 Oak Ave', 'Pittsburgh', 'PA', '15213', 5000, 'Corner lot', 15000, 1);
-
-INSERT INTO housestyle (style_id, stylename, baseprice, styledescription, "Size", photo, numberwindows, ceiling)
-VALUES (1, 'Modern Ranch', 250000, 'Open layout with patio', 2000, EMPTY_BLOB(), 10, 'Vaulted');
-
-INSERT INTO elevation (elevation_id, elevationcode, description, additionalcostsketch, housestyle_style_id)
-VALUES (1, 'E1', 'Basic elevation', 'None', 1);
+INSERT INTO subdivision (subdivision_id, name, city, state, zip)
+VALUES (200, 'Maple Grove', 'Cleveland', 'OH', '44101');
 
 -- =============================
--- 3. House
--- =============================
-INSERT INTO house (house_id, currentconstructionstage, estimatedcompletion, lot_lot_id, housestyle_style_id, elevation_elevation_id)
-VALUES (1, 1, DATE '2026-01-01', 1, 1, 1);
-
--- =============================
--- 4. Bank & Bank Worker
--- =============================
-INSERT INTO bank (bank_id, name, address, zip, state, phone_number)
-VALUES (1, 'First National Bank', '101 Finance St', '15213', 'PA', '412-555-1111');
-
-INSERT INTO bank_worker (worker_id, name, phone_number, fax_number, bank_bank_id)
-VALUES (1, 'Alice Smith', '412-555-2222', '412-555-3333', 1);
-
--- =============================
--- 5. Employee
--- =============================
-INSERT INTO employee (employee_id, name, title, email, phone, active, hire_date, license_number)
-VALUES (1, 'Bob Johnson', 'Site Manager', 'bob.j@company.com', '412-555-4444', 'Y', SYSDATE, 'LIC123');
-
--- =============================
--- 6. Buyer & Escrow Agent
+-- Buyers (5)
 -- =============================
 INSERT INTO buyer (buyer_id, name, address, city, state, zip, phone, email)
-VALUES (1, 'Carol White', '789 Maple St', 'Pittsburgh', 'PA', '15213', '412-555-5555', 'carol@example.com');
+VALUES (901, 'Carol White', '789 Maple St', 'Pittsburgh', 'PA', '15213', '412-555-5555', 'carol@example.com');
+
+INSERT INTO buyer (buyer_id, name, address, city, state, zip, phone, email)
+VALUES (902, 'Frank Green', '999 Oak Blvd', 'Cleveland', 'OH', '44101', '216-555-6666', 'frank@example.com');
+
+INSERT INTO buyer (buyer_id, name, address, city, state, zip, phone, email)
+VALUES (903, 'Helen Black', '23 River Ln', 'Pittsburgh', 'PA', '15214', '412-555-1111', 'helen@example.com');
+
+INSERT INTO buyer (buyer_id, name, address, city, state, zip, phone, email)
+VALUES (904, 'Michael Gray', '7 Lake Ave', 'Cleveland', 'OH', '44102', '216-555-2222', 'michael@example.com');
+
+INSERT INTO buyer (buyer_id, name, address, city, state, zip, phone, email)
+VALUES (905, 'Nina Brown', '14 Oak St', 'Pittsburgh', 'PA', '15215', '412-555-3333', 'nina@example.com');
+
+-- =============================
+-- Employees (3)
+-- =============================
+INSERT INTO employee (employee_id, name, title, email, phone, active, hire_date, license_number)
+VALUES (801, 'Bob Johnson', 'Site Manager', 'bob.j@company.com', '412-555-4444', 'Y', SYSDATE, 'LIC123');
+
+INSERT INTO employee (employee_id, name, title, email, phone, active, hire_date, license_number)
+VALUES (802, 'Eva Martinez', 'Engineer', 'eva.m@company.com', '216-555-7777', 'Y', SYSDATE, 'LIC456');
+
+INSERT INTO employee (employee_id, name, title, email, phone, active, hire_date, license_number)
+VALUES (803, 'Liam Chen', 'Architect', 'liam.c@company.com', '614-555-9999', 'Y', SYSDATE, 'LIC789');
+
+-- =============================
+-- Escrow Agents (2)
+-- =============================
+INSERT INTO escrowagent (escrowagent_id, name, address, city, state, zip, phone_number)
+VALUES (1001, 'Secure Escrow LLC', '202 Market St', 'Pittsburgh', 'PA', '15213', '412-555-6666');
 
 INSERT INTO escrowagent (escrowagent_id, name, address, city, state, zip, phone_number)
-VALUES (1, 'Secure Escrow LLC', '202 Market St', 'Pittsburgh', 'PA', '15213', '412-555-6666');
+VALUES (1002, 'Ohio Escrow Inc', '88 River Rd', 'Cleveland', 'OH', '44101', '216-555-1234');
 
 -- =============================
--- 7. Housetask & Construction Task
+-- Bank & Workers (1 bank, 2 workers)
 -- =============================
-INSERT INTO housetask (housetask_id, stage, required, plannedstart, plannedend, notes, house_house_id,
-                       employee_employee_id, plannedcost, actualcost, percent_complete)
-VALUES (1, 1, 'Y', DATE '2025-10-01', DATE '2025-11-01', 'Foundation work', 1, 1, 20000, 18000, 0.90);
+INSERT INTO bank (bank_id, name, address, zip, state, phone_number)
+VALUES (700, 'First National Bank', '101 Finance St', '15213', 'PA', '412-555-1111');
 
-INSERT INTO construction_task (task_id, description, stage, basecost, approval, housetask_housetask_id)
-VALUES (1, 'Lay foundation', 1, 20000, 'Y', 1);
+INSERT INTO bank_worker (worker_id, name, phone_number, fax_number, bank_bank_id)
+VALUES (701, 'Alice Smith', '412-555-2222', '412-555-3333', 700);
 
--- =============================
--- 8. Decorator Session & Choice
--- =============================
-INSERT INTO decorator_session (decoratorsession_id, "Date", stage, housetask_housetask_id, approval)
-VALUES (1, SYSDATE, 2, 1, 'Y');
-
-INSERT INTO optioncategory (category_id, categoryname)
-VALUES (1, 'Flooring');
-
-INSERT INTO "Option" (option_id, option_name, description, optioncategory_category_id, housestyle_style_id)
-VALUES (1, 'Hardwood Floor', 'Oak wood planks', 1, 1);
-
-INSERT INTO decorator_choice (decoratorchoice_id, item, description, price, decorator_session_id, option_option_id)
-VALUES (1, 'Flooring', 'Dark oak finish', 8000, 1, 1);
+INSERT INTO bank_worker (worker_id, name, phone_number, fax_number, bank_bank_id)
+VALUES (702, 'David Brown', '216-555-8888', '216-555-9999', 700);
 
 -- =============================
--- 9. Task Progress & Photo
+-- Lots (5)
 -- =============================
-INSERT INTO task_progress (progress_id, percentage_complete, estimatedcompletiondate, housetask_housetask_id)
-VALUES (1, 50, DATE '2025-11-15', 1);
+INSERT INTO lot (lot_id, address, city, state, zip, lotsize, description, lotpremium, subdivision_subdivision_id)
+VALUES (501, '456 Oak Ave', 'Pittsburgh', 'PA', '15213', 5000, 'Corner lot', 15000, 100);
 
-INSERT INTO photo (photo_id, date_uploaded, url, housetask_housetask_id, task_progress_progress_id)
-VALUES (1, SYSDATE, 'http://example.com/photo1.jpg', 1, 1);
+INSERT INTO lot (lot_id, address, city, state, zip, lotsize, description, lotpremium, subdivision_subdivision_id)
+VALUES (502, '22 Maple Rd', 'Cleveland', 'OH', '44101', 6000, 'Near park', 12000, 200);
+
+INSERT INTO lot (lot_id, address, city, state, zip, lotsize, description, lotpremium, subdivision_subdivision_id)
+VALUES (503, '99 River St', 'Pittsburgh', 'PA', '15214', 4800, 'Near river', 10000, 100);
+
+INSERT INTO lot (lot_id, address, city, state, zip, lotsize, description, lotpremium, subdivision_subdivision_id)
+VALUES (504, '11 Lake Dr', 'Cleveland', 'OH', '44102', 5500, 'Lake view', 20000, 200);
+
+INSERT INTO lot (lot_id, address, city, state, zip, lotsize, description, lotpremium, subdivision_subdivision_id)
+VALUES (505, '5 Hilltop Ct', 'Pittsburgh', 'PA', '15216', 5200, 'On hilltop', 17000, 100);
 
 -- =============================
--- 10. Rooms
+-- HouseStyle & Elevation (shared for simplicity)
 -- =============================
-INSERT INTO rooms (room_id, name, "Size", floor, no_of_windows, notes, house_house_id, housestyle_style_id, ceilings)
-VALUES (1, 'Living Room', 400, '1st', 4, 'Spacious area', 1, 1, 'High ceiling');
+INSERT INTO housestyle (style_id, stylename, baseprice, styledescription, "Size", photo, numberwindows, ceiling)
+VALUES (3001, 'Modern Ranch', 250000, 'Open layout', 2000, EMPTY_BLOB(), 10, 'Vaulted');
+
+INSERT INTO elevation (elevation_id, elevationcode, description, additionalcostsketch, housestyle_style_id)
+VALUES (4001, 'E1', 'Basic elevation', 'None', 3001);
 
 -- =============================
--- 11. Sale
+-- Houses (5)
+-- =============================
+INSERT INTO house (house_id, currentconstructionstage, estimatedcompletion, lot_lot_id, housestyle_style_id, elevation_elevation_id)
+VALUES (6001, 1, DATE '2026-01-01', 501, 3001, 4001);
+
+INSERT INTO house (house_id, currentconstructionstage, estimatedcompletion, lot_lot_id, housestyle_style_id, elevation_elevation_id)
+VALUES (6002, 2, DATE '2026-03-15', 502, 3001, 4001);
+
+INSERT INTO house (house_id, currentconstructionstage, estimatedcompletion, lot_lot_id, housestyle_style_id, elevation_elevation_id)
+VALUES (6003, 1, DATE '2026-05-20', 503, 3001, 4001);
+
+INSERT INTO house (house_id, currentconstructionstage, estimatedcompletion, lot_lot_id, housestyle_style_id, elevation_elevation_id)
+VALUES (6004, 3, DATE '2026-07-10', 504, 3001, 4001);
+
+INSERT INTO house (house_id, currentconstructionstage, estimatedcompletion, lot_lot_id, housestyle_style_id, elevation_elevation_id)
+VALUES (6005, 2, DATE '2026-09-01', 505, 3001, 4001);
+
+-- =============================
+-- Sales (5, one per house)
 -- =============================
 INSERT INTO sale (sale_id, "Date", financing_method, escrowdeposit, estimatedcompletion,
                   receivedsubdivision, receiveddisclosureform, receivedcontractcopy,
                   buyer_buyer_id, escrowagent_escrowagent_id, employee_employee_id,
                   house_house_id, bank_worker_worker_id)
-VALUES (1, SYSDATE, 'Mortgage', 50000, DATE '2026-01-01',
-        'Y', 'Y', 'Y', 1, 1, 1, 1, 1);
+VALUES (2001, SYSDATE, 'Mortgage', 50000, DATE '2026-01-01',
+        'Y', 'Y', 'Y', 901, 1001, 801, 6001, 701);
+
+INSERT INTO sale (sale_id, "Date", financing_method, escrowdeposit, estimatedcompletion,
+                  receivedsubdivision, receiveddisclosureform, receivedcontractcopy,
+                  buyer_buyer_id, escrowagent_escrowagent_id, employee_employee_id,
+                  house_house_id, bank_worker_worker_id)
+VALUES (2002, SYSDATE, 'Cash', 100000, DATE '2026-03-15',
+        'Y', 'N', 'Y', 902, 1002, 802, 6002, 702);
+
+INSERT INTO sale (sale_id, "Date", financing_method, escrowdeposit, estimatedcompletion,
+                  receivedsubdivision, receiveddisclosureform, receivedcontractcopy,
+                  buyer_buyer_id, escrowagent_escrowagent_id, employee_employee_id,
+                  house_house_id, bank_worker_worker_id)
+VALUES (2003, SYSDATE, 'Mortgage', 75000, DATE '2026-05-20',
+        'N', 'Y', 'Y', 903, 1001, 803, 6003, 701);
+
+INSERT INTO sale (sale_id, "Date", financing_method, escrowdeposit, estimatedcompletion,
+                  receivedsubdivision, receiveddisclosureform, receivedcontractcopy,
+                  buyer_buyer_id, escrowagent_escrowagent_id, employee_employee_id,
+                  house_house_id, bank_worker_worker_id)
+VALUES (2004, SYSDATE, 'Cash', 120000, DATE '2026-07-10',
+        'Y', 'Y', 'N', 904, 1002, 802, 6004, 702);
+
+INSERT INTO sale (sale_id, "Date", financing_method, escrowdeposit, estimatedcompletion,
+                  receivedsubdivision, receiveddisclosureform, receivedcontractcopy,
+                  buyer_buyer_id, escrowagent_escrowagent_id, employee_employee_id,
+                  house_house_id, bank_worker_worker_id)
+VALUES (2005, SYSDATE, 'Mortgage', 90000, DATE '2026-09-01',
+        'Y', 'N', 'Y', 905, 1001, 801, 6005, 701);
 
 COMMIT;
