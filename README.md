@@ -21,3 +21,7 @@ Eggshell
 | **Bank Worker**               | `32001–34000` | 2000     | 32001–32002         |
 | **Sale**                      | `34001–36000` | 2000     | 34001–34005         |
 
+assumptions to add:
+house to elevation relationship issue
+id ranges are limited to 2000 each so the numbers are small
+
