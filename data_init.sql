@@ -62,11 +62,11 @@ VALUES (702, 'David Brown', '216-555-8888', '216-555-9999', 700);
 -- HouseStyle (1) & Elevations (5 distinct)
 -- =========================================
 INSERT INTO housestyle (style_id, stylename, baseprice, styledescription, "Size", photo, numberwindows, ceiling)
-VALUES (4001, 'Modern Ranch', 250000, 'Open layout', 2000, EMPTY_BLOB(), 10, 'Vaulted');
+VALUES (3001, 'Modern Ranch', 250000, 'Open layout', 2000, EMPTY_BLOB(), 10, 'Vaulted');
 
 -- Create 5 distinct elevations so each house can reference a unique elevation_id
 INSERT INTO elevation (elevation_id, elevationcode, description, additionalcostsketch, housestyle_style_id)
-VALUES (6001, 'E1', 'Basic elevation', 'None', 4001);
+VALUES (4001, 'E1', 'Basic elevation', 'None', 3001);
 
 INSERT INTO elevation (elevation_id, elevationcode, description, additionalcostsketch, housestyle_style_id)
 VALUES (4002, 'E2', 'Stone accents', 'Stone front option', 3001);
@@ -102,7 +102,7 @@ VALUES (505, '5 Hilltop Ct', 'Pittsburgh', 'PA', '15216', 5200, 'On hilltop', 17
 -- Houses (5)  *** each uses a unique elevation_id ***
 -- =========================================
 INSERT INTO house (house_id, currentconstructionstage, estimatedcompletion, lot_lot_id, housestyle_style_id, elevation_elevation_id)
-VALUES (8001, 1, DATE '2026-01-01', 2001, 4001, 6001);
+VALUES (6001, 1, DATE '2026-01-01', 501, 3001, 4001);
 
 INSERT INTO house (house_id, currentconstructionstage, estimatedcompletion, lot_lot_id, housestyle_style_id, elevation_elevation_id)
 VALUES (6002, 2, DATE '2026-03-15', 502, 3001, 4002);
