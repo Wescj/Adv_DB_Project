@@ -21,23 +21,24 @@ PROMPT =====================================================================
 -- =====================================================================
 PROMPT 
 PROMPT Phase 1: Creating tables and constraints...
-@/Users/msj/Adv_DB_Project/DDL_Script_1.0.ddl
+@DDL_Script_1.0.ddl
+--@renamed_Script.ddl
 
 -- =====================================================================
 -- Phase 2: Initial Data Load
 -- =====================================================================
 PROMPT 
 PROMPT Phase 2: Loading initial data...
-@/Users/msj/Adv_DB_Project/data_init.sql
+@data_init.sql
 
 -- =====================================================================
 -- Phase 3: Views (Read-Only Components)
 -- =====================================================================
 PROMPT 
 PROMPT Phase 3: Creating views...
-@/Users/msj/Adv_DB_Project/View.sql
-@/Users/msj/Adv_DB_Project/View2.sql
-@/Users/msj/Adv_DB_Project/View3.sql
+@View.sql
+@View2.sql
+@View3.sql
 
 -- =====================================================================
 -- Phase 4: Functions (Reusable Logic)
@@ -51,42 +52,42 @@ PROMPT Phase 4: Creating functions...
 -- =====================================================================
 PROMPT 
 PROMPT Phase 5: Creating triggers...
-@/Users/msj/Adv_DB_Project/Trigger1.sql
-@/Users/msj/Adv_DB_Project/Trigger2.sql
-@/Users/msj/Adv_DB_Project/Trigger3.sql
-@/Users/msj/Adv_DB_Project/Trigger4.sql
-@/Users/msj/Adv_DB_Project/Trigger5.sql
+@Trigger1.sql
+@Trigger2.sql
+@Trigger3.sql
+@Trigger4.sql
+@Trigger5.sql
 
 -- =====================================================================
 -- Phase 6: Surrogate Key Implementation
 -- =====================================================================
 PROMPT 
 PROMPT Phase 6: Implementing surrogate keys...
-@/Users/msj/Adv_DB_Project/buyer_surrogate.sql
+@buyer_surrogate.sql
 
 -- =====================================================================
 -- Phase 7: Packages and Procedures
 -- =====================================================================
 PROMPT 
 PROMPT Phase 7: Creating packages and procedures...
-@/Users/msj/Adv_DB_Project/Package.sql
-@/Users/msj/Adv_DB_Project/Procedure1.sql
-@/Users/msj/Adv_DB_Project/Procedure2.sql
+@Package.sql
+@Procedure1.sql
+@Procedure2.sql
 
 -- =====================================================================
 -- Phase 8: Performance Optimizations
 -- =====================================================================
 PROMPT 
 PROMPT Phase 8: Creating indexes and denormalization...
-@/Users/msj/Adv_DB_Project/alternate_index.sql
-@/Users/msj/Adv_DB_Project/denormalization.sql
+@alternate_index.sql
+@denormalization.sql
 
 -- =====================================================================
 -- Phase 9: Security (Roles and Permissions)
 -- =====================================================================
 PROMPT 
 PROMPT Phase 9: Creating roles and permissions...
-@/Users/msj/Adv_DB_Project/roles.sql
+@roles.sql
 
 PROMPT 
 PROMPT =====================================================================
