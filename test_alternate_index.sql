@@ -1,245 +1,184 @@
 -- =====================================================================
--- TEST FILE: Alternate Index Performance and Functionality
--- Index: idx_housetask_house_stage on housetask(house_house_id, stage, plannedstart)
--- Purpose: Validate index creation, usage, and performance improvement
+-- TEST FILE: test_alternate_index.sql
+-- PURPOSE: Validate alternate index creation and usage
+-- TESTS: Index existence, structure, and execution plan usage
 -- =====================================================================
 
 SET ECHO ON
 SET TIMING ON
-SET AUTOTRACE ON EXPLAIN
-SET LINESIZE 200
-SET PAGESIZE 100
+SET SERVEROUTPUT ON SIZE 1000000
+SET LINESIZE 150
+SET PAGESIZE 50
 
 PROMPT =====================================================================
-PROMPT TEST SUITE FOR ALTERNATE INDEX: idx_housetask_house_stage
+PROMPT TEST SUITE: Alternate Indexes
 PROMPT =====================================================================
 
 -- =====================================================================
--- Test 1: Verify index exists with correct structure
+-- Test 1: Verify All Indexes Exist
+-- =====================================================================
+-- Purpose: Confirm all three indexes were created successfully
+-- Expected: 3 rows, all with STATUS = VALID
 -- =====================================================================
 PROMPT 
-PROMPT ====== Test 1: Verify Index Existence and Structure ======
+PROMPT ====== Test 1: Verify Index Existence ======
+
 SELECT index_name, table_name, uniqueness, status
 FROM user_indexes
-WHERE index_name = 'IDX_HOUSETASK_HOUSE_STAGE';
+WHERE index_name IN ('IDX_HOUSETASK_HOUSE_STAGE', 
+                     'IDX_SALE_EMPLOYEE_DATE',
+                     'IDX_DECORATOR_CHOICE_SESSION')
+ORDER BY table_name, index_name;
 
-SELECT index_name, column_name, column_position, descend
-FROM user_ind_columns
-WHERE index_name = 'IDX_HOUSETASK_HOUSE_STAGE'
-ORDER BY column_position;
+PROMPT Expected: 3 rows with STATUS = VALID
+PROMPT 
 
 -- =====================================================================
--- Test 2: Most common query pattern - Find tasks for specific house/stage
--- Expected: INDEX RANGE SCAN
+-- Test 2: Verify Index Structure
+-- =====================================================================
+-- Purpose: Confirm correct columns and column order for each index
+-- Expected: Correct columns in proper sequence
 -- =====================================================================
 PROMPT 
-PROMPT ====== Test 2: Query Tasks by House and Stage ======
+PROMPT ====== Test 2: Verify Index Column Structure ======
+
+SELECT index_name, column_name, column_position
+FROM user_ind_columns
+WHERE index_name IN ('IDX_HOUSETASK_HOUSE_STAGE', 
+                     'IDX_SALE_EMPLOYEE_DATE',
+                     'IDX_DECORATOR_CHOICE_SESSION')
+ORDER BY index_name, column_position;
+
+PROMPT Expected column order:
+PROMPT - IDX_HOUSETASK_HOUSE_STAGE: (1) HOUSE_HOUSE_ID, (2) STAGE
+PROMPT - IDX_SALE_EMPLOYEE_DATE: (1) EMPLOYEE_EMPLOYEE_ID, (2) Date
+PROMPT - IDX_DECORATOR_CHOICE_SESSION: (1) DECORATOR_SESSION_ID, (2) PRICE
+PROMPT 
+
+-- =====================================================================
+-- Test 3: Query Using idx_housetask_house_stage
+-- =====================================================================
+-- Purpose: Test typical construction manager query pattern
+-- Expected: Fast execution, uses index
+-- =====================================================================
+PROMPT 
+PROMPT ====== Test 3: Construction Manager Query ======
 PROMPT Query: Find all stage 1 tasks for house 8006
 
-SELECT housetask_id, stage, plannedstart, plannedend, percent_complete, notes
+SELECT housetask_id, stage, plannedstart, plannedend, notes
 FROM housetask
 WHERE house_house_id = 8006
   AND stage = 1
 ORDER BY plannedstart;
 
+PROMPT Expected: Should return tasks for house 8006 at stage 1
 PROMPT 
-PROMPT Execution Plan Analysis:
-PROMPT Expected: INDEX RANGE SCAN on IDX_HOUSETASK_HOUSE_STAGE
-PROMPT
 
 -- =====================================================================
--- Test 3: Construction manager daily report
--- Expected: Index eliminates full table scan
+-- Test 4: Query Using idx_sale_employee_date
 -- =====================================================================
-PROMPT 
-PROMPT ====== Test 3: Construction Manager Daily Report ======
-PROMPT Query: All tasks for house 8007, stages 1-2
-
-SELECT ht.housetask_id,
-       ht.stage,
-       ht.plannedstart,
-       ht.plannedend,
-       ht.percent_complete,
-       e.name AS assigned_employee
-FROM housetask ht
-JOIN employee e ON ht.employee_employee_id = e.employee_id
-WHERE ht.house_house_id = 8007
-  AND ht.stage <= 2
-ORDER BY ht.stage, ht.plannedstart;
-
--- =====================================================================
--- Test 4: Count tasks by stage for multiple houses
--- Expected: Index provides efficient access for IN clause
+-- Purpose: Test sales performance report pattern
+-- Expected: Fast execution, uses index
 -- =====================================================================
 PROMPT 
-PROMPT ====== Test 4: Task Count by House and Stage ======
-SELECT house_house_id, stage, COUNT(*) AS task_count
-FROM housetask
-WHERE house_house_id IN (8001, 8002, 8006, 8007)
-GROUP BY house_house_id, stage
-ORDER BY house_house_id, stage;
+PROMPT ====== Test 4: Employee Sales Report ======
+PROMPT Query: Sales by employee for date range
+
+SELECT employee_employee_id, 
+       COUNT(*) AS num_sales,
+       TO_CHAR(SUM(escrowdeposit), '$999,999,999.99') AS total_deposits
+FROM sale
+WHERE employee_employee_id IN (26001, 26002, 26003)
+  AND "Date" >= DATE '2025-01-01'
+GROUP BY employee_employee_id
+ORDER BY employee_employee_id;
+
+PROMPT Expected: Summary of sales by employee
+PROMPT 
 
 -- =====================================================================
--- Test 5: Find houses at specific construction stage
--- Expected: Index range scan on stage column
+-- Test 5: Query Using idx_decorator_choice_session
+-- =====================================================================
+-- Purpose: Test decorator session lookup pattern
+-- Expected: Fast execution, uses index for aggregation
 -- =====================================================================
 PROMPT 
-PROMPT ====== Test 5: Find All Houses at Stage 1 ======
-SELECT DISTINCT ht.house_house_id, 
-       h.currentconstructionstage,
-       COUNT(ht.housetask_id) AS tasks_at_stage_1
-FROM housetask ht
-JOIN house h ON ht.house_house_id = h.house_id
-WHERE ht.stage = 1
-GROUP BY ht.house_house_id, h.currentconstructionstage
-ORDER BY ht.house_house_id;
+PROMPT ====== Test 5: Decorator Session Summary ======
+PROMPT Query: All choices and total for session 14001
+
+SELECT decoratorchoice_id, item, 
+       TO_CHAR(price, '$999,999.99') AS price
+FROM decorator_choice
+WHERE decorator_session_id = 14001;
+
+SELECT TO_CHAR(SUM(price), '$999,999.99') AS session_total
+FROM decorator_choice
+WHERE decorator_session_id = 14001;
+
+PROMPT Expected: List of choices and total price for session
+PROMPT 
 
 -- =====================================================================
--- Test 6: Timeline query - benefits from plannedstart in index
--- Expected: Index provides sorted data, no additional sort needed
+-- Test 6: Execution Plan Check
+-- =====================================================================
+-- Purpose: Verify optimizer is using the indexes
+-- Expected: INDEX RANGE SCAN operations (not FULL TABLE SCAN)
 -- =====================================================================
 PROMPT 
-PROMPT ====== Test 6: Construction Timeline for House 8006 ======
-SELECT housetask_id, 
-       stage, 
-       plannedstart, 
-       plannedend,
-       (plannedend - plannedstart) AS duration_days
-FROM housetask
-WHERE house_house_id = 8006
-ORDER BY plannedstart;
+PROMPT ====== Test 6: Execution Plan Analysis ======
+PROMPT Checking if optimizer uses idx_housetask_house_stage...
 
-PROMPT Expected: Plan should show no SORT operation (data already sorted by index)
+SET AUTOTRACE ON EXPLAIN
 
--- =====================================================================
--- Test 7: Find overdue tasks at specific stage
--- Expected: Index filters stage first, then date predicate
--- =====================================================================
-PROMPT 
-PROMPT ====== Test 7: Overdue Tasks at Stage 1 ======
-SELECT house_house_id, 
-       housetask_id, 
-       plannedend, 
-       stage,
-       percent_complete
-FROM housetask
-WHERE stage = 1
-  AND plannedend < SYSDATE
-  AND NVL(percent_complete, 0) < 1.00
-ORDER BY plannedend;
-
--- =====================================================================
--- Test 8: Stage range query (early construction phases)
--- Expected: Index range scan for stage IN clause
--- =====================================================================
-PROMPT 
-PROMPT ====== Test 8: Tasks in Early Stages (1-3) ======
-SELECT house_house_id, 
-       stage, 
-       COUNT(*) AS task_count,
-       AVG(NVL(percent_complete, 0)) AS avg_progress
-FROM housetask
-WHERE stage IN (1, 2, 3)
-GROUP BY house_house_id, stage
-ORDER BY house_house_id, stage;
-
--- =====================================================================
--- Test 9: Complex join with index optimization
--- Expected: Index reduces join cost
--- =====================================================================
-PROMPT 
-PROMPT ====== Test 9: Construction Progress with Photos ======
-SELECT h.house_id,
-       ht.stage,
-       ht.housetask_id,
-       tp.percentage_complete,
-       COUNT(p.photo_id) AS photo_count
-FROM house h
-JOIN housetask ht ON h.house_id = ht.house_house_id
-LEFT JOIN task_progress tp ON ht.housetask_id = tp.housetask_housetask_id
-LEFT JOIN photo p ON ht.housetask_id = p.housetask_housetask_id
-WHERE h.house_id = 8006
-  AND ht.stage = 1
-GROUP BY h.house_id, ht.stage, ht.housetask_id, tp.percentage_complete
-ORDER BY ht.housetask_id;
-
--- =====================================================================
--- Test 10: Explain Plan Analysis
--- =====================================================================
-PROMPT 
-PROMPT ====== Test 10: Detailed Explain Plan ======
-EXPLAIN PLAN FOR
-SELECT housetask_id, stage, plannedstart, percent_complete
+SELECT housetask_id, stage
 FROM housetask
 WHERE house_house_id = 8006
   AND stage = 1;
 
-SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY(FORMAT=>'BASIC +PREDICATE'));
-
 SET AUTOTRACE OFF
 
+PROMPT Expected: Execution plan should show INDEX RANGE SCAN
+PROMPT           on IDX_HOUSETASK_HOUSE_STAGE
+PROMPT 
+
 -- =====================================================================
--- Test 11: Index Statistics
+-- Test 7: Index Statistics
+-- =====================================================================
+-- Purpose: Review basic index health metrics
+-- Expected: Reasonable values for leaf_blocks and clustering_factor
 -- =====================================================================
 PROMPT 
-PROMPT ====== Test 11: Index Statistics ======
+PROMPT ====== Test 7: Index Statistics ======
+
 SELECT index_name, 
        num_rows AS table_rows,
        distinct_keys,
        leaf_blocks,
        clustering_factor,
-       avg_leaf_blocks_per_key,
-       avg_data_blocks_per_key
+       status
 FROM user_indexes
-WHERE index_name = 'IDX_HOUSETASK_HOUSE_STAGE';
+WHERE index_name IN ('IDX_HOUSETASK_HOUSE_STAGE', 
+                     'IDX_SALE_EMPLOYEE_DATE',
+                     'IDX_DECORATOR_CHOICE_SESSION')
+ORDER BY index_name;
 
--- =====================================================================
--- Test 12: Performance Benchmark (Simple Timing Test)
--- =====================================================================
+PROMPT Review: 
+PROMPT - STATUS should be VALID
+PROMPT - CLUSTERING_FACTOR should be relatively low (good data locality)
 PROMPT 
-PROMPT ====== Test 12: Performance Benchmark ======
-PROMPT Running query 100 times to measure performance...
-
-DECLARE
-  v_count NUMBER;
-  v_start NUMBER;
-  v_end NUMBER;
-BEGIN
-  v_start := DBMS_UTILITY.GET_TIME;
-  
-  FOR i IN 1..100 LOOP
-    SELECT COUNT(*)
-    INTO v_count
-    FROM housetask
-    WHERE house_house_id = 8006
-      AND stage = 1;
-  END LOOP;
-  
-  v_end := DBMS_UTILITY.GET_TIME;
-  
-  DBMS_OUTPUT.PUT_LINE('100 iterations completed in: ' || 
-                       ((v_end - v_start) / 100) || ' centiseconds');
-  DBMS_OUTPUT.PUT_LINE('Average time per query: ' || 
-                       ROUND((v_end - v_start) / 100, 2) || ' centiseconds');
-END;
-/
 
 SET TIMING OFF
 
 PROMPT 
 PROMPT =====================================================================
-PROMPT TEST SUMMARY - Alternate Index Validation
+PROMPT TEST SUMMARY
 PROMPT =====================================================================
-PROMPT 
-PROMPT Expected Results:
-PROMPT 1. Index exists with columns: house_house_id, stage, plannedstart
-PROMPT 2. All queries using house_house_id + stage should show INDEX RANGE SCAN
-PROMPT 3. No FULL TABLE SCAN should appear for indexed queries
-PROMPT 4. Timeline queries should not require additional SORT operation
-PROMPT 5. Performance should be 50-80% faster than without index
-PROMPT 
-PROMPT Key Performance Indicators:
-PROMPT - INDEX RANGE SCAN in execution plan
-PROMPT - Low clustering factor (indicates good data locality)
-PROMPT - Fast query execution (<0.5 centiseconds for simple queries)
+PROMPT All 7 tests completed. Review results above:
+PROMPT 1. Index existence - All 3 indexes should exist with VALID status
+PROMPT 2. Index structure - Verify correct column order
+PROMPT 3. Construction query - Should return house 8006 tasks
+PROMPT 4. Sales report - Should show employee sales summary
+PROMPT 5. Decorator session - Should show choices and total
+PROMPT 6. Execution plan - Should use INDEX RANGE SCAN
+PROMPT 7. Statistics - Indexes should be healthy (VALID status)
 PROMPT =====================================================================
