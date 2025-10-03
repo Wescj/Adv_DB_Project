@@ -6,7 +6,6 @@
 
 SET ECHO ON
 SET SERVEROUTPUT ON SIZE 1000000
-SET TIMING ON
 SET LINESIZE 200
 SET PAGESIZE 100
 
@@ -31,7 +30,7 @@ PROMPT STEP 1: CLEANUP
 PROMPT Removing any existing Eggshell objects...
 PROMPT =====================================================================
 
-@/Users/msj/Adv_DB_Project/cleanup.sql
+@cleanup.sql
 
 PROMPT 
 PROMPT Cleanup complete. Pausing for review...
@@ -46,7 +45,7 @@ PROMPT STEP 2: MASTER SETUP
 PROMPT Installing all database components...
 PROMPT =====================================================================
 
-@/Users/msj/Adv_DB_Project/master_setup.sql
+@master_setup.sql
 
 PROMPT 
 PROMPT Setup complete. Pausing for review...
@@ -61,7 +60,7 @@ PROMPT STEP 3: VERIFICATION
 PROMPT Checking all objects exist and are valid...
 PROMPT =====================================================================
 
-@/Users/msj/Adv_DB_Project/verify_eggshell.sql
+@verify_eggshell.sql
 
 PROMPT 
 PROMPT Verification complete. Review summary above.
@@ -78,7 +77,7 @@ PROMPT =====================================================================
 
 PROMPT 
 PROMPT --- Test Suite 1: Alternate Index Tests ---
-@/Users/msj/Adv_DB_Project/test_alternate_index.sql
+@test_alternate_index.sql
 
 PROMPT 
 PROMPT Alternate index tests complete.
@@ -86,7 +85,7 @@ PAUSE Press Enter to run denormalization tests...
 
 PROMPT 
 PROMPT --- Test Suite 2: Denormalization Tests ---
-@/Users/msj/Adv_DB_Project/test_denormalization.sql
+@test_denormalization.sql
 
 PROMPT 
 PROMPT Denormalization tests complete.
@@ -107,5 +106,3 @@ PROMPT
 PROMPT If all tests passed, the database is ready for use.
 PROMPT If any tests failed, review the specific test output for details.
 PROMPT =====================================================================
-
-SET TIMING OFF
