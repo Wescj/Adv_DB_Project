@@ -29,12 +29,3 @@ BEGIN
   END IF;
 END;
 /
-
-INSERT INTO task_progress (progress_id, percentage_complete, housetask_housetask_id)
-VALUES (9001, 0.5, 1);   -- 50% complete, valid
-
-SELECT * FROM task_progress WHERE progress_id = 9001;
-
-
-INSERT INTO task_progress (progress_id, percentage_complete, housetask_housetask_id)
-VALUES (9003, 1.5, 1);
