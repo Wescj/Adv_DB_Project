@@ -2,31 +2,6 @@
 SET SERVEROUTPUT ON;
 SET DEFINE OFF;
 
--- 1) Create a simple task and a session at STAGE = 1 
-INSERT INTO housetask (housetask_id, stage, required, house_house_id, employee_employee_id, plannedcost, percent_complete)
-VALUES (1, 1, 'Y', 6001, 9201, 1000, 0);
-
-INSERT INTO decorator_session (decoratorsession_id, "Date", stage, housetask_housetask_id, approval)
-VALUES (1, SYSDATE, 1, 1, 'Y');
-
--- 2) Ensure a Plumbing category exists
-INSERT INTO optioncategory (category_id, categoryname) VALUES (20, 'Plumbing');
-
--- 3) Create the Option I want to use (ID 2010)
-INSERT INTO "Option" (option_id, option_name, description, optioncategory_category_id, housestyle_style_id)
-VALUES (2010, 'Garage Sink', 'Utility sink in garage', 20, 3001);
-
--- 4) Price history for (option=2010, stage=1): two revisions to test the view
-INSERT INTO option_stage_price (osp_id, option_option_id, stage, cost, revision_date)
-VALUES (8001, 2010, 1, 450, DATE '2024-01-01');
-
-INSERT INTO option_stage_price (osp_id, option_option_id, stage, cost, revision_date)
-VALUES (8002, 2010, 1, 500, DATE '2024-09-01');  -- latest; the view should pick this
-
-COMMIT;
-
-
-
 CREATE OR REPLACE PACKAGE pkg_eggshell AS
   -- Returns overall progress for a house in percent (0..100, integer)
   FUNCTION house_progress_pct(
@@ -147,35 +122,3 @@ CREATE OR REPLACE PACKAGE BODY pkg_eggshell AS
 END pkg_eggshell;
 /
 
-
--- Example: add a decorator choice (auto-priced by session's stage)
-DECLARE
-  v_choice_id NUMBER;
-BEGIN
-  pkg_eggshell.add_decorator_choice(
-    p_session_id  => 1,
-    p_option_id   => 2010,
-    p_item        => 'Garage Sink',
-    p_description => 'Deep-basin utility sink',
-    p_choice_id   => v_choice_id
-  );
-  DBMS_OUTPUT.PUT_LINE('Added decorator_choice_id='||v_choice_id);
-END;
-/
-
--- Example: record progress (40% = 0.40 fraction)
-DECLARE
-  v_pid NUMBER;
-BEGIN
-  pkg_eggshell.record_task_progress(
-    p_housetask_id => 1,
-    p_fraction     => 0.40,
-    p_est_date     => SYSDATE + 14,
-    p_progress_id  => v_pid
-  );
-  DBMS_OUTPUT.PUT_LINE('Added task_progress_id='||v_pid);
-END;
-/
-
--- Example: compute a house's overall % progress
-SELECT pkg_eggshell.house_progress_pct(6001) AS house_6001_pct FROM dual;
