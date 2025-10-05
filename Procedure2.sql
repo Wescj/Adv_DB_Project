@@ -36,34 +36,3 @@ BEGIN
   DBMS_OUTPUT.PUT_LINE('Task progress inserted with id='||v_pid);
 END;
 /
-
-
-SET SERVEROUTPUT ON;
-
--- Step 1: Create a dummy housetask
-INSERT INTO housetask (housetask_id, stage, required,
-                       house_house_id, employee_employee_id,
-                       plannedcost, percent_complete)
-VALUES (60010, 1, 'Y', 6001, 9201, 1000, 0);
-COMMIT;
-
--- Step 2: Call the wrapper procedure to insert progress
-BEGIN
-  pr_record_progress(
-    p_task_id  => 60010,
-    p_fraction => 0.50,          -- 50% done
-    p_est_date => SYSDATE+7      -- due in a week
-  );
-END;
-/
-
--- Expected: prints "Task progress inserted with id=<new id>"
-
--- Step 3: Verify row in TASK_PROGRESS
-SELECT progress_id,
-       housetask_housetask_id,
-       percentage_complete,
-       estimatedcompletiondate
-FROM task_progress
-WHERE housetask_housetask_id = 60010
-ORDER BY progress_id DESC;
