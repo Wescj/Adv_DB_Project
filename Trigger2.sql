@@ -1,18 +1,9 @@
--- Drop any previous version
-BEGIN
-  EXECUTE IMMEDIATE 'DROP TRIGGER trg_house_stage_autoadvance';
-EXCEPTION
-  WHEN OTHERS THEN
-    IF SQLCODE != -4080 THEN RAISE; END IF;  -- ignore "trigger does not exist"
-END;
-/
-
 -- ===========================================================
 -- Trigger: trg_house_stage_autoadvance
 -- Timing/Event: AFTER INSERT OR UPDATE ON task_progress (statement-level)
 -- Purpose:
 --   After task_progress changes, recompute the highest construction stage
---   for each house where *all* tasks in that stage are 100% (1.00), and
+--   for each house where all tasks in that stage are 100% (1.00), and
 --   advance house.currentconstructionstage to that value (never decreases).
 -- ===========================================================
 CREATE OR REPLACE TRIGGER trg_house_stage_autoadvance
@@ -59,45 +50,3 @@ BEGIN
     SET h.currentconstructionstage = GREATEST(NVL(h.currentconstructionstage,0), s.max_completed_stage);
 END;
 /
-
-SET SERVEROUTPUT ON;
--- 0) Check current stage
-SELECT house_id, currentconstructionstage FROM house WHERE house_id = 6001;
-
--- 1) Create two tasks at stage 2
-INSERT INTO housetask (housetask_id, stage, required, plannedstart, plannedend,
-                       house_house_id, employee_employee_id, plannedcost, actualcost, percent_complete)
-VALUES (30001, 2, 'Y', SYSDATE, SYSDATE+7, 6001, 9201, 1000, NULL, 0);
-
-INSERT INTO housetask (housetask_id, stage, required, plannedstart, plannedend,
-                       house_house_id, employee_employee_id, plannedcost, actualcost, percent_complete)
-VALUES (30002, 2, 'Y', SYSDATE, SYSDATE+7, 6001, 9201, 1500, NULL, 0);
-
-COMMIT;
-
--- 2) Complete the first task (house stage should not advance yet)
-INSERT INTO task_progress (progress_id, percentage_complete, estimatedcompletiondate, housetask_housetask_id)
-VALUES (92001, 1.00, SYSDATE, 30001);
-COMMIT;
-
-SELECT house_id, currentconstructionstage FROM house WHERE house_id = 6001;
-
--- 3) Complete the second task (now all stage-2 tasks are done → house stage should advance to 2)
-INSERT INTO task_progress (progress_id, percentage_complete, estimatedcompletiondate, housetask_housetask_id)
-VALUES (92002, 1.00, SYSDATE, 30002);
-COMMIT;
-
-DELETE FROM task_progress WHERE housetask_housetask_id IN (20001, 20002);
-DELETE FROM housetask      WHERE housetask_id IN (20001, 20002);
-COMMIT;
-
--- nudge a row to fire the trigger
-UPDATE task_progress
-SET percentage_complete = percentage_complete
-WHERE housetask_housetask_id IN (30001, 30002);
-COMMIT;
-
-SELECT house_id, currentconstructionstage
-FROM house
-WHERE house_id = 6001;
-
