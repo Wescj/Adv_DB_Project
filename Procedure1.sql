@@ -31,4 +31,3 @@ BEGIN
 END;
 /
 
-EXEC pr_add_choice(501, 9010, 'Garage Sink', 'Deep-basin utility sink');
