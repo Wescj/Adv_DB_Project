@@ -44,8 +44,3 @@ EXCEPTION
     RETURN NULL;
 END fn_house_total_price;
 /
-
-
-
-SELECT fn_house_total_price(6001) AS total_price
-FROM dual;
