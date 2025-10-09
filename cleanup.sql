@@ -35,7 +35,6 @@ DROP INDEX idx_decorator_choice_session;
 -- =====================================================================
 PROMPT 
 PROMPT Phase 3: Dropping views...
-DROP VIEW v_construction_progress_details;
 DROP VIEW v_house_style_details;
 DROP VIEW v_construction_progress;
 DROP VIEW v_sales_summary;

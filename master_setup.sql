@@ -38,7 +38,6 @@ PROMPT
 PROMPT Phase 3: Creating views...
 @View.sql
 @View2.sql
-@View3.sql
 
 -- =====================================================================
 -- Phase 4: Functions (Reusable Logic)

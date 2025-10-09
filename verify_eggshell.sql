@@ -42,10 +42,10 @@ WHERE table_name IN (
 ORDER BY table_name;
 
 -- =====================================================================
--- Check 2: Views (Expected: 5)
+-- Check 2: Views (Expected: 4)
 -- =====================================================================
 PROMPT 
-PROMPT ====== Check 2: Views (Expected: 5) ======
+PROMPT ====== Check 2: Views (Expected: 4) ======
 
 SELECT COUNT(*) AS view_count
 FROM user_objects 
@@ -54,8 +54,7 @@ WHERE object_type = 'VIEW'
       'V_CURRENT_OPTION_PRICE', 
       'V_SALES_SUMMARY', 
       'V_CONSTRUCTION_PROGRESS',
-      'V_HOUSE_STYLE_DETAILS',
-      'V_CONSTRUCTION_PROGRESS_DETAILS'
+      'V_HOUSE_STYLE_DETAILS'
   );
 
 SELECT object_name, status 
@@ -65,8 +64,7 @@ WHERE object_type = 'VIEW'
       'V_CURRENT_OPTION_PRICE', 
       'V_SALES_SUMMARY', 
       'V_CONSTRUCTION_PROGRESS',
-      'V_HOUSE_STYLE_DETAILS',
-      'V_CONSTRUCTION_PROGRESS_DETAILS'
+      'V_HOUSE_STYLE_DETAILS'
   )
 ORDER BY object_name;
 
@@ -264,15 +262,15 @@ SELECT
 FROM dual
 UNION ALL
 SELECT 
-    'Views', 5,
+    'Views', 4,
     (SELECT COUNT(*) FROM user_objects WHERE object_type = 'VIEW' AND object_name IN (
         'V_CURRENT_OPTION_PRICE', 'V_SALES_SUMMARY', 'V_CONSTRUCTION_PROGRESS',
-        'V_HOUSE_STYLE_DETAILS', 'V_CONSTRUCTION_PROGRESS_DETAILS'
+        'V_HOUSE_STYLE_DETAILS'
     )),
     CASE WHEN (SELECT COUNT(*) FROM user_objects WHERE object_type = 'VIEW' AND object_name IN (
         'V_CURRENT_OPTION_PRICE', 'V_SALES_SUMMARY', 'V_CONSTRUCTION_PROGRESS',
-        'V_HOUSE_STYLE_DETAILS', 'V_CONSTRUCTION_PROGRESS_DETAILS'
-    )) = 5 THEN 'PASS' ELSE 'FAIL' END
+        'V_HOUSE_STYLE_DETAILS'
+    )) = 4 THEN 'PASS' ELSE 'FAIL' END
 FROM dual
 UNION ALL
 SELECT 
