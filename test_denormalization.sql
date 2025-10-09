@@ -98,6 +98,9 @@ BEGIN
   IF v_time_calc > 0 AND v_time_denorm < v_time_calc THEN
     DBMS_OUTPUT.PUT_LINE('Speedup: ' || ROUND(v_time_calc / v_time_denorm, 2) || 'x');
     DBMS_OUTPUT.PUT_LINE('PASS - Denormalized is faster');
+  ELSIF v_time_denorm = 0 THEN
+    DBMS_OUTPUT.PUT_LINE('------------------------------------');
+    DBMS_OUTPUT.PUT_LINE('INCONCLUSIVE - Denormalized query was too fast to measure.');
   ELSE
     DBMS_OUTPUT.PUT_LINE('INCONCLUSIVE');
   END IF;
