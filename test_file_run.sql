@@ -16,7 +16,8 @@ PROMPT This script will:
 PROMPT 1. Clean existing objects (if any)
 PROMPT 2. Run complete database setup
 PROMPT 3. Verify all objects are installed correctly
-PROMPT 4. Run functional tests
+PROMPT 4. Run functional tests for performance and logic
+PROMPT 5. Create the automated nightly database job
 PROMPT =====================================================================
 
 PAUSE Press Enter to begin installation, or Ctrl+C to cancel...
@@ -90,6 +91,22 @@ PROMPT --- Test Suite 2: Denormalization Tests ---
 PROMPT 
 PROMPT Denormalization tests complete.
 
+PAUSE Press Enter to create the scheduled database job...
+
+-- =====================================================================
+-- Step 5: Create Scheduled Job
+-- =====================================================================
+PROMPT 
+PROMPT =====================================================================
+PROMPT STEP 5: CREATE SCHEDULED JOB
+PROMPT Creating the automated nightly job to run this workflow...
+PROMPT =====================================================================
+
+@create_sql_script_job.sql
+
+PROMPT 
+PROMPT Scheduled job creation complete.
+
 -- =====================================================================
 -- Final Summary
 -- =====================================================================
@@ -97,12 +114,6 @@ PROMPT
 PROMPT =====================================================================
 PROMPT INSTALLATION AND TESTING COMPLETE
 PROMPT =====================================================================
-PROMPT 
-PROMPT Review the output above for:
-PROMPT 1. Any errors during setup
-PROMPT 2. Verification results (all should show PASS)
-PROMPT 3. Test results (check for PASS/FAIL indicators)
-PROMPT 
-PROMPT If all tests passed, the database is ready for use.
-PROMPT If any tests failed, review the specific test output for details.
+PROMPT The entire database has been built, verified, and tested.
+PROMPT The automated nightly job 'RUN_EGGSHELL_PROJECT_SQL' has also been created.
 PROMPT =====================================================================
