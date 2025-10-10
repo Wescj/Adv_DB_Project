@@ -2,14 +2,14 @@
 -- Role 1: SALES_ROLE
 -- For staff who handle buyers, sales, escrow, and banks
 -- =========================================
-CREATE ROLE staff_sales_role;
+CREATE ROLE sales_man_role;
 
 -- Grant privileges needed for managing sales workflow
-GRANT SELECT, INSERT, UPDATE ON buyer       TO staff_sales_role;
-GRANT SELECT, INSERT, UPDATE ON sale        TO staff_sales_role;
-GRANT SELECT, INSERT, UPDATE ON escrowagent TO staff_sales_role;
-GRANT SELECT, INSERT, UPDATE ON bank        TO staff_sales_role;
-GRANT SELECT, INSERT, UPDATE ON bank_worker TO staff_sales_role;
+GRANT SELECT, INSERT, UPDATE ON buyer       TO sales_man_role;
+GRANT SELECT, INSERT, UPDATE ON sale        TO sales_man_role;
+GRANT SELECT, INSERT, UPDATE ON escrowagent TO sales_man_role;
+GRANT SELECT, INSERT, UPDATE ON bank        TO sales_man_role;
+GRANT SELECT, INSERT, UPDATE ON bank_worker TO sales_man_role;
 
 CREATE OR REPLACE VIEW v_sales_summary AS
 SELECT 
@@ -29,7 +29,7 @@ JOIN house h       ON s.house_house_id = h.house_id
 JOIN escrowagent ea ON s.escrowagent_escrowagent_id = ea.escrowagent_id;
 
 -- Grant access
-GRANT SELECT ON v_sales_summary TO staff_sales_role;
+GRANT SELECT ON v_sales_summary TO sales_man_role;
 
 
 -- =========================================

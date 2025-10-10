@@ -27,19 +27,19 @@ END;
 -- Phase 2: Drop Security Objects
 -- =====================================================================
 PROMPT Phase 2: Dropping roles...
-BEGIN
-  EXECUTE IMMEDIATE 'DROP ROLE construction_role';
-EXCEPTION
-  WHEN OTHERS THEN NULL;
-END;
-/
-
-BEGIN
-  EXECUTE IMMEDIATE 'DROP ROLE staff_sales_role';
-EXCEPTION
-  WHEN OTHERS THEN NULL;
-END;
-/
+--BEGIN
+--  EXECUTE IMMEDIATE 'DROP ROLE construction_role';
+--EXCEPTION
+--  WHEN OTHERS THEN NULL;
+--END;
+--/
+--
+--BEGIN
+--  EXECUTE IMMEDIATE 'DROP ROLE staff_sales_role';
+--EXCEPTION
+--  WHEN OTHERS THEN NULL;
+--END;
+--/
 
 -- =====================================================================
 -- Phase 3: Drop Performance Objects

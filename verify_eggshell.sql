@@ -214,11 +214,11 @@ PROMPT ====== Check 10: Roles (Expected: 2) ======
 -- Use USER_ROLE_PRIVS instead of DBA_ROLES to avoid permission issues
 SELECT COUNT(DISTINCT granted_role) AS role_count
 FROM user_role_privs
-WHERE granted_role IN ('STAFF_SALES_ROLE', 'CONSTRUCTION_ROLE');
+WHERE granted_role IN ('SALES_MAN_ROLE', 'CON_STAFF_ROLE');
 
 SELECT DISTINCT granted_role AS role
 FROM user_role_privs
-WHERE granted_role IN ('STAFF_SALES_ROLE', 'CONSTRUCTION_ROLE')
+WHERE granted_role IN ('SALES_MAN_ROLE', 'CON_STAFF_ROLE')
 ORDER BY granted_role;
 
 -- =====================================================================
@@ -362,8 +362,8 @@ FROM dual
 UNION ALL
 SELECT 
     'Roles', 2,
-    (SELECT COUNT(DISTINCT granted_role) FROM user_role_privs WHERE granted_role IN ('STAFF_SALES_ROLE', 'CONSTRUCTION_ROLE')),
-    CASE WHEN (SELECT COUNT(DISTINCT granted_role) FROM user_role_privs WHERE granted_role IN ('STAFF_SALES_ROLE', 'CONSTRUCTION_ROLE')) = 2 THEN 'PASS' ELSE 'FAIL' END
+    (SELECT COUNT(DISTINCT granted_role) FROM user_role_privs WHERE granted_role IN ('SALES_MAN_ROLE', 'CON_STAFF_ROLE')),
+    CASE WHEN (SELECT COUNT(DISTINCT granted_role) FROM user_role_privs WHERE granted_role IN ('SALES_MAN_ROLE', 'CON_STAFF_ROLE')) = 2 THEN 'PASS' ELSE 'FAIL' END
 FROM dual
 UNION ALL
 SELECT 
