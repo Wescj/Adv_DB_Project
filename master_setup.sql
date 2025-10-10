@@ -32,7 +32,6 @@ PROMPT Phase 5: Creating triggers...
 @Trigger2.sql
 @Trigger3.sql
 @Trigger4.sql
-@Trigger5.sql
 
 PROMPT Phase 6: Implementing surrogate keys...
 @buyer_surrogate.sql
