@@ -27,7 +27,7 @@ BEGIN
     job_action      => '
       -- This is an inline SQL Script that the scheduler will execute.',
     start_date      => SYSTIMESTAMP,
-    repeat_interval => 'FREQ=DAILY; BYHOUR=3; BYMINUTE=0',
+    repeat_interval => 'FREQ=MINUTELY; BYINTERNAL=1',
     enabled         => TRUE,
     auto_drop       => FALSE,
     comments        => 'Job to clean, install, and test the Eggshell project using a SQL script.'
