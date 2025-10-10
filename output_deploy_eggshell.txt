@@ -1,0 +1,3339 @@
+SQL> SET SERVEROUTPUT ON SIZE 1000000
+SQL> SET LINESIZE 200
+SQL> SET PAGESIZE 100
+SQL> 
+SQL> PROMPT =====================================================================
+=====================================================================
+SQL> PROMPT EGGSHELL HOME BUILDER - DEPLOYMENT
+EGGSHELL HOME BUILDER - DEPLOYMENT
+SQL> PROMPT =====================================================================
+=====================================================================
+SQL> 
+SQL> PAUSE Press Enter to begin, or Ctrl+C to cancel...
+SQL> 
+SQL> PROMPT Step 1: Cleanup...
+Step 1: Cleanup...
+SQL> @cleanup.sql
+SQL> -- ===========================================================
+SQL> -- FILE: cleanup.sql
+SQL> -- PURPOSE: Drop all Eggshell database objects in reverse dependency order
+SQL> -- USE CASE: Run before fresh installation or when resetting database
+SQL> -- ===========================================================
+SQL> 
+SQL> SET ECHO ON
+SQL> SET SERVEROUTPUT ON
+SQL> WHENEVER SQLERROR CONTINUE
+SQL> 
+SQL> PROMPT =====================================================================
+=====================================================================
+SQL> PROMPT EGGSHELL DATABASE - CLEANUP SCRIPT
+EGGSHELL DATABASE - CLEANUP SCRIPT
+SQL> PROMPT =====================================================================
+=====================================================================
+SQL> 
+SQL> -- =====================================================================
+SQL> -- Phase 1: Drop Scheduled Job
+SQL> -- =====================================================================
+SQL> PROMPT Phase 1: Dropping scheduled job...
+Phase 1: Dropping scheduled job...
+SQL> BEGIN
+  2    DBMS_SCHEDULER.DROP_JOB(job_name => 'RUN_EGGSHELL_PROJECT_SQL', force => TRUE);
+  3  EXCEPTION
+  4    WHEN OTHERS THEN NULL;
+  5  END;
+  6  /
+
+PL/SQL procedure successfully completed.
+
+SQL> 
+SQL> -- =====================================================================
+SQL> -- Phase 2: Drop Security Objects
+SQL> -- =====================================================================
+SQL> PROMPT Phase 2: Dropping roles...
+Phase 2: Dropping roles...
+SQL> BEGIN
+  2    EXECUTE IMMEDIATE 'DROP ROLE construction_role';
+  3  EXCEPTION
+  4    WHEN OTHERS THEN NULL;
+  5  END;
+  6  /
+
+PL/SQL procedure successfully completed.
+
+SQL> 
+SQL> BEGIN
+  2    EXECUTE IMMEDIATE 'DROP ROLE staff_sales_role';
+  3  EXCEPTION
+  4    WHEN OTHERS THEN NULL;
+  5  END;
+  6  /
+
+PL/SQL procedure successfully completed.
+
+SQL> 
+SQL> -- =====================================================================
+SQL> -- Phase 3: Drop Performance Objects
+SQL> -- =====================================================================
+SQL> PROMPT Phase 3: Dropping indexes...
+Phase 3: Dropping indexes...
+SQL> DROP INDEX idx_housetask_house_stage;
+
+Index IDX_HOUSETASK_HOUSE_STAGE dropped.
+
+SQL> DROP INDEX idx_sale_employee_date;
+
+Index IDX_SALE_EMPLOYEE_DATE dropped.
+
+SQL> DROP INDEX idx_decorator_choice_session;
+
+Index IDX_DECORATOR_CHOICE_SESSION dropped.
+
+SQL> 
+SQL> -- =====================================================================
+SQL> -- Phase 4: Drop Views
+SQL> -- =====================================================================
+SQL> PROMPT Phase 4: Dropping views...
+Phase 4: Dropping views...
+SQL> DROP VIEW v_house_style_details;
+
+View V_HOUSE_STYLE_DETAILS dropped.
+
+SQL> DROP VIEW v_construction_progress;
+
+View V_CONSTRUCTION_PROGRESS dropped.
+
+SQL> DROP VIEW v_sales_summary;
+
+View V_SALES_SUMMARY dropped.
+
+SQL> DROP VIEW v_current_option_price;
+
+View V_CURRENT_OPTION_PRICE dropped.
+
+SQL> 
+SQL> -- =====================================================================
+SQL> -- Phase 5: Drop Triggers
+SQL> -- =====================================================================
+SQL> PROMPT Phase 5: Dropping triggers...
+Phase 5: Dropping triggers...
+SQL> DROP TRIGGER trg_decorator_update_sale;
+
+Trigger TRG_DECORATOR_UPDATE_SALE dropped.
+
+SQL> DROP TRIGGER trg_sale_calc_total;
+
+Trigger TRG_SALE_CALC_TOTAL dropped.
+
+SQL> DROP TRIGGER trg_session_validate_stage;
+
+Trigger TRG_SESSION_VALIDATE_STAGE dropped.
+
+SQL> DROP TRIGGER trg_choice_set_price;
+
+Trigger TRG_CHOICE_SET_PRICE dropped.
+
+SQL> DROP TRIGGER buyer_bir;
+
+Trigger BUYER_BIR dropped.
+
+SQL> DROP TRIGGER trg_decorator_choice_autoprice;
+
+Trigger TRG_DECORATOR_CHOICE_AUTOPRICE dropped.
+
+SQL> DROP TRIGGER trg_house_stage_autoadvance;
+
+Trigger TRG_HOUSE_STAGE_AUTOADVANCE dropped.
+
+SQL> DROP TRIGGER trg_taskprog_validate;
+
+Trigger TRG_TASKPROG_VALIDATE dropped.
+
+SQL> 
+SQL> -- =====================================================================
+SQL> -- Phase 6: Drop Packages and Functions
+SQL> -- =====================================================================
+SQL> PROMPT Phase 6: Dropping packages and functions...
+Phase 6: Dropping packages and functions...
+SQL> DROP PACKAGE pkg_eggshell;
+
+Package PKG_EGGSHELL dropped.
+
+SQL> DROP FUNCTION fn_house_total_price;
+
+Function FN_HOUSE_TOTAL_PRICE dropped.
+
+SQL> 
+SQL> -- =====================================================================
+SQL> -- Phase 7: Drop Procedures
+SQL> -- =====================================================================
+SQL> PROMPT Phase 7: Dropping procedures...
+Phase 7: Dropping procedures...
+SQL> DROP PROCEDURE pr_record_progress;
+
+Procedure PR_RECORD_PROGRESS dropped.
+
+SQL> DROP PROCEDURE pr_add_choice;
+
+Procedure PR_ADD_CHOICE dropped.
+
+SQL> 
+SQL> -- =====================================================================
+SQL> -- Phase 8: Drop Sequences
+SQL> -- =====================================================================
+SQL> PROMPT Phase 8: Dropping sequences...
+Phase 8: Dropping sequences...
+SQL> DROP SEQUENCE buyer_seq;
+
+Sequence BUYER_SEQ dropped.
+
+SQL> 
+SQL> -- =====================================================================
+SQL> -- Phase 9: Drop Tables (Reverse Dependency Order)
+SQL> -- =====================================================================
+SQL> PROMPT Phase 9: Dropping tables...
+Phase 9: Dropping tables...
+SQL> DROP TABLE photo CASCADE CONSTRAINTS;
+
+Table PHOTO dropped.
+
+SQL> DROP TABLE task_progress CASCADE CONSTRAINTS;
+
+Table TASK_PROGRESS dropped.
+
+SQL> DROP TABLE construction_task CASCADE CONSTRAINTS;
+
+Table CONSTRUCTION_TASK dropped.
+
+SQL> DROP TABLE decorator_choice CASCADE CONSTRAINTS;
+
+Table DECORATOR_CHOICE dropped.
+
+SQL> DROP TABLE decorator_session CASCADE CONSTRAINTS;
+
+Table DECORATOR_SESSION dropped.
+
+SQL> DROP TABLE option_stage_price CASCADE CONSTRAINTS;
+
+Table OPTION_STAGE_PRICE dropped.
+
+SQL> DROP TABLE "Option" CASCADE CONSTRAINTS;
+
+Table "Option" dropped.
+
+SQL> DROP TABLE optioncategory CASCADE CONSTRAINTS;
+
+Table OPTIONCATEGORY dropped.
+
+SQL> DROP TABLE sale CASCADE CONSTRAINTS;
+
+Table SALE dropped.
+
+SQL> DROP TABLE housetask CASCADE CONSTRAINTS;
+
+Table HOUSETASK dropped.
+
+SQL> DROP TABLE rooms CASCADE CONSTRAINTS;
+
+Table ROOMS dropped.
+
+SQL> DROP TABLE house CASCADE CONSTRAINTS;
+
+Table HOUSE dropped.
+
+SQL> DROP TABLE elevation CASCADE CONSTRAINTS;
+
+Table ELEVATION dropped.
+
+SQL> DROP TABLE housestyle CASCADE CONSTRAINTS;
+
+Table HOUSESTYLE dropped.
+
+SQL> DROP TABLE lot CASCADE CONSTRAINTS;
+
+Table LOT dropped.
+
+SQL> DROP TABLE school CASCADE CONSTRAINTS;
+
+Table SCHOOL dropped.
+
+SQL> DROP TABLE subdivision CASCADE CONSTRAINTS;
+
+Table SUBDIVISION dropped.
+
+SQL> DROP TABLE bank_worker CASCADE CONSTRAINTS;
+
+Table BANK_WORKER dropped.
+
+SQL> DROP TABLE bank CASCADE CONSTRAINTS;
+
+Table BANK dropped.
+
+SQL> DROP TABLE escrowagent CASCADE CONSTRAINTS;
+
+Table ESCROWAGENT dropped.
+
+SQL> DROP TABLE employee CASCADE CONSTRAINTS;
+
+Table EMPLOYEE dropped.
+
+SQL> DROP TABLE buyer CASCADE CONSTRAINTS;
+
+Table BUYER dropped.
+
+SQL> 
+SQL> PROMPT 
+
+SQL> PROMPT =====================================================================
+=====================================================================
+SQL> PROMPT CLEANUP COMPLETE
+CLEANUP COMPLETE
+SQL> PROMPT =====================================================================
+=====================================================================
+SQL> 
+SQL> PAUSE Press Enter to continue...
+SQL> 
+SQL> PROMPT Step 2: Installation...
+Step 2: Installation...
+SQL> @master_setup.sql
+SQL> -- ===========================================================
+SQL> -- FILE: master_setup.sql
+SQL> -- PURPOSE: Install all Eggshell database components
+SQL> -- ===========================================================
+SQL> 
+SQL> SET ECHO ON
+SQL> SET SERVEROUTPUT ON SIZE 1000000
+SQL> SET TIMING ON
+SQL> SET LINESIZE 200
+Elapsed: 00:00:00.016
+SQL> SET PAGESIZE 100
+Elapsed: 00:00:00.017
+SQL> WHENEVER SQLERROR CONTINUE
+Elapsed: 00:00:00.016
+SQL> 
+SQL> PROMPT =====================================================================
+=====================================================================
+Elapsed: 00:00:00.017
+SQL> PROMPT EGGSHELL HOME BUILDER - MASTER SETUP
+EGGSHELL HOME BUILDER - MASTER SETUP
+Elapsed: 00:00:00.016
+SQL> PROMPT =====================================================================
+=====================================================================
+Elapsed: 00:00:00.016
+SQL> 
+SQL> PROMPT Phase 1: Creating tables and constraints...
+Phase 1: Creating tables and constraints...
+Elapsed: 00:00:00.016
+SQL> @DDL_Script_1.0.ddl
+SQL> -- Generated by Oracle SQL Developer Data Modeler 18.3.0.268.1156
+Elapsed: 00:00:00.016
+SQL> --   at:        2025-09-29 15:53:23 EDT
+Elapsed: 00:00:00.017
+SQL> --   site:      Oracle Database 11g
+Elapsed: 00:00:00.017
+SQL> --   type:      Oracle Database 11g
+Elapsed: 00:00:00.017
+SQL> 
+SQL> 
+SQL> 
+SQL> CREATE TABLE bank (
+  2      bank_id      NUMBER NOT NULL,
+  3      name         VARCHAR2(250),
+  4      address      LONG,
+  5      zip          VARCHAR2(10),
+  6      state        VARCHAR2(2),
+  7      phone_number VARCHAR2(15)
+  8  );
+
+Table BANK created.
+
+Elapsed: 00:00:00.041
+SQL> 
+SQL> ALTER TABLE bank ADD CONSTRAINT bank_pk PRIMARY KEY ( bank_id );
+
+Table BANK altered.
+
+Elapsed: 00:00:00.043
+SQL> 
+SQL> CREATE TABLE bank_worker (
+  2      worker_id    NUMBER NOT NULL,
+  3      name         VARCHAR2(250),
+  4      phone_number VARCHAR2(15),
+  5      fax_number   VARCHAR2(15),
+  6      bank_bank_id NUMBER NOT NULL
+  7  );
+
+Table BANK_WORKER created.
+
+Elapsed: 00:00:00.038
+SQL> 
+SQL> ALTER TABLE bank_worker ADD CONSTRAINT bank_worker_pk PRIMARY KEY ( worker_id );
+
+Table BANK_WORKER altered.
+
+Elapsed: 00:00:00.042
+SQL> 
+SQL> CREATE TABLE buyer (
+  2      buyer_id NUMBER NOT NULL,
+  3      name     VARCHAR2(250),
+  4      address  LONG,
+  5      city     VARCHAR2(50),
+  6      state    VARCHAR2(2),
+  7      zip      VARCHAR2(10),
+  8      phone    VARCHAR2(15),
+  9      email    VARCHAR2(100)
+ 10  );
+
+Table BUYER created.
+
+Elapsed: 00:00:00.038
+SQL> 
+SQL> ALTER TABLE buyer ADD CONSTRAINT buyer_pk PRIMARY KEY ( buyer_id );
+
+Table BUYER altered.
+
+Elapsed: 00:00:00.045
+SQL> 
+SQL> CREATE TABLE construction_task (
+  2      task_id                NUMBER NOT NULL,
+  3      description            VARCHAR2(1000),
+  4      stage                  NUMBER,
+  5      basecost               NUMBER(12, 2),
+  6      approval               CHAR(1),
+  7      housetask_housetask_id NUMBER NOT NULL
+  8  );
+
+Table CONSTRUCTION_TASK created.
+
+Elapsed: 00:00:00.039
+SQL> 
+SQL> ALTER TABLE construction_task ADD CONSTRAINT construction_task_pk PRIMARY KEY ( task_id );
+
+Table CONSTRUCTION_TASK altered.
+
+Elapsed: 00:00:00.041
+SQL> 
+SQL> CREATE TABLE decorator_choice (
+  2      decoratorchoice_id      NUMBER NOT NULL,
+  3      item                    VARCHAR2(250),
+  4      description             VARCHAR2(1000),
+  5      price                   NUMBER(12, 2),
+  6      decorator_session_id    NUMBER NOT NULL,
+  7      option_option_id        NUMBER NOT NULL
+  8  );
+
+Table DECORATOR_CHOICE created.
+
+Elapsed: 00:00:00.043
+SQL> 
+SQL> ALTER TABLE decorator_choice ADD CONSTRAINT decorator_choice_pk PRIMARY KEY ( decoratorchoice_id );
+
+Table DECORATOR_CHOICE altered.
+
+Elapsed: 00:00:00.039
+SQL> 
+SQL> CREATE TABLE decorator_session (
+  2      decoratorsession_id  NUMBER NOT NULL,
+  3      "Date"               DATE,
+  4      stage                NUMBER,
+  5      housetask_housetask_id NUMBER NOT NULL,
+  6      approval             CHAR(1)
+  7  );
+
+Table DECORATOR_SESSION created.
+
+Elapsed: 00:00:00.038
+SQL> 
+SQL> ALTER TABLE decorator_session ADD CONSTRAINT decorator_session_pk PRIMARY KEY ( decoratorsession_id );
+
+Table DECORATOR_SESSION altered.
+
+Elapsed: 00:00:00.040
+SQL> 
+SQL> CREATE TABLE elevation (
+  2      elevation_id         NUMBER NOT NULL,
+  3      elevationcode        VARCHAR2(250),
+  4      description          VARCHAR2(1000),
+  5      additionalcostsketch VARCHAR2(1000),
+  6      housestyle_style_id  NUMBER NOT NULL
+  7  );
+
+Table ELEVATION created.
+
+Elapsed: 00:00:00.037
+SQL> 
+SQL> ALTER TABLE elevation ADD CONSTRAINT elevation_pk PRIMARY KEY ( elevation_id );
+
+Table ELEVATION altered.
+
+Elapsed: 00:00:00.046
+SQL> 
+SQL> CREATE TABLE employee (
+  2      employee_id    NUMBER NOT NULL,
+  3      name           VARCHAR2(250),
+  4      title          VARCHAR2(1000),
+  5      email          VARCHAR2(100),
+  6      phone          VARCHAR2(15),
+  7      active         CHAR(1),
+  8      hire_date      DATE,
+  9      license_number VARCHAR2(50)
+ 10  );
+
+Table EMPLOYEE created.
+
+Elapsed: 00:00:00.037
+SQL> 
+SQL> ALTER TABLE employee ADD CONSTRAINT employee_pk PRIMARY KEY ( employee_id );
+
+Table EMPLOYEE altered.
+
+Elapsed: 00:00:00.046
+SQL> 
+SQL> CREATE TABLE escrowagent (
+  2      escrowagent_id NUMBER NOT NULL,
+  3      name           VARCHAR2(250),
+  4      address        LONG,
+  5      city           VARCHAR2(50),
+  6      state          VARCHAR2(2),
+  7      zip            VARCHAR2(10),
+  8      phone_number   VARCHAR2(15)
+  9  );
+
+Table ESCROWAGENT created.
+
+Elapsed: 00:00:00.039
+SQL> 
+SQL> ALTER TABLE escrowagent ADD CONSTRAINT escrowagent_pk PRIMARY KEY ( escrowagent_id );
+
+Table ESCROWAGENT altered.
+
+Elapsed: 00:00:00.039
+SQL> 
+SQL> CREATE TABLE house (
+  2      house_id                 NUMBER NOT NULL,
+  3      currentconstructionstage NUMBER,
+  4      estimatedcompletion      DATE,
+  5      lot_lot_id               NUMBER NOT NULL,
+  6      housestyle_style_id      NUMBER NOT NULL,
+  7      elevation_elevation_id   NUMBER NOT NULL
+  8  );
+
+Table HOUSE created.
+
+Elapsed: 00:00:00.045
+SQL> 
+SQL> CREATE UNIQUE INDEX house__idx ON
+  2      house (
+  3          elevation_elevation_id
+  4      ASC );
+
+INDEX HOUSE__IDX created.
+
+Elapsed: 00:00:00.051
+SQL> 
+SQL> ALTER TABLE house ADD CONSTRAINT house_pk PRIMARY KEY ( house_id );
+
+Table HOUSE altered.
+
+Elapsed: 00:00:00.043
+SQL> 
+SQL> CREATE TABLE housestyle (
+  2      style_id         NUMBER NOT NULL,
+  3      stylename        VARCHAR2(250),
+  4      baseprice        NUMBER(12, 2),
+  5      styledescription VARCHAR2(1000),
+  6      "Size"           NUMBER,
+  7      photo            BLOB,
+  8      numberwindows    NUMBER,
+  9      ceiling          VARCHAR2(1000)
+ 10  );
+
+Table HOUSESTYLE created.
+
+Elapsed: 00:00:00.040
+SQL> 
+SQL> ALTER TABLE housestyle ADD CONSTRAINT housestyle_pk PRIMARY KEY ( style_id );
+
+Table HOUSESTYLE altered.
+
+Elapsed: 00:00:00.044
+SQL> 
+SQL> CREATE TABLE housetask (
+  2      housetask_id         NUMBER NOT NULL,
+  3      stage                NUMBER,
+  4      required             CHAR(1),
+  5      plannedstart         DATE,
+  6      plannedend           DATE,
+  7      notes                VARCHAR2(1000),
+  8      house_house_id       NUMBER NOT NULL,
+  9      employee_employee_id NUMBER NOT NULL,
+ 10      plannedcost          NUMBER(12, 2),
+ 11      actualcost           NUMBER(12, 2),
+ 12      percent_complete     NUMBER(3, 2)
+ 13  );
+
+Table HOUSETASK created.
+
+Elapsed: 00:00:00.042
+SQL> 
+SQL> ALTER TABLE housetask ADD CONSTRAINT housetask_pk PRIMARY KEY ( housetask_id );
+
+Table HOUSETASK altered.
+
+Elapsed: 00:00:00.041
+SQL> 
+SQL> CREATE TABLE lot (
+  2      lot_id                   NUMBER NOT NULL,
+  3      address                  LONG,
+  4      city                     VARCHAR2(50),
+  5      state                    VARCHAR2(2),
+  6      zip                      VARCHAR2(10),
+  7      lotsize                  NUMBER,
+  8      description              VARCHAR2(1000),
+  9      lotpremium               NUMBER(12, 2),
+ 10      subdivision_subdivision_id NUMBER NOT NULL
+ 11  );
+
+Table LOT created.
+
+Elapsed: 00:00:00.042
+SQL> 
+SQL> ALTER TABLE lot ADD CONSTRAINT lot_pk PRIMARY KEY ( lot_id );
+
+Table LOT altered.
+
+Elapsed: 00:00:00.040
+SQL> 
+SQL> CREATE TABLE "Option" (
+  2      option_id                NUMBER NOT NULL,
+  3      option_name              VARCHAR2(250),
+  4      description              VARCHAR2(1000),
+  5      optioncategory_category_id NUMBER NOT NULL,
+  6      housestyle_style_id      NUMBER NOT NULL
+  7  );
+
+Table "Option" created.
+
+Elapsed: 00:00:00.044
+SQL> 
+SQL> ALTER TABLE "Option" ADD CONSTRAINT option_pk PRIMARY KEY ( option_id );
+
+Table "Option" altered.
+
+Elapsed: 00:00:00.040
+SQL> 
+SQL> CREATE TABLE option_stage_price (
+  2      cost             NUMBER(12, 2),
+  3      revision_date    DATE,
+  4      stage            NUMBER NOT NULL,
+  5      option_option_id NUMBER NOT NULL,
+  6      osp_id           NUMBER NOT NULL
+  7  );
+
+Table OPTION_STAGE_PRICE created.
+
+Elapsed: 00:00:00.038
+SQL> 
+SQL> ALTER TABLE option_stage_price ADD CONSTRAINT option_stage_price_pk PRIMARY KEY ( osp_id );
+
+Table OPTION_STAGE_PRICE altered.
+
+Elapsed: 00:00:00.040
+SQL> 
+SQL> CREATE TABLE optioncategory (
+  2      category_id  NUMBER NOT NULL,
+  3      categoryname VARCHAR2(250)
+  4  );
+
+Table OPTIONCATEGORY created.
+
+Elapsed: 00:00:00.037
+SQL> 
+SQL> ALTER TABLE optioncategory ADD CONSTRAINT optioncategory_pk PRIMARY KEY ( category_id );
+
+Table OPTIONCATEGORY altered.
+
+Elapsed: 00:00:00.041
+SQL> 
+SQL> CREATE TABLE photo (
+  2      photo_id                  NUMBER NOT NULL,
+  3      date_uploaded             DATE,
+  4      url                       VARCHAR2(1000),
+  5      housetask_housetask_id    NUMBER NOT NULL,
+  6      task_progress_progress_id NUMBER NOT NULL
+  7  );
+
+Table PHOTO created.
+
+Elapsed: 00:00:00.039
+SQL> 
+SQL> ALTER TABLE photo ADD CONSTRAINT photo_pk PRIMARY KEY ( photo_id );
+
+Table PHOTO altered.
+
+Elapsed: 00:00:00.041
+SQL> 
+SQL> CREATE TABLE rooms (
+  2      room_id           NUMBER NOT NULL,
+  3      name              VARCHAR2(250),
+  4      "Size"            NUMBER,
+  5      floor             VARCHAR2(50),
+  6      no_of_windows     NUMBER,
+  7      notes             VARCHAR2(1000),
+  8      house_house_id    NUMBER NOT NULL,
+  9      housestyle_style_id NUMBER NOT NULL,
+ 10      ceilings          VARCHAR2(1000)
+ 11  );
+
+Table ROOMS created.
+
+Elapsed: 00:00:00.037
+SQL> 
+SQL> ALTER TABLE rooms ADD CONSTRAINT rooms_pk PRIMARY KEY ( room_id );
+
+Table ROOMS altered.
+
+Elapsed: 00:00:00.039
+SQL> 
+SQL> CREATE TABLE sale (
+  2      sale_id                  NUMBER NOT NULL,
+  3      "Date"                   DATE,
+  4      financing_method         VARCHAR2(1000),
+  5      escrowdeposit            NUMBER(12, 2),
+  6      estimatedcompletion      DATE,
+  7      receivedsubdivision      CHAR(1),
+  8      receiveddisclosureform   CHAR(1),
+  9      receivedcontractcopy     CHAR(1),
+ 10      buyer_buyer_id           NUMBER NOT NULL,
+ 11      escrowagent_escrowagent_id NUMBER NOT NULL,
+ 12      employee_employee_id     NUMBER NOT NULL,
+ 13      house_house_id           NUMBER NOT NULL,
+ 14      bank_worker_worker_id    NUMBER NOT NULL
+ 15  );
+
+Table SALE created.
+
+Elapsed: 00:00:00.040
+SQL> 
+SQL> ALTER TABLE sale ADD CONSTRAINT sale_pk PRIMARY KEY ( sale_id );
+
+Table SALE altered.
+
+Elapsed: 00:00:00.039
+SQL> 
+SQL> CREATE TABLE school (
+  2      school_id                NUMBER NOT NULL,
+  3      name                     VARCHAR2(250),
+  4      address                  LONG,
+  5      type                     VARCHAR2(250),
+  6      subdivision_subdivision_id NUMBER NOT NULL
+  7  );
+
+Table SCHOOL created.
+
+Elapsed: 00:00:00.038
+SQL> 
+SQL> ALTER TABLE school ADD CONSTRAINT school_pk PRIMARY KEY ( school_id );
+
+Table SCHOOL altered.
+
+Elapsed: 00:00:00.040
+SQL> 
+SQL> CREATE TABLE subdivision (
+  2      subdivision_id NUMBER NOT NULL,
+  3      name           VARCHAR2(50),
+  4      city           VARCHAR2(50),
+  5      state          VARCHAR2(2),
+  6      zip            VARCHAR2(10)
+  7  );
+
+Table SUBDIVISION created.
+
+Elapsed: 00:00:00.037
+SQL> 
+SQL> ALTER TABLE subdivision ADD CONSTRAINT subdivision_pk PRIMARY KEY ( subdivision_id );
+
+Table SUBDIVISION altered.
+
+Elapsed: 00:00:00.040
+SQL> 
+SQL> CREATE TABLE task_progress (
+  2      progress_id           NUMBER NOT NULL,
+  3      percentage_complete   NUMBER(3, 2),
+  4      estimatedcompletiondate DATE,
+  5      housetask_housetask_id  NUMBER NOT NULL
+  6  );
+
+Table TASK_PROGRESS created.
+
+Elapsed: 00:00:00.037
+SQL> 
+SQL> ALTER TABLE task_progress ADD CONSTRAINT task_progress_pk PRIMARY KEY ( progress_id );
+
+Table TASK_PROGRESS altered.
+
+Elapsed: 00:00:00.040
+SQL> 
+SQL> ALTER TABLE bank_worker
+  2      ADD CONSTRAINT bank_worker_bank_fk FOREIGN KEY ( bank_bank_id )
+  3          REFERENCES bank ( bank_id );
+
+Table BANK_WORKER altered.
+
+Elapsed: 00:00:00.045
+SQL> 
+SQL> ALTER TABLE construction_task
+  2      ADD CONSTRAINT construction_task_housetask_fk FOREIGN KEY ( housetask_housetask_id )
+  3          REFERENCES housetask ( housetask_id );
+
+Table CONSTRUCTION_TASK altered.
+
+Elapsed: 00:00:00.043
+SQL> 
+SQL> ALTER TABLE decorator_choice
+  2      ADD CONSTRAINT dec_choice_session_fk FOREIGN KEY ( decorator_session_id )
+  3          REFERENCES decorator_session ( decoratorsession_id );
+
+Table DECORATOR_CHOICE altered.
+
+Elapsed: 00:00:00.040
+SQL> 
+SQL> ALTER TABLE decorator_choice
+  2      ADD CONSTRAINT decorator_choice_option_fk FOREIGN KEY ( option_option_id )
+  3          REFERENCES "Option" ( option_id );
+
+Table DECORATOR_CHOICE altered.
+
+Elapsed: 00:00:00.044
+SQL> 
+SQL> ALTER TABLE decorator_session
+  2      ADD CONSTRAINT dec_session_housetask_fk FOREIGN KEY ( housetask_housetask_id )
+  3          REFERENCES housetask ( housetask_id );
+
+Table DECORATOR_SESSION altered.
+
+Elapsed: 00:00:00.040
+SQL> 
+SQL> ALTER TABLE elevation
+  2      ADD CONSTRAINT elevation_housestyle_fk FOREIGN KEY ( housestyle_style_id )
+  3          REFERENCES housestyle ( style_id );
+
+Table ELEVATION altered.
+
+Elapsed: 00:00:00.039
+SQL> 
+SQL> ALTER TABLE house
+  2      ADD CONSTRAINT house_elevation_fk FOREIGN KEY ( elevation_elevation_id )
+  3          REFERENCES elevation ( elevation_id );
+
+Table HOUSE altered.
+
+Elapsed: 00:00:00.039
+SQL> 
+SQL> ALTER TABLE house
+  2      ADD CONSTRAINT house_housestyle_fk FOREIGN KEY ( housestyle_style_id )
+  3          REFERENCES housestyle ( style_id );
+
+Table HOUSE altered.
+
+Elapsed: 00:00:00.126
+SQL> 
+SQL> ALTER TABLE house
+  2      ADD CONSTRAINT house_lot_fk FOREIGN KEY ( lot_lot_id )
+  3          REFERENCES lot ( lot_id );
+
+Table HOUSE altered.
+
+Elapsed: 00:00:00.040
+SQL> 
+SQL> ALTER TABLE housetask
+  2      ADD CONSTRAINT housetask_employee_fk FOREIGN KEY ( employee_employee_id )
+  3          REFERENCES employee ( employee_id );
+
+Table HOUSETASK altered.
+
+Elapsed: 00:00:00.046
+SQL> 
+SQL> ALTER TABLE housetask
+  2      ADD CONSTRAINT housetask_house_fk FOREIGN KEY ( house_house_id )
+  3          REFERENCES house ( house_id );
+
+Table HOUSETASK altered.
+
+Elapsed: 00:00:00.041
+SQL> 
+SQL> ALTER TABLE lot
+  2      ADD CONSTRAINT lot_subdivision_fk FOREIGN KEY ( subdivision_subdivision_id )
+  3          REFERENCES subdivision ( subdivision_id );
+
+Table LOT altered.
+
+Elapsed: 00:00:00.040
+SQL> 
+SQL> ALTER TABLE "Option"
+  2      ADD CONSTRAINT option_housestyle_fk FOREIGN KEY ( housestyle_style_id )
+  3          REFERENCES housestyle ( style_id );
+
+Table "Option" altered.
+
+Elapsed: 00:00:00.041
+SQL> 
+SQL> ALTER TABLE "Option"
+  2      ADD CONSTRAINT option_optioncategory_fk FOREIGN KEY ( optioncategory_category_id )
+  3          REFERENCES optioncategory ( category_id );
+
+Table "Option" altered.
+
+Elapsed: 00:00:00.045
+SQL> 
+SQL> ALTER TABLE option_stage_price
+  2      ADD CONSTRAINT option_stage_price_option_fk FOREIGN KEY ( option_option_id )
+  3          REFERENCES "Option" ( option_id );
+
+Table OPTION_STAGE_PRICE altered.
+
+Elapsed: 00:00:00.040
+SQL> 
+SQL> ALTER TABLE photo
+  2      ADD CONSTRAINT photo_housetask_fk FOREIGN KEY ( housetask_housetask_id )
+  3          REFERENCES housetask ( housetask_id );
+
+Table PHOTO altered.
+
+Elapsed: 00:00:00.037
+SQL> 
+SQL> ALTER TABLE photo
+  2      ADD CONSTRAINT photo_task_progress_fk FOREIGN KEY ( task_progress_progress_id )
+  3          REFERENCES task_progress ( progress_id );
+
+Table PHOTO altered.
+
+Elapsed: 00:00:00.040
+SQL> 
+SQL> ALTER TABLE rooms
+  2      ADD CONSTRAINT rooms_house_fk FOREIGN KEY ( house_house_id )
+  3          REFERENCES house ( house_id );
+
+Table ROOMS altered.
+
+Elapsed: 00:00:00.047
+SQL> 
+SQL> ALTER TABLE rooms
+  2      ADD CONSTRAINT rooms_housestyle_fk FOREIGN KEY ( housestyle_style_id )
+  3          REFERENCES housestyle ( style_id );
+
+Table ROOMS altered.
+
+Elapsed: 00:00:00.040
+SQL> 
+SQL> ALTER TABLE sale
+  2      ADD CONSTRAINT sale_bank_worker_fk FOREIGN KEY ( bank_worker_worker_id )
+  3          REFERENCES bank_worker ( worker_id );
+
+Table SALE altered.
+
+Elapsed: 00:00:00.041
+SQL> 
+SQL> ALTER TABLE sale
+  2      ADD CONSTRAINT sale_buyer_fk FOREIGN KEY ( buyer_buyer_id )
+  3          REFERENCES buyer ( buyer_id );
+
+Table SALE altered.
+
+Elapsed: 00:00:00.043
+SQL> 
+SQL> ALTER TABLE sale
+  2      ADD CONSTRAINT sale_employee_fk FOREIGN KEY ( employee_employee_id )
+  3          REFERENCES employee ( employee_id );
+
+Table SALE altered.
+
+Elapsed: 00:00:00.040
+SQL> 
+SQL> ALTER TABLE sale
+  2      ADD CONSTRAINT sale_escrowagent_fk FOREIGN KEY ( escrowagent_escrowagent_id )
+  3          REFERENCES escrowagent ( escrowagent_id );
+
+Table SALE altered.
+
+Elapsed: 00:00:00.039
+SQL> 
+SQL> ALTER TABLE sale
+  2      ADD CONSTRAINT sale_house_fk FOREIGN KEY ( house_house_id )
+  3          REFERENCES house ( house_id );
+
+Table SALE altered.
+
+Elapsed: 00:00:00.040
+SQL> 
+SQL> ALTER TABLE school
+  2      ADD CONSTRAINT school_subdivision_fk FOREIGN KEY ( subdivision_subdivision_id )
+  3          REFERENCES subdivision ( subdivision_id );
+
+Table SCHOOL altered.
+
+Elapsed: 00:00:00.044
+SQL> 
+SQL> ALTER TABLE task_progress
+  2      ADD CONSTRAINT task_progress_housetask_fk FOREIGN KEY ( housetask_housetask_id )
+  3          REFERENCES housetask ( housetask_id );
+
+Table TASK_PROGRESS altered.
+
+Elapsed: 00:00:00.040
+SQL> 
+SQL> -- Oracle SQL Developer Data Modeler Summary Report: 
+Elapsed: 00:00:00.017
+SQL> -- 
+Elapsed: 00:00:00.017
+SQL> -- CREATE TABLE                            22
+Elapsed: 00:00:00.017
+SQL> -- CREATE INDEX                             1
+Elapsed: 00:00:00.017
+SQL> -- ALTER TABLE                             74
+Elapsed: 00:00:00.016
+SQL> -- CREATE VIEW                              0
+Elapsed: 00:00:00.016
+SQL> -- ALTER VIEW                               0
+Elapsed: 00:00:00.017
+SQL> -- CREATE PACKAGE                           0
+Elapsed: 00:00:00.017
+SQL> -- CREATE PACKAGE BODY                      0
+Elapsed: 00:00:00.016
+SQL> -- CREATE PROCEDURE                         0
+Elapsed: 00:00:00.016
+SQL> -- CREATE FUNCTION                          0
+Elapsed: 00:00:00.017
+SQL> -- CREATE TRIGGER                           0
+Elapsed: 00:00:00.017
+SQL> -- ALTER TRIGGER                            0
+Elapsed: 00:00:00.017
+SQL> -- CREATE COLLECTION TYPE                   0
+Elapsed: 00:00:00.016
+SQL> -- CREATE STRUCTURED TYPE                   0
+Elapsed: 00:00:00.016
+SQL> -- CREATE STRUCTURED TYPE BODY              0
+Elapsed: 00:00:00.017
+SQL> -- CREATE CLUSTER                           0
+Elapsed: 00:00:00.018
+SQL> -- CREATE CONTEXT                           0
+Elapsed: 00:00:00.017
+SQL> -- CREATE DATABASE                          0
+Elapsed: 00:00:00.016
+SQL> -- CREATE DIMENSION                         0
+Elapsed: 00:00:00.016
+SQL> -- CREATE DIRECTORY                         0
+Elapsed: 00:00:00.016
+SQL> -- CREATE DISK GROUP                        0
+Elapsed: 00:00:00.016
+SQL> -- CREATE ROLE                              0
+Elapsed: 00:00:00.017
+SQL> -- CREATE ROLLBACK SEGMENT                  0
+Elapsed: 00:00:00.017
+SQL> -- CREATE SEQUENCE                          0
+Elapsed: 00:00:00.017
+SQL> -- CREATE MATERIALIZED VIEW                 0
+Elapsed: 00:00:00.016
+SQL> -- CREATE MATERIALIZED VIEW LOG             0
+Elapsed: 00:00:00.017
+SQL> -- CREATE SYNONYM                           0
+Elapsed: 00:00:00.017
+SQL> -- CREATE TABLESPACE                        0
+Elapsed: 00:00:00.016
+SQL> -- CREATE USER                              0
+Elapsed: 00:00:00.017
+SQL> -- 
+Elapsed: 00:00:00.016
+SQL> -- DROP TABLESPACE                          0
+Elapsed: 00:00:00.018
+SQL> -- DROP DATABASE                            0
+Elapsed: 00:00:00.017
+SQL> -- 
+Elapsed: 00:00:00.017
+SQL> -- REDACTION POLICY                         0
+Elapsed: 00:00:00.016
+SQL> -- 
+Elapsed: 00:00:00.018
+SQL> -- ORDS DROP SCHEMA                         0
+Elapsed: 00:00:00.017
+SQL> -- ORDS ENABLE SCHEMA                       0
+Elapsed: 00:00:00.017
+SQL> -- ORDS ENABLE OBJECT                       0
+Elapsed: 00:00:00.017
+SQL> -- 
+Elapsed: 00:00:00.017
+SQL> -- ERRORS                                   5
+Elapsed: 00:00:00.017
+SQL> -- WARNINGS                                 0
+Elapsed: 00:00:00.017
+Elapsed: 00:00:00.034
+SQL> 
+SQL> PROMPT Phase 2: Loading initial data...
+Phase 2: Loading initial data...
+Elapsed: 00:00:00.017
+SQL> @data_init.sql
+SQL> -- =========================================
+Elapsed: 00:00:00.016
+SQL> -- Subdivisions (2)
+Elapsed: 00:00:00.016
+SQL> -- =========================================
+Elapsed: 00:00:00.017
+SQL> INSERT INTO subdivision (subdivision_id, name, city, state, zip)
+  2  VALUES (1, 'Sunnyvale', 'Pittsburgh', 'PA', '15213');
+
+1 row inserted.
+
+Elapsed: 00:00:00.039
+SQL> 
+SQL> INSERT INTO subdivision (subdivision_id, name, city, state, zip)
+  2  VALUES (2, 'Maple Grove', 'Cleveland', 'OH', '44101');
+
+1 row inserted.
+
+Elapsed: 00:00:00.036
+SQL> 
+SQL> -- =========================================
+Elapsed: 00:00:00.016
+SQL> -- HouseStyle & Elevations
+Elapsed: 00:00:00.016
+SQL> -- =========================================
+Elapsed: 00:00:00.018
+SQL> INSERT INTO housestyle (style_id, stylename, baseprice, styledescription, "Size", photo, numberwindows, ceiling)
+  2  VALUES (4001, 'Modern Ranch', 250000, 'Open layout', 2000, EMPTY_BLOB(), 10, 'Vaulted');
+
+1 row inserted.
+
+Elapsed: 00:00:00.040
+SQL> 
+SQL> 
+SQL> 
+SQL> -- Elevations [Range: 6001–6005]
+Elapsed: 00:00:00.017
+SQL> INSERT INTO elevation (elevation_id, elevationcode, description, additionalcostsketch, housestyle_style_id)
+  2  VALUES (6001, 'E1', 'Basic elevation', 'None', 4001);
+
+1 row inserted.
+
+Elapsed: 00:00:00.039
+SQL> 
+SQL> INSERT INTO elevation (elevation_id, elevationcode, description, additionalcostsketch, housestyle_style_id)
+  2  VALUES (6002, 'E2', 'Stone accents', 'Stone front option', 4001);
+
+1 row inserted.
+
+Elapsed: 00:00:00.034
+SQL> 
+SQL> INSERT INTO elevation (elevation_id, elevationcode, description, additionalcostsketch, housestyle_style_id)
+  2  VALUES (6003, 'E3', 'Board and batten', 'Vertical siding sketch', 4001);
+
+1 row inserted.
+
+Elapsed: 00:00:00.035
+SQL> 
+SQL> INSERT INTO elevation (elevation_id, elevationcode, description, additionalcostsketch, housestyle_style_id)
+  2  VALUES (6004, 'E4', 'Dormer windows', 'Dormer add-on', 4001);
+
+1 row inserted.
+
+Elapsed: 00:00:00.037
+SQL> 
+SQL> INSERT INTO elevation (elevation_id, elevationcode, description, additionalcostsketch, housestyle_style_id)
+  2  VALUES (6005, 'E5', 'Porch wrap', 'Porch wraparound', 4001);
+
+1 row inserted.
+
+Elapsed: 00:00:00.034
+SQL> 
+SQL> --Style and Elevations for Colonial Classic
+Elapsed: 00:00:00.017
+SQL> 
+SQL> INSERT INTO housestyle (style_id, stylename, baseprice, styledescription, "Size", photo, numberwindows, ceiling)
+  2  VALUES (4002, 'Colonial Classic', 300000, 'Traditional two-story colonial design', 2400, EMPTY_BLOB(), 12, '9ft flat');
+
+1 row inserted.
+
+Elapsed: 00:00:00.035
+SQL> 
+SQL> INSERT INTO elevation (elevation_id, elevationcode, description, additionalcostsketch, housestyle_style_id)
+  2  VALUES (6006, 'E6', 'Brick front elevation', 'Brick upgrade', 4002);
+
+1 row inserted.
+
+Elapsed: 00:00:00.034
+SQL> 
+SQL> INSERT INTO elevation (elevation_id, elevationcode, description, additionalcostsketch, housestyle_style_id)
+  2  VALUES (6007, 'E7', 'Shutters and gables', 'Shutter and gable details', 4002);
+
+1 row inserted.
+
+Elapsed: 00:00:00.035
+SQL> 
+SQL> 
+SQL> 
+SQL> -- =========================================
+Elapsed: 00:00:00.017
+SQL> -- Buyers (5) [Range: 24001–24005]
+Elapsed: 00:00:00.018
+SQL> -- =========================================
+Elapsed: 00:00:00.017
+SQL> INSERT INTO buyer (buyer_id, name, address, city, state, zip, phone, email)
+  2  VALUES (24001, 'Carol White', '789 Maple St', 'Pittsburgh', 'PA', '15213', '412-555-5555', 'carol@example.com');
+
+1 row inserted.
+
+Elapsed: 00:00:00.038
+SQL> 
+SQL> INSERT INTO buyer (buyer_id, name, address, city, state, zip, phone, email)
+  2  VALUES (24002, 'Frank Green', '999 Oak Blvd', 'Cleveland', 'OH', '44101', '216-555-6666', 'frank@example.com');
+
+1 row inserted.
+
+Elapsed: 00:00:00.034
+SQL> 
+SQL> INSERT INTO buyer (buyer_id, name, address, city, state, zip, phone, email)
+  2  VALUES (24003, 'Helen Black', '23 River Ln', 'Pittsburgh', 'PA', '15214', '412-555-1111', 'helen@example.com');
+
+1 row inserted.
+
+Elapsed: 00:00:00.034
+SQL> 
+SQL> INSERT INTO buyer (buyer_id, name, address, city, state, zip, phone, email)
+  2  VALUES (24004, 'Michael Gray', '7 Lake Ave', 'Cleveland', 'OH', '44102', '216-555-2222', 'michael@example.com');
+
+1 row inserted.
+
+Elapsed: 00:00:00.034
+SQL> 
+SQL> INSERT INTO buyer (buyer_id, name, address, city, state, zip, phone, email)
+  2  VALUES (24005, 'Nina Brown', '14 Oak St', 'Pittsburgh', 'PA', '15215', '412-555-3333', 'nina@example.com');
+
+1 row inserted.
+
+Elapsed: 00:00:00.035
+SQL> 
+SQL> -- =========================================
+Elapsed: 00:00:00.016
+SQL> -- Employees (3) [Range: 26001–26003]
+Elapsed: 00:00:00.017
+SQL> -- =========================================
+Elapsed: 00:00:00.017
+SQL> INSERT INTO employee (employee_id, name, title, email, phone, active, hire_date, license_number)
+  2  VALUES (26001, 'Bob Johnson', 'Site Manager', 'bob.j@company.com', '412-555-4444', 'Y', SYSDATE, 'LIC123');
+
+1 row inserted.
+
+Elapsed: 00:00:00.038
+SQL> 
+SQL> INSERT INTO employee (employee_id, name, title, email, phone, active, hire_date, license_number)
+  2  VALUES (26002, 'Eva Martinez', 'Engineer', 'eva.m@company.com', '216-555-7777', 'Y', SYSDATE, 'LIC456');
+
+1 row inserted.
+
+Elapsed: 00:00:00.035
+SQL> 
+SQL> INSERT INTO employee (employee_id, name, title, email, phone, active, hire_date, license_number)
+  2  VALUES (26003, 'Liam Chen', 'Architect', 'liam.c@company.com', '614-555-9999', 'Y', SYSDATE, 'LIC789');
+
+1 row inserted.
+
+Elapsed: 00:00:00.034
+SQL> 
+SQL> -- =========================================
+Elapsed: 00:00:00.017
+SQL> -- Escrow Agents (2) [Range: 28001–28002]
+Elapsed: 00:00:00.016
+SQL> -- =========================================
+Elapsed: 00:00:00.016
+SQL> INSERT INTO escrowagent (escrowagent_id, name, address, city, state, zip, phone_number)
+  2  VALUES (28001, 'Secure Escrow LLC', '202 Market St', 'Pittsburgh', 'PA', '15213', '412-555-6666');
+
+1 row inserted.
+
+Elapsed: 00:00:00.038
+SQL> 
+SQL> INSERT INTO escrowagent (escrowagent_id, name, address, city, state, zip, phone_number)
+  2  VALUES (28002, 'Ohio Escrow Inc', '88 River Rd', 'Cleveland', 'OH', '44101', '216-555-1234');
+
+1 row inserted.
+
+Elapsed: 00:00:00.036
+SQL> 
+SQL> -- =========================================
+Elapsed: 00:00:00.016
+SQL> -- Bank & Workers (1 bank [30001], 2 workers [32001–32002])
+Elapsed: 00:00:00.017
+SQL> -- =========================================
+Elapsed: 00:00:00.017
+SQL> INSERT INTO bank (bank_id, name, address, zip, state, phone_number)
+  2  VALUES (30001, 'First National Bank', '101 Finance St', '15213', 'PA', '412-555-1111');
+
+1 row inserted.
+
+Elapsed: 00:00:00.037
+SQL> 
+SQL> INSERT INTO bank_worker (worker_id, name, phone_number, fax_number, bank_bank_id)
+  2  VALUES (32001, 'Alice Smith', '412-555-2222', '412-555-3333', 30001);
+
+1 row inserted.
+
+Elapsed: 00:00:00.042
+SQL> 
+SQL> INSERT INTO bank_worker (worker_id, name, phone_number, fax_number, bank_bank_id)
+  2  VALUES (32002, 'David Brown', '216-555-8888', '216-555-9999', 30001);
+
+1 row inserted.
+
+Elapsed: 00:00:00.036
+SQL> 
+SQL> -- =========================================
+Elapsed: 00:00:00.017
+SQL> -- Lots (5) [Range: 2001–2005]
+Elapsed: 00:00:00.017
+SQL> -- =========================================
+Elapsed: 00:00:00.016
+SQL> INSERT INTO lot (lot_id, address, city, state, zip, lotsize, description, lotpremium, subdivision_subdivision_id)
+  2  VALUES (2001, '456 Oak Ave', 'Pittsburgh', 'PA', '15213', 5000, 'Corner lot', 15000, 1);
+
+1 row inserted.
+
+Elapsed: 00:00:00.037
+SQL> 
+SQL> INSERT INTO lot (lot_id, address, city, state, zip, lotsize, description, lotpremium, subdivision_subdivision_id)
+  2  VALUES (2002, '22 Maple Rd', 'Cleveland', 'OH', '44101', 6000, 'Near park', 12000, 2);
+
+1 row inserted.
+
+Elapsed: 00:00:00.034
+SQL> 
+SQL> INSERT INTO lot (lot_id, address, city, state, zip, lotsize, description, lotpremium, subdivision_subdivision_id)
+  2  VALUES (2003, '99 River St', 'Pittsburgh', 'PA', '15214', 4800, 'Near river', 10000, 1);
+
+1 row inserted.
+
+Elapsed: 00:00:00.035
+SQL> 
+SQL> INSERT INTO lot (lot_id, address, city, state, zip, lotsize, description, lotpremium, subdivision_subdivision_id)
+  2  VALUES (2004, '11 Lake Dr', 'Cleveland', 'OH', '44102', 5500, 'Lake view', 20000, 2);
+
+1 row inserted.
+
+Elapsed: 00:00:00.034
+SQL> 
+SQL> INSERT INTO lot (lot_id, address, city, state, zip, lotsize, description, lotpremium, subdivision_subdivision_id)
+  2  VALUES (2005, '5 Hilltop Ct', 'Pittsburgh', 'PA', '15216', 5200, 'On hilltop', 17000, 1);
+
+1 row inserted.
+
+Elapsed: 00:00:00.034
+SQL> 
+SQL> INSERT INTO lot (lot_id, address, city, state, zip, lotsize, description, lotpremium, subdivision_subdivision_id)
+  2  VALUES (2006, '88 Colonial Way', 'Pittsburgh', 'PA', '15217', 5600, 'Quiet street near school', 18000, 1);
+
+1 row inserted.
+
+Elapsed: 00:00:00.035
+SQL> 
+SQL> INSERT INTO lot (lot_id, address, city, state, zip, lotsize, description, lotpremium, subdivision_subdivision_id)
+  2  VALUES (2007, '77 Heritage Rd', 'Cleveland', 'OH', '44103', 6000, 'Large backyard lot', 20000, 2);
+
+1 row inserted.
+
+Elapsed: 00:00:00.036
+SQL> 
+SQL> 
+SQL> -- =========================================
+Elapsed: 00:00:00.018
+SQL> -- Houses (5) [Range: 8001–8005]
+Elapsed: 00:00:00.017
+SQL> -- =========================================
+Elapsed: 00:00:00.016
+SQL> INSERT INTO house (house_id, currentconstructionstage, estimatedcompletion, lot_lot_id, housestyle_style_id, elevation_elevation_id)
+  2  VALUES (8001, 1, DATE '2026-01-01', 2001, 4001, 6001);
+
+1 row inserted.
+
+Elapsed: 00:00:00.045
+SQL> 
+SQL> INSERT INTO house (house_id, currentconstructionstage, estimatedcompletion, lot_lot_id, housestyle_style_id, elevation_elevation_id)
+  2  VALUES (8002, 2, DATE '2026-03-15', 2002, 4001, 6002);
+
+1 row inserted.
+
+Elapsed: 00:00:00.036
+SQL> 
+SQL> INSERT INTO house (house_id, currentconstructionstage, estimatedcompletion, lot_lot_id, housestyle_style_id, elevation_elevation_id)
+  2  VALUES (8003, 1, DATE '2026-05-20', 2003, 4001, 6003);
+
+1 row inserted.
+
+Elapsed: 00:00:00.037
+SQL> 
+SQL> INSERT INTO house (house_id, currentconstructionstage, estimatedcompletion, lot_lot_id, housestyle_style_id, elevation_elevation_id)
+  2  VALUES (8004, 3, DATE '2026-07-10', 2004, 4001, 6004);
+
+1 row inserted.
+
+Elapsed: 00:00:00.035
+SQL> 
+SQL> INSERT INTO house (house_id, currentconstructionstage, estimatedcompletion, lot_lot_id, housestyle_style_id, elevation_elevation_id)
+  2  VALUES (8005, 2, DATE '2026-09-01', 2005, 4001, 6005);
+
+1 row inserted.
+
+Elapsed: 00:00:00.037
+SQL> 
+SQL> INSERT INTO house (house_id, currentconstructionstage, estimatedcompletion, lot_lot_id, housestyle_style_id, elevation_elevation_id)
+  2  VALUES (8006, 1, DATE '2026-11-01', 2006, 4002, 6006);
+
+1 row inserted.
+
+Elapsed: 00:00:00.037
+SQL> 
+SQL> INSERT INTO house (house_id, currentconstructionstage, estimatedcompletion, lot_lot_id, housestyle_style_id, elevation_elevation_id)
+  2  VALUES (8007, 2, DATE '2026-12-15', 2007, 4002, 6007);
+
+1 row inserted.
+
+Elapsed: 00:00:00.038
+SQL> 
+SQL> 
+SQL> -- =========================================
+Elapsed: 00:00:00.016
+SQL> -- Sales (5) [Range: 34001–34005]
+Elapsed: 00:00:00.017
+SQL> -- =========================================
+Elapsed: 00:00:00.018
+SQL> INSERT INTO sale (sale_id, "Date", financing_method, escrowdeposit, estimatedcompletion,
+  2                    receivedsubdivision, receiveddisclosureform, receivedcontractcopy,
+  3                    buyer_buyer_id, escrowagent_escrowagent_id, employee_employee_id,
+  4                    house_house_id, bank_worker_worker_id)
+  5  VALUES (34001, SYSDATE, 'Mortgage', 50000, DATE '2026-01-01',
+  6          'Y', 'Y', 'Y', 24001, 28001, 26001, 8001, 32001);
+
+1 row inserted.
+
+Elapsed: 00:00:00.039
+SQL> 
+SQL> INSERT INTO sale (sale_id, "Date", financing_method, escrowdeposit, estimatedcompletion,
+  2                    receivedsubdivision, receiveddisclosureform, receivedcontractcopy,
+  3                    buyer_buyer_id, escrowagent_escrowagent_id, employee_employee_id,
+  4                    house_house_id, bank_worker_worker_id)
+  5  VALUES (34002, SYSDATE, 'Cash', 100000, DATE '2026-03-15',
+  6          'Y', 'N', 'Y', 24002, 28002, 26002, 8002, 32002);
+
+1 row inserted.
+
+Elapsed: 00:00:00.035
+SQL> 
+SQL> INSERT INTO sale (sale_id, "Date", financing_method, escrowdeposit, estimatedcompletion,
+  2                    receivedsubdivision, receiveddisclosureform, receivedcontractcopy,
+  3                    buyer_buyer_id, escrowagent_escrowagent_id, employee_employee_id,
+  4                    house_house_id, bank_worker_worker_id)
+  5  VALUES (34003, SYSDATE, 'Mortgage', 75000, DATE '2026-05-20',
+  6          'N', 'Y', 'Y', 24003, 28001, 26003, 8003, 32001);
+
+1 row inserted.
+
+Elapsed: 00:00:00.035
+SQL> 
+SQL> INSERT INTO sale (sale_id, "Date", financing_method, escrowdeposit, estimatedcompletion,
+  2                    receivedsubdivision, receiveddisclosureform, receivedcontractcopy,
+  3                    buyer_buyer_id, escrowagent_escrowagent_id, employee_employee_id,
+  4                    house_house_id, bank_worker_worker_id)
+  5  VALUES (34004, SYSDATE, 'Cash', 120000, DATE '2026-07-10',
+  6          'Y', 'Y', 'N', 24004, 28002, 26002, 8004, 32002);
+
+1 row inserted.
+
+Elapsed: 00:00:00.035
+SQL> 
+SQL> INSERT INTO sale (sale_id, "Date", financing_method, escrowdeposit, estimatedcompletion,
+  2                    receivedsubdivision, receiveddisclosureform, receivedcontractcopy,
+  3                    buyer_buyer_id, escrowagent_escrowagent_id, employee_employee_id,
+  4                    house_house_id, bank_worker_worker_id)
+  5  VALUES (34005, SYSDATE, 'Mortgage', 90000, DATE '2026-09-01',
+  6          'Y', 'N', 'Y', 24005, 28001, 26001, 8005, 32001);
+
+1 row inserted.
+
+Elapsed: 00:00:00.036
+SQL> 
+SQL> -- =========================================
+Elapsed: 00:00:00.018
+SQL> -- Rooms for House 8006 (Colonial Classic, Lot 2006, Elevation 6006)
+Elapsed: 00:00:00.016
+SQL> -- =========================================
+Elapsed: 00:00:00.018
+SQL> INSERT INTO rooms (room_id, name, "Size", floor, no_of_windows, notes, house_house_id, housestyle_style_id, ceilings)
+  2  VALUES (21002, 'Living Room', 400, '1st', 3, 'Spacious family living area', 8006, 4002, '9ft flat');
+
+1 row inserted.
+
+Elapsed: 00:00:00.038
+SQL> 
+SQL> INSERT INTO rooms (room_id, name, "Size", floor, no_of_windows, notes, house_house_id, housestyle_style_id, ceilings)
+  2  VALUES (21003, 'Kitchen', 250, '1st', 2, 'Open kitchen with island', 8006, 4002, '9ft flat');
+
+1 row inserted.
+
+Elapsed: 00:00:00.035
+SQL> 
+SQL> INSERT INTO rooms (room_id, name, "Size", floor, no_of_windows, notes, house_house_id, housestyle_style_id, ceilings)
+  2  VALUES (21004, 'Master Bedroom', 350, '2nd', 4, 'Includes walk-in closet', 8006, 4002, 'Vaulted ceiling');
+
+1 row inserted.
+
+Elapsed: 00:00:00.036
+SQL> 
+SQL> INSERT INTO rooms (room_id, name, "Size", floor, no_of_windows, notes, house_house_id, housestyle_style_id, ceilings)
+  2  VALUES (21005, 'Bathroom', 120, '2nd', 1, 'Master bathroom with tub', 8006, 4002, '9ft flat');
+
+1 row inserted.
+
+Elapsed: 00:00:00.035
+SQL> 
+SQL> -- =========================================
+Elapsed: 00:00:00.017
+SQL> -- Rooms for House 8007 (Colonial Classic, Lot 2007, Elevation 6007)
+Elapsed: 00:00:00.017
+SQL> -- =========================================
+Elapsed: 00:00:00.017
+SQL> INSERT INTO rooms (room_id, name, "Size", floor, no_of_windows, notes, house_house_id, housestyle_style_id, ceilings)
+  2  VALUES (21006, 'Living Room', 420, '1st', 4, 'Living area with fireplace', 8007, 4002, '9ft flat');
+
+1 row inserted.
+
+Elapsed: 00:00:00.034
+SQL> 
+SQL> INSERT INTO rooms (room_id, name, "Size", floor, no_of_windows, notes, house_house_id, housestyle_style_id, ceilings)
+  2  VALUES (21007, 'Kitchen', 260, '1st', 2, 'Kitchen with breakfast nook', 8007, 4002, '9ft flat');
+
+1 row inserted.
+
+Elapsed: 00:00:00.035
+SQL> 
+SQL> INSERT INTO rooms (room_id, name, "Size", floor, no_of_windows, notes, house_house_id, housestyle_style_id, ceilings)
+  2  VALUES (21008, 'Master Bedroom', 360, '2nd', 3, 'Bedroom with balcony access', 8007, 4002, 'Tray ceiling');
+
+1 row inserted.
+
+Elapsed: 00:00:00.035
+SQL> 
+SQL> INSERT INTO rooms (room_id, name, "Size", floor, no_of_windows, notes, house_house_id, housestyle_style_id, ceilings)
+  2  VALUES (21009, 'Bathroom', 130, '2nd', 1, 'Double vanity bathroom', 8007, 4002, '9ft flat');
+
+1 row inserted.
+
+Elapsed: 00:00:00.036
+SQL> 
+SQL> -- =========================================
+Elapsed: 00:00:00.017
+SQL> -- Option Categories
+Elapsed: 00:00:00.017
+SQL> -- =========================================
+Elapsed: 00:00:00.018
+SQL> INSERT INTO optioncategory (category_id, categoryname)
+  2  VALUES (501, 'Kitchen Upgrades');
+
+1 row inserted.
+
+Elapsed: 00:00:00.038
+SQL> 
+SQL> INSERT INTO optioncategory (category_id, categoryname)
+  2  VALUES (502, 'Bathroom Upgrades');
+
+1 row inserted.
+
+Elapsed: 00:00:00.035
+SQL> 
+SQL> -- =========================================
+Elapsed: 00:00:00.018
+SQL> -- Options for Modern Ranch (4001)
+Elapsed: 00:00:00.017
+SQL> -- =========================================
+Elapsed: 00:00:00.016
+SQL> INSERT INTO "Option" (option_id, option_name, description, optioncategory_category_id, housestyle_style_id)
+  2  VALUES (16001, 'Granite Countertops', 'Premium granite kitchen countertops', 501, 4001);
+
+1 row inserted.
+
+Elapsed: 00:00:00.047
+SQL> 
+SQL> INSERT INTO "Option" (option_id, option_name, description, optioncategory_category_id, housestyle_style_id)
+  2  VALUES (16002, 'Tile Backsplash', 'Ceramic tile backsplash in kitchen', 501, 4001);
+
+1 row inserted.
+
+Elapsed: 00:00:00.035
+SQL> 
+SQL> -- Options for Colonial Classic (4002)
+Elapsed: 00:00:00.016
+SQL> INSERT INTO "Option" (option_id, option_name, description, optioncategory_category_id, housestyle_style_id)
+  2  VALUES (16003, 'Jacuzzi Tub', 'Luxury jacuzzi tub upgrade', 502, 4002);
+
+1 row inserted.
+
+Elapsed: 00:00:00.034
+SQL> 
+SQL> INSERT INTO "Option" (option_id, option_name, description, optioncategory_category_id, housestyle_style_id)
+  2  VALUES (16004, 'Double Vanity Sink', 'Dual sinks for master bathroom', 502, 4002);
+
+1 row inserted.
+
+Elapsed: 00:00:00.035
+SQL> 
+SQL> -- =========================================
+Elapsed: 00:00:00.017
+SQL> -- Option Stage Prices
+Elapsed: 00:00:00.016
+SQL> -- Stage examples: 1 = Foundation, 2 = Framing, 3 = Finishing
+Elapsed: 00:00:00.017
+SQL> -- =========================================
+Elapsed: 00:00:00.018
+SQL> -- Granite Countertops
+Elapsed: 00:00:00.017
+SQL> INSERT INTO option_stage_price (osp_id, cost, revision_date, stage, option_option_id)
+  2  VALUES (18001, 5000, DATE '2025-10-01', 3, 16001);
+
+1 row inserted.
+
+Elapsed: 00:00:00.041
+SQL> 
+SQL> -- Tile Backsplash
+Elapsed: 00:00:00.017
+SQL> INSERT INTO option_stage_price (osp_id, cost, revision_date, stage, option_option_id)
+  2  VALUES (18002, 1500, DATE '2025-10-01', 3, 16002);
+
+1 row inserted.
+
+Elapsed: 00:00:00.035
+SQL> 
+SQL> -- Jacuzzi Tub
+Elapsed: 00:00:00.016
+SQL> INSERT INTO option_stage_price (osp_id, cost, revision_date, stage, option_option_id)
+  2  VALUES (18003, 7000, DATE '2025-10-01', 3, 16003);
+
+1 row inserted.
+
+Elapsed: 00:00:00.034
+SQL> 
+SQL> -- Double Vanity Sink
+Elapsed: 00:00:00.017
+SQL> INSERT INTO option_stage_price (osp_id, cost, revision_date, stage, option_option_id)
+  2  VALUES (18004, 2500, DATE '2025-10-01', 3, 16004);
+
+1 row inserted.
+
+Elapsed: 00:00:00.035
+SQL> 
+SQL> -- =========================================
+Elapsed: 00:00:00.017
+SQL> -- Housetasks (One per house for foundation work)
+Elapsed: 00:00:00.016
+SQL> -- =========================================
+Elapsed: 00:00:00.016
+SQL> INSERT INTO housetask (housetask_id, stage, required, plannedstart, plannedend, notes, 
+  2                         house_house_id, employee_employee_id, plannedcost, actualcost, percent_complete)
+  3  VALUES (10001, 1, 'Y', DATE '2025-11-01', DATE '2025-12-01', 'Foundation work', 8006, 26001, 20000, 5000, 0.25);
+
+1 row inserted.
+
+Elapsed: 00:00:00.037
+SQL> 
+SQL> INSERT INTO housetask (housetask_id, stage, required, plannedstart, plannedend, notes, 
+  2                         house_house_id, employee_employee_id, plannedcost, actualcost, percent_complete)
+  3  VALUES (10002, 1, 'Y', DATE '2025-12-01', DATE '2026-01-15', 'Foundation work', 8007, 26002, 21000, 6000, 0.30);
+
+1 row inserted.
+
+Elapsed: 00:00:00.034
+SQL> 
+SQL> -- =========================================
+Elapsed: 00:00:00.016
+SQL> -- Construction Tasks (Linked to housetasks)
+Elapsed: 00:00:00.016
+SQL> -- =========================================
+Elapsed: 00:00:00.017
+SQL> INSERT INTO construction_task (task_id, description, stage, basecost, approval, housetask_housetask_id)
+  2  VALUES (12001, 'Excavation and grading', 1, 8000, 'Y', 10001);
+
+1 row inserted.
+
+Elapsed: 00:00:00.037
+SQL> 
+SQL> INSERT INTO construction_task (task_id, description, stage, basecost, approval, housetask_housetask_id)
+  2  VALUES (12002, 'Concrete foundation pour', 1, 12000, 'N', 10001);
+
+1 row inserted.
+
+Elapsed: 00:00:00.036
+SQL> 
+SQL> INSERT INTO construction_task (task_id, description, stage, basecost, approval, housetask_housetask_id)
+  2  VALUES (12003, 'Excavation and grading', 1, 8500, 'Y', 10002);
+
+1 row inserted.
+
+Elapsed: 00:00:00.034
+SQL> 
+SQL> INSERT INTO construction_task (task_id, description, stage, basecost, approval, housetask_housetask_id)
+  2  VALUES (12004, 'Concrete foundation pour', 1, 12500, 'N', 10002);
+
+1 row inserted.
+
+Elapsed: 00:00:00.036
+SQL> 
+SQL> -- =========================================
+Elapsed: 00:00:00.016
+SQL> -- Decorator Sessions (one per housetask)
+Elapsed: 00:00:00.017
+SQL> -- =========================================
+Elapsed: 00:00:00.017
+SQL> INSERT INTO decorator_session (decoratorsession_id, "Date", stage, housetask_housetask_id, approval)
+  2  VALUES (14001, DATE '2026-02-01', 2, 10001, 'N');
+
+1 row inserted.
+
+Elapsed: 00:00:00.037
+SQL> 
+SQL> INSERT INTO decorator_session (decoratorsession_id, "Date", stage, housetask_housetask_id, approval)
+  2  VALUES (14002, DATE '2026-03-01', 2, 10002, 'Y');
+
+1 row inserted.
+
+Elapsed: 00:00:00.034
+SQL> 
+SQL> -- =========================================
+Elapsed: 00:00:00.016
+SQL> -- Decorator Choices (selecting Options for these houses)
+Elapsed: 00:00:00.017
+SQL> -- Colonial Classic House 8006 chooses Granite Countertops
+Elapsed: 00:00:00.016
+SQL> -- Colonial Classic House 8007 chooses Jacuzzi Tub
+Elapsed: 00:00:00.017
+SQL> -- =========================================
+Elapsed: 00:00:00.016
+SQL> INSERT INTO decorator_choice (decoratorchoice_id, item, description, price, decorator_session_id, option_option_id)
+  2  VALUES (17001, 'Granite Countertops', 'Kitchen upgrade: Black Pearl granite', 5000, 14001, 16001);
+
+1 row inserted.
+
+Elapsed: 00:00:00.037
+SQL> 
+SQL> INSERT INTO decorator_choice (decoratorchoice_id, item, description, price, decorator_session_id, option_option_id)
+  2  VALUES (17002, 'Jacuzzi Tub', 'Bathroom upgrade: Jacuzzi tub', 7000, 14002, 16003);
+
+1 row inserted.
+
+Elapsed: 00:00:00.035
+SQL> 
+SQL> -- =========================================
+Elapsed: 00:00:00.017
+SQL> -- Task Progress (tracking completion of housetasks)
+Elapsed: 00:00:00.017
+SQL> -- =========================================
+Elapsed: 00:00:00.017
+SQL> INSERT INTO task_progress (progress_id, percentage_complete, estimatedcompletiondate, housetask_housetask_id)
+  2  VALUES (18001, 0.25, DATE '2025-12-01', 10001);
+
+1 row inserted.
+
+Elapsed: 00:00:00.037
+SQL> 
+SQL> INSERT INTO task_progress (progress_id, percentage_complete, estimatedcompletiondate, housetask_housetask_id)
+  2  VALUES (18002, 0.30, DATE '2026-01-15', 10002);
+
+1 row inserted.
+
+Elapsed: 00:00:00.035
+SQL> 
+SQL> -- =========================================
+Elapsed: 00:00:00.017
+SQL> -- Photos (linked to task_progress)
+Elapsed: 00:00:00.017
+SQL> -- =========================================
+Elapsed: 00:00:00.017
+SQL> INSERT INTO photo (photo_id, date_uploaded, url, housetask_housetask_id, task_progress_progress_id)
+  2  VALUES (20001, DATE '2025-11-10', 'http://example.com/8006_foundation.jpg', 10001, 18001);
+
+1 row inserted.
+
+Elapsed: 00:00:00.038
+SQL> 
+SQL> INSERT INTO photo (photo_id, date_uploaded, url, housetask_housetask_id, task_progress_progress_id)
+  2  VALUES (20002, DATE '2025-12-15', 'http://example.com/8007_foundation.jpg', 10002, 18002);
+
+1 row inserted.
+
+Elapsed: 00:00:00.034
+SQL> 
+SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.037
+Elapsed: 00:00:00.055
+SQL> 
+SQL> PROMPT Phase 3: Creating views...
+Phase 3: Creating views...
+Elapsed: 00:00:00.017
+SQL> @View.sql
+SQL> CREATE OR REPLACE VIEW v_current_option_price AS
+  2  SELECT option_option_id,
+  3         stage,
+  4         MAX(revision_date) KEEP (DENSE_RANK LAST ORDER BY revision_date) AS latest_revision_date,
+  5         MAX(cost)          KEEP (DENSE_RANK LAST ORDER BY revision_date) AS current_cost
+  6  FROM option_stage_price
+  7  GROUP BY option_option_id, stage;
+
+View V_CURRENT_OPTION_PRICE created.
+
+Elapsed: 00:00:00.038
+Elapsed: 00:00:00.055
+SQL> @View2.sql
+SQL> -- ===========================================================
+Elapsed: 00:00:00.016
+SQL> -- View: v_house_style_details
+Elapsed: 00:00:00.017
+SQL> -- Purpose:
+Elapsed: 00:00:00.016
+SQL> --   To create a comprehensive view that displays all information required
+Elapsed: 00:00:00.016
+SQL> --   by the "House Styles" form in Figure 1 of the case study.
+Elapsed: 00:00:00.017
+SQL> --   This view creates a combination of every house style for every
+Elapsed: 00:00:00.017
+SQL> --   subdivision, ensuring all possibilities are represented.
+Elapsed: 00:00:00.017
+SQL> -- Tables Involved:
+Elapsed: 00:00:00.017
+SQL> --   - HOUSESTYLE, SUBDIVISION: Cross-joined to create all combinations.
+Elapsed: 00:00:00.016
+SQL> --   - ROOMS:      Details of rooms associated with each house style.
+Elapsed: 00:00:00.016
+SQL> --   - ELEVATION:  The different elevation designs available for each style.
+Elapsed: 00:00:00.017
+SQL> -- ===========================================================
+Elapsed: 00:00:00.016
+SQL> CREATE OR REPLACE VIEW v_house_style_details AS
+  2  SELECT
+  3      hs.style_id,
+  4      s.name AS subdivision_name,
+  5      hs.stylename,
+  6      hs.baseprice,
+  7      hs.styledescription,
+  8      hs."Size" AS style_size,
+  9      -- Room Details
+ 10      r.name AS room_name,
+ 11      r."Size" AS room_size,
+ 12      r.floor AS room_floor,
+ 13      r.no_of_windows AS room_windows,
+ 14      r.ceilings AS room_ceiling,
+ 15      r.notes AS room_comments,
+ 16      -- Elevation Details
+ 17      e.elevationcode,
+ 18      e.description AS elevation_description,
+ 19      e.additionalcostsketch AS elevation_sketch
+ 20  FROM
+ 21      housestyle hs
+ 22  CROSS JOIN
+ 23      subdivision s
+ 24  LEFT JOIN
+ 25      rooms r ON hs.style_id = r.housestyle_style_id
+ 26  LEFT JOIN
+ 27      elevation e ON hs.style_id = e.housestyle_style_id
+ 28  /
+
+View V_HOUSE_STYLE_DETAILS created.
+
+Elapsed: 00:00:00.038
+Elapsed: 00:00:00.055
+SQL> 
+SQL> PROMPT Phase 4: Creating functions...
+Phase 4: Creating functions...
+Elapsed: 00:00:00.017
+SQL> @Function.sql
+SQL> -- ===========================================================
+Elapsed: 00:00:00.017
+SQL> -- Function: fn_house_total_price
+Elapsed: 00:00:00.017
+SQL> -- Purpose:
+Elapsed: 00:00:00.016
+SQL> --   Total price for a given house:
+Elapsed: 00:00:00.017
+SQL> --     base housestyle price
+Elapsed: 00:00:00.016
+SQL> --   + lot premium
+Elapsed: 00:00:00.017
+SQL> --   + sum of all decorator choices (already auto-priced)
+Elapsed: 00:00:00.016
+SQL> --
+Elapsed: 00:00:00.017
+SQL> -- Param:
+Elapsed: 00:00:00.016
+SQL> --   p_house_id - HOUSE.HOUSE_ID
+Elapsed: 00:00:00.020
+SQL> --
+Elapsed: 00:00:00.017
+SQL> -- Returns:
+Elapsed: 00:00:00.019
+SQL> --   NUMBER - total price, or NULL if the house doesn't exist
+Elapsed: 00:00:00.016
+SQL> -- ===========================================================
+Elapsed: 00:00:00.016
+SQL> CREATE OR REPLACE FUNCTION fn_house_total_price(
+  2    p_house_id IN house.house_id%TYPE
+  3  ) RETURN NUMBER IS
+  4    v_total NUMBER := 0;   -- base + lot
+  5    v_opts  NUMBER := 0;   -- sum of decorator choices
+  6  BEGIN
+  7    -- Base style price + lot premium
+  8    SELECT hs.baseprice + l.lotpremium
+  9      INTO v_total
+ 10      FROM house h
+ 11      JOIN housestyle hs ON h.housestyle_style_id = hs.style_id
+ 12      JOIN lot l         ON h.lot_lot_id = l.lot_id
+ 13     WHERE h.house_id = p_house_id;
+ 14  
+ 15    -- Sum of all decorator choices tied to this house (via session -> housetask)
+ 16    SELECT SUM(dc.price)
+ 17      INTO v_opts
+ 18      FROM decorator_choice dc
+ 19      JOIN decorator_session ds ON dc.decorator_session_id = ds.decoratorsession_id
+ 20      JOIN housetask       ht   ON ds.housetask_housetask_id = ht.housetask_id
+ 21     WHERE ht.house_house_id = p_house_id;
+ 22  
+ 23    v_total := v_total + NVL(v_opts, 0);
+ 24  
+ 25    RETURN v_total;
+ 26  
+ 27  EXCEPTION
+ 28    WHEN NO_DATA_FOUND THEN
+ 29      -- house not found: return NULL so callers can detect missing house
+ 30      RETURN NULL;
+ 31  END fn_house_total_price;
+ 32  /
+
+Function FN_HOUSE_TOTAL_PRICE compiled
+
+Elapsed: 00:00:00.088
+Elapsed: 00:00:00.104
+SQL> 
+SQL> PROMPT Phase 5: Creating triggers...
+Phase 5: Creating triggers...
+Elapsed: 00:00:00.016
+SQL> @Trigger1.sql
+SQL> -- ===========================================================
+Elapsed: 00:00:00.023
+SQL> -- Trigger: trg_taskprog_validate
+Elapsed: 00:00:00.016
+SQL> -- Table:  task_progress
+Elapsed: 00:00:00.016
+SQL> -- Event:  BEFORE INSERT OR UPDATE (row-level)
+Elapsed: 00:00:00.016
+SQL> -- Purpose:
+Elapsed: 00:00:00.017
+SQL> --   1. Enforce valid percentage values (0.00–1.00).
+Elapsed: 00:00:00.016
+SQL> --   2. Default NULL percentage_complete to 0.
+Elapsed: 00:00:00.016
+SQL> --   3. Default NULL estimatedcompletiondate to SYSDATE.
+Elapsed: 00:00:00.016
+SQL> -- Business Rule Supported:
+Elapsed: 00:00:00.017
+SQL> --   - Construction task progress must be expressed as a
+Elapsed: 00:00:00.017
+SQL> --     fraction between 0.0 (0%) and 1.0 (100%).
+Elapsed: 00:00:00.017
+SQL> --   - Progress rows must always carry a valid date.
+Elapsed: 00:00:00.017
+SQL> -- ===========================================================
+Elapsed: 00:00:00.017
+SQL> 
+SQL> CREATE OR REPLACE TRIGGER trg_taskprog_validate
+  2  BEFORE INSERT OR UPDATE ON task_progress
+  3  FOR EACH ROW
+  4  BEGIN
+  5    IF :NEW.percentage_complete IS NULL THEN
+  6      :NEW.percentage_complete := 0;
+  7    END IF;
+  8  
+  9    IF :NEW.percentage_complete < 0 OR :NEW.percentage_complete > 1 THEN
+ 10      RAISE_APPLICATION_ERROR(-20001, 'percentage_complete must be between 0.00 and 1.00');
+ 11    END IF;
+ 12  
+ 13    IF :NEW.estimatedcompletiondate IS NULL THEN
+ 14      :NEW.estimatedcompletiondate := SYSDATE;
+ 15    END IF;
+ 16  END;
+ 17  /
+
+Trigger TRG_TASKPROG_VALIDATE compiled
+
+Elapsed: 00:00:00.078
+Elapsed: 00:00:00.097
+SQL> @Trigger2.sql
+SQL> -- ===========================================================
+Elapsed: 00:00:00.019
+SQL> -- Trigger: trg_house_stage_autoadvance
+Elapsed: 00:00:00.016
+SQL> -- Timing/Event: AFTER INSERT OR UPDATE ON task_progress (statement-level)
+Elapsed: 00:00:00.016
+SQL> -- Purpose:
+Elapsed: 00:00:00.016
+SQL> --   After task_progress changes, recompute the highest construction stage
+Elapsed: 00:00:00.017
+SQL> --   for each house where all tasks in that stage are 100% (1.00), and
+Elapsed: 00:00:00.016
+SQL> --   advance house.currentconstructionstage to that value (never decreases).
+Elapsed: 00:00:00.016
+SQL> -- ===========================================================
+Elapsed: 00:00:00.017
+SQL> CREATE OR REPLACE TRIGGER trg_house_stage_autoadvance
+  2  AFTER INSERT OR UPDATE ON task_progress
+  3  DECLARE
+  4  BEGIN
+  5    /* For every house, find the maximum stage where ALL tasks are complete.
+  6       We consider a task complete if its latest progress row (by max progress_id)
+  7       has percentage_complete >= 1.00.
+  8    */
+  9    MERGE INTO house h
+ 10    USING (
+ 11      SELECT t.house_id,
+ 12             MAX(CASE WHEN t.all_tasks_done = 1 THEN t.stage ELSE 0 END) AS max_completed_stage
+ 13      FROM (
+ 14        /* For each (house, stage), compute the minimum of the latest progress
+ 15           across tasks in that stage: if the min >= 1.00, then all tasks are done.
+ 16        */
+ 17        SELECT ht.house_house_id AS house_id,
+ 18               ht.stage,
+ 19               CASE
+ 20                 WHEN MIN(
+ 21                        NVL((
+ 22                          SELECT tp.percentage_complete
+ 23                          FROM task_progress tp
+ 24                          WHERE tp.housetask_housetask_id = ht.housetask_id
+ 25                            AND tp.progress_id = (
+ 26                                  SELECT MAX(tp2.progress_id)
+ 27                                  FROM task_progress tp2
+ 28                                  WHERE tp2.housetask_housetask_id = ht.housetask_id
+ 29                                )
+ 30                        ), 0)
+ 31                      ) >= 1
+ 32                 THEN 1
+ 33                 ELSE 0
+ 34               END AS all_tasks_done
+ 35        FROM housetask ht
+ 36        GROUP BY ht.house_house_id, ht.stage
+ 37      ) t
+ 38      GROUP BY t.house_id
+ 39    ) s
+ 40    ON (h.house_id = s.house_id)
+ 41    WHEN MATCHED THEN UPDATE
+ 42      SET h.currentconstructionstage = GREATEST(NVL(h.currentconstructionstage,0), s.max_completed_stage);
+ 43  END;
+ 44  /
+
+Trigger TRG_HOUSE_STAGE_AUTOADVANCE compiled
+
+Elapsed: 00:00:00.076
+Elapsed: 00:00:00.094
+SQL> @Trigger3.sql
+SQL> -- ===========================================================
+Elapsed: 00:00:00.016
+SQL> -- Trigger: trg_decorator_choice_autoprice
+Elapsed: 00:00:00.016
+SQL> -- Table:  DECORATOR_CHOICE
+Elapsed: 00:00:00.016
+SQL> -- Timing: BEFORE INSERT OR UPDATE OF decorator_session_id, option_option_id
+Elapsed: 00:00:00.016
+SQL> -- Purpose:
+Elapsed: 00:00:00.016
+SQL> --   Auto-populate DECORATOR_CHOICE.PRICE based on the session's stage and
+Elapsed: 00:00:00.017
+SQL> --   the latest price for that option at that stage (from v_current_option_price).
+Elapsed: 00:00:00.017
+SQL> -- Business rules:
+Elapsed: 00:00:00.018
+SQL> --   - Options are priced per construction stage.
+Elapsed: 00:00:00.018
+SQL> --   - Use the most recent price revision for (option, stage).
+Elapsed: 00:00:00.017
+SQL> --   - If no price exists -> block with ORA-20032.
+Elapsed: 00:00:00.016
+SQL> -- ===========================================================
+Elapsed: 00:00:00.017
+SQL> CREATE OR REPLACE TRIGGER trg_decorator_choice_autoprice
+  2  BEFORE INSERT OR UPDATE OF decorator_session_id, option_option_id ON decorator_choice
+  3  FOR EACH ROW
+  4  DECLARE
+  5    v_stage decorator_session.stage%TYPE;
+  6    v_price NUMBER(12,2);
+  7  BEGIN
+  8    -- Get the stage from the linked decorator session
+  9    SELECT stage
+ 10      INTO v_stage
+ 11      FROM decorator_session
+ 12     WHERE decoratorsession_id = :NEW.decorator_session_id;
+ 13  
+ 14    -- Get the latest effective price for (option, stage)
+ 15    SELECT v.current_cost
+ 16      INTO v_price
+ 17      FROM v_current_option_price v
+ 18     WHERE v.option_option_id = :NEW.option_option_id
+ 19       AND v.stage            = v_stage;
+ 20  
+ 21    -- Write price into the row being inserted/updated
+ 22    :NEW.price := v_price;
+ 23  
+ 24  EXCEPTION
+ 25    WHEN NO_DATA_FOUND THEN
+ 26      RAISE_APPLICATION_ERROR(
+ 27        -20032,
+ 28        'No valid price for this option at the session''s stage (define OPTION_STAGE_PRICE).'
+ 29      );
+ 30  END;
+ 31  /
+
+Trigger TRG_DECORATOR_CHOICE_AUTOPRICE compiled
+
+Elapsed: 00:00:00.076
+Elapsed: 00:00:00.092
+SQL> @Trigger4.sql
+SQL> -- ===========================================================
+Elapsed: 00:00:00.016
+SQL> -- Trigger: trg_session_validate_stage
+Elapsed: 00:00:00.016
+SQL> -- Table:  DECORATOR_SESSION
+Elapsed: 00:00:00.017
+SQL> -- Timing: BEFORE INSERT
+Elapsed: 00:00:00.016
+SQL> -- Purpose:
+Elapsed: 00:00:00.017
+SQL> --   Prevent the creation of a decorator session for a construction stage
+Elapsed: 00:00:00.021
+SQL> --   that the house has already surpassed.
+Elapsed: 00:00:00.016
+SQL> -- Business rules:
+Elapsed: 00:00:00.017
+SQL> --   - A house's current construction stage is stored in HOUSE.CURRENTCONSTRUCTIONSTAGE.
+Elapsed: 00:00:00.016
+SQL> --   - A decorator session cannot be created for a stage that is less than
+Elapsed: 00:00:00.019
+SQL> --     the house's current stage.
+Elapsed: 00:00:00.029
+SQL> --   - If the rule is violated, block the operation with ORA-20001.
+Elapsed: 00:00:00.017
+SQL> -- ===========================================================
+Elapsed: 00:00:00.016
+SQL> CREATE OR REPLACE TRIGGER trg_session_validate_stage
+  2  BEFORE INSERT ON decorator_session
+  3  FOR EACH ROW
+  4  DECLARE
+  5    v_house_stage house.currentconstructionstage%TYPE;
+  6  BEGIN
+  7    -- Find the current construction stage of the house linked to this session
+  8    SELECT h.currentconstructionstage
+  9      INTO v_house_stage
+ 10      FROM house h
+ 11      JOIN housetask ht ON h.house_id = ht.house_house_id
+ 12     WHERE ht.housetask_id = :NEW.housetask_housetask_id;
+ 13  
+ 14    -- Block if the session's stage is for a past phase of construction
+ 15    IF :NEW.stage < v_house_stage THEN
+ 16      RAISE_APPLICATION_ERROR(
+ 17        -20001,
+ 18        'Cannot create a decorator session for a past construction stage. House is at stage ' ||
+ 19        v_house_stage || ', session is for stage ' || :NEW.stage || '.'
+ 20      );
+ 21    END IF;
+ 22  
+ 23  EXCEPTION
+ 24    WHEN NO_DATA_FOUND THEN
+ 25      -- This handles the case where the housetask_id is invalid.
+ 26      -- The foreign key constraint would catch this anyway, but this provides a clearer error.
+ 27      RAISE_APPLICATION_ERROR(
+ 28          -20002,
+ 29          'Invalid housetask_id provided; cannot find associated house.'
+ 30          );
+ 31  END;
+ 32  /
+
+Trigger TRG_SESSION_VALIDATE_STAGE compiled
+
+Elapsed: 00:00:00.072
+Elapsed: 00:00:00.089
+SQL> @Trigger5.sql
+SQL> -- ===========================================================
+Elapsed: 00:00:00.020
+SQL> -- Trigger: trg_choice_set_price
+Elapsed: 00:00:00.017
+SQL> -- Table:  DECORATOR_CHOICE
+Elapsed: 00:00:00.017
+SQL> -- Timing: BEFORE INSERT
+Elapsed: 00:00:00.016
+SQL> -- Purpose:
+Elapsed: 00:00:00.016
+SQL> --   To automatically populate the PRICE for a new DECORATOR_CHOICE record.
+Elapsed: 00:00:00.021
+SQL> --   The price is determined by looking up the cost for the chosen option
+Elapsed: 00:00:00.017
+SQL> --   at the construction stage specified in the parent decorator session.
+Elapsed: 00:00:00.018
+SQL> -- Business rules:
+Elapsed: 00:00:00.017
+SQL> --   - Each option's cost is dependent on the construction stage.
+Elapsed: 00:00:00.016
+SQL> --   - If multiple prices exist for the same option and stage (due to
+Elapsed: 00:00:00.016
+SQL> --     revisions), the price with the most recent revision_date must be used.
+Elapsed: 00:00:00.015
+SQL> --   - If no price is defined in OPTION_STAGE_PRICE for the given
+Elapsed: 00:00:00.021
+SQL> --     option and stage, the insert must be blocked with an error.
+Elapsed: 00:00:00.016
+SQL> -- ===========================================================
+Elapsed: 00:00:00.017
+SQL> CREATE OR REPLACE TRIGGER trg_choice_set_price
+  2  BEFORE INSERT ON decorator_choice
+  3  FOR EACH ROW
+  4  DECLARE
+  5    v_stage decorator_session.stage%TYPE;
+  6    v_price option_stage_price.cost%TYPE;
+  7  BEGIN
+  8    -- 1. Get the construction stage from the parent decorator session
+  9    SELECT stage
+ 10      INTO v_stage
+ 11      FROM decorator_session
+ 12     WHERE decoratorsession_id = :NEW.decorator_session_id;
+ 13  
+ 14    -- 2. Find the most recent price for the given option at that stage
+ 15    SELECT cost
+ 16      INTO v_price
+ 17      FROM option_stage_price
+ 18     WHERE option_option_id = :NEW.option_option_id
+ 19       AND stage            = v_stage
+ 20       AND revision_date = (
+ 21         SELECT MAX(revision_date)
+ 22           FROM option_stage_price
+ 23          WHERE option_option_id = :NEW.option_option_id
+ 24            AND stage            = v_stage
+ 25       );
+ 26  
+ 27    -- 3. Set the price on the new decorator_choice record
+ 28    :NEW.price := v_price;
+ 29  
+ 30  EXCEPTION
+ 31    -- Handle cases where no price is defined for the option at that stage
+ 32    WHEN NO_DATA_FOUND THEN
+ 33      RAISE_APPLICATION_ERROR(
+ 34        -20010,
+ 35        'Operation failed: No price has been defined for option ID ' || :NEW.option_option_id || ' at stage ' || v_stage || '.'
+ 36      );
+ 37  END;
+ 38  /
+
+Trigger TRG_CHOICE_SET_PRICE compiled
+
+Elapsed: 00:00:00.090
+Elapsed: 00:00:00.107
+SQL> 
+SQL> PROMPT Phase 6: Implementing surrogate keys...
+Phase 6: Implementing surrogate keys...
+Elapsed: 00:00:00.016
+SQL> @buyer_surrogate.sql
+SQL> --Show Buyer before insert
+Elapsed: 00:00:00.017
+SQL> Select * from Buyer;
+
+  BUYER_ID
+----------
+NAME
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ADDRESS                                                                          CITY                                               ST ZIP        PHONE
+-------------------------------------------------------------------------------- -------------------------------------------------- -- ---------- ---------------
+EMAIL                                                                                               
+----------------------------------------------------------------------------------------------------
+     24001 
+Carol White                                                                                                                                                                                             
+789 Maple St                                                                     Pittsburgh                                         PA 15213      412-555-5555    
+carol@example.com                                                                                   
+
+     24002 
+Frank Green                                                                                                                                                                                             
+999 Oak Blvd                                                                     Cleveland                                          OH 44101      216-555-6666    
+frank@example.com                                                                                   
+
+     24003 
+Helen Black                                                                                                                                                                                             
+23 River Ln                                                                      Pittsburgh                                         PA 15214      412-555-1111    
+helen@example.com                                                                                   
+
+     24004 
+Michael Gray                                                                                                                                                                                            
+7 Lake Ave                                                                       Cleveland                                          OH 44102      216-555-2222    
+michael@example.com                                                                                 
+
+     24005 
+Nina Brown                                                                                                                                                                                              
+14 Oak St                                                                        Pittsburgh                                         PA 15215      412-555-3333    
+nina@example.com                                                                                    
+
+
+Elapsed: 00:00:00.063
+SQL> 
+SQL> -- Create sequence for surrogate key
+Elapsed: 00:00:00.016
+SQL> CREATE SEQUENCE buyer_seq
+  2    START WITH 24006
+  3    INCREMENT BY 1
+  4    NOCACHE
+  5    NOCYCLE;
+
+Sequence BUYER_SEQ created.
+
+Elapsed: 00:00:00.038
+SQL> 
+SQL> -- Create trigger to auto-populate buyer_id
+Elapsed: 00:00:00.016
+SQL> CREATE OR REPLACE TRIGGER buyer_bir
+  2  BEFORE INSERT ON buyer
+  3  FOR EACH ROW
+  4  WHEN (NEW.buyer_id IS NULL)
+  5  BEGIN
+  6    SELECT buyer_seq.NEXTVAL
+  7    INTO   :NEW.buyer_id
+  8    FROM   dual;
+  9  END;
+ 10  /
+
+Trigger BUYER_BIR compiled
+
+Elapsed: 00:00:00.076
+SQL> 
+SQL> -- Example insert without providing buyer_id
+Elapsed: 00:00:00.016
+SQL> INSERT INTO buyer (name, address, city, state, zip, phone, email)
+  2  VALUES ('Oliver Stone', '123 Market St', 'Pittsburgh', 'PA', '15222', '412-555-7777', 'oliver@example.com');
+
+1 row inserted.
+
+Elapsed: 00:00:00.039
+SQL> 
+SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.034
+SQL> 
+SQL> --Show after
+Elapsed: 00:00:00.016
+SQL> Select * from Buyer;
+
+  BUYER_ID
+----------
+NAME
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ADDRESS                                                                          CITY                                               ST ZIP        PHONE
+-------------------------------------------------------------------------------- -------------------------------------------------- -- ---------- ---------------
+EMAIL                                                                                               
+----------------------------------------------------------------------------------------------------
+     24001 
+Carol White                                                                                                                                                                                             
+789 Maple St                                                                     Pittsburgh                                         PA 15213      412-555-5555    
+carol@example.com                                                                                   
+
+     24002 
+Frank Green                                                                                                                                                                                             
+999 Oak Blvd                                                                     Cleveland                                          OH 44101      216-555-6666    
+frank@example.com                                                                                   
+
+     24003 
+Helen Black                                                                                                                                                                                             
+23 River Ln                                                                      Pittsburgh                                         PA 15214      412-555-1111    
+helen@example.com                                                                                   
+
+     24004 
+Michael Gray                                                                                                                                                                                            
+7 Lake Ave                                                                       Cleveland                                          OH 44102      216-555-2222    
+michael@example.com                                                                                 
+
+     24005 
+Nina Brown                                                                                                                                                                                              
+14 Oak St                                                                        Pittsburgh                                         PA 15215      412-555-3333    
+nina@example.com                                                                                    
+
+     24006 
+Oliver Stone                                                                                                                                                                                            
+123 Market St                                                                    Pittsburgh                                         PA 15222      412-555-7777    
+oliver@example.com                                                                                  
+
+
+6 rows selected. 
+
+Elapsed: 00:00:00.056
+Elapsed: 00:00:00.073
+SQL> 
+SQL> PROMPT Phase 7: Creating packages and procedures...
+Phase 7: Creating packages and procedures...
+Elapsed: 00:00:00.016
+SQL> @Package.sql
+SQL> -- Enable DBMS_OUTPUT for the PUT_LINE to show
+Elapsed: 00:00:00.016
+SQL> SET SERVEROUTPUT ON;
+Elapsed: 00:00:00.018
+SQL> SET DEFINE OFF;
+Elapsed: 00:00:00.016
+SQL> 
+SQL> CREATE OR REPLACE PACKAGE pkg_eggshell AS
+  2    -- Returns overall progress for a house in percent (0..100, integer)
+  3    FUNCTION house_progress_pct(
+  4      p_house_id IN house.house_id%TYPE
+  5    ) RETURN NUMBER;
+  6  
+  7    -- Adds a decorator choice and auto-prices it from v_current_option_price
+  8    PROCEDURE add_decorator_choice(
+  9      p_session_id   IN  decorator_session.decoratorsession_id%TYPE,
+ 10      p_option_id    IN  "Option".option_id%TYPE,
+ 11      p_item         IN  VARCHAR2,
+ 12      p_description  IN  VARCHAR2,
+ 13      p_choice_id    OUT decorator_choice.decoratorchoice_id%TYPE
+ 14    );
+ 15  
+ 16    -- Records task progress as a FRACTION (0.00..1.00). Est date optional.
+ 17    PROCEDURE record_task_progress(
+ 18      p_housetask_id IN task_progress.housetask_housetask_id%TYPE,
+ 19      p_fraction     IN NUMBER,
+ 20      p_est_date     IN DATE DEFAULT NULL,
+ 21      p_progress_id  OUT task_progress.progress_id%TYPE
+ 22    );
+ 23  END pkg_eggshell;
+ 24  /
+
+Package PKG_EGGSHELL compiled
+
+Elapsed: 00:00:00.076
+SQL> 
+SQL> CREATE OR REPLACE PACKAGE BODY pkg_eggshell AS
+  2  
+  3    FUNCTION house_progress_pct(p_house_id IN house.house_id%TYPE)
+  4    RETURN NUMBER IS
+  5      v_cnt_tasks NUMBER := 0;
+  6      v_avg_frac  NUMBER := 0;
+  7    BEGIN
+  8      -- Average of the latest progress row per task (treat percentage as fraction 0..1)
+  9      SELECT COUNT(*), NVL(AVG(lat.frac),0)
+ 10      INTO   v_cnt_tasks, v_avg_frac
+ 11      FROM (
+ 12        SELECT ht.housetask_id,
+ 13               -- latest progress row per task
+ 14               (SELECT tp.percentage_complete
+ 15                  FROM task_progress tp
+ 16                 WHERE tp.housetask_housetask_id = ht.housetask_id
+ 17                 ORDER BY tp.estimatedcompletiondate DESC NULLS LAST, tp.progress_id DESC
+ 18                FETCH FIRST 1 ROWS ONLY) AS frac
+ 19        FROM housetask ht
+ 20        WHERE ht.house_house_id = p_house_id
+ 21      ) lat
+ 22      WHERE lat.frac IS NOT NULL;
+ 23  
+ 24      IF v_cnt_tasks = 0 THEN
+ 25        RETURN 0;
+ 26      ELSE
+ 27        RETURN ROUND(100 * v_avg_frac); -- convert fraction to %
+ 28      END IF;
+ 29    END house_progress_pct;
+ 30  
+ 31  
+ 32    PROCEDURE add_decorator_choice(
+ 33        p_session_id   IN  decorator_session.decoratorsession_id%TYPE,
+ 34        p_option_id    IN  "Option".option_id%TYPE,
+ 35        p_item         IN  VARCHAR2,
+ 36        p_description  IN  VARCHAR2,
+ 37        p_choice_id    OUT decorator_choice.decoratorchoice_id%TYPE
+ 38    ) IS
+ 39      v_stage   decorator_session.stage%TYPE;
+ 40      v_price   NUMBER(12,2);
+ 41    BEGIN
+ 42      -- Get the session stage
+ 43      SELECT stage INTO v_stage
+ 44      FROM decorator_session
+ 45      WHERE decoratorsession_id = p_session_id;
+ 46  
+ 47      -- Validate stage is allowed for this option and get the latest price
+ 48      SELECT v.current_cost INTO v_price
+ 49      FROM v_current_option_price v
+ 50      WHERE v.option_option_id = p_option_id
+ 51        AND v.stage = v_stage;
+ 52  
+ 53      -- Generate a new id (keeps your current numeric keys approach)
+ 54      SELECT NVL(MAX(decoratorchoice_id),0) + 1
+ 55      INTO   p_choice_id
+ 56      FROM   decorator_choice;
+ 57  
+ 58      INSERT INTO decorator_choice(
+ 59        decoratorchoice_id, item, description, price,
+ 60        decorator_session_id, option_option_id
+ 61      ) VALUES (
+ 62        p_choice_id, p_item, p_description, v_price,
+ 63        p_session_id, p_option_id
+ 64      );
+ 65    EXCEPTION
+ 66      WHEN NO_DATA_FOUND THEN
+ 67        -- No price defined for this (option, stage)
+ 68        RAISE_APPLICATION_ERROR(-20030,
+ 69          'No price found for option '||p_option_id||' at stage '||v_stage||
+ 70          ' (define OPTION_STAGE_PRICE first).');
+ 71    END add_decorator_choice;
+ 72  
+ 73  
+ 74    PROCEDURE record_task_progress(
+ 75        p_housetask_id IN task_progress.housetask_housetask_id%TYPE,
+ 76        p_fraction     IN NUMBER,
+ 77        p_est_date     IN DATE DEFAULT NULL,
+ 78        p_progress_id  OUT task_progress.progress_id%TYPE
+ 79    ) IS
+ 80    BEGIN
+ 81      IF p_fraction < 0 OR p_fraction > 1 THEN
+ 82        RAISE_APPLICATION_ERROR(-20031, 'Progress must be a fraction between 0.00 and 1.00');
+ 83      END IF;
+ 84  
+ 85      SELECT NVL(MAX(progress_id),0) + 1
+ 86      INTO   p_progress_id
+ 87      FROM   task_progress;
+ 88  
+ 89      INSERT INTO task_progress(progress_id, percentage_complete, estimatedcompletiondate, housetask_housetask_id)
+ 90      VALUES (p_progress_id, p_fraction, p_est_date, p_housetask_id);
+ 91    END record_task_progress;
+ 92  
+ 93  END pkg_eggshell;
+ 94  /
+
+Package Body PKG_EGGSHELL compiled
+
+Elapsed: 00:00:00.082
+Elapsed: 00:00:00.099
+SQL> @Procedure1.sql
+SQL> -- ===========================================================
+Elapsed: 00:00:00.018
+SQL> -- Procedure: pr_add_choice
+Elapsed: 00:00:00.020
+SQL> -- Purpose:
+Elapsed: 00:00:00.017
+SQL> --   Simplifies inserting a decorator choice by hiding the OUT parameter
+Elapsed: 00:00:00.016
+SQL> --   and printing the generated ID using DBMS_OUTPUT.
+Elapsed: 00:00:00.016
+SQL> -- pr_add_choice is a convenient front door into the option-pricing logic. 
+Elapsed: 00:00:00.016
+SQL> -- You give it a session, option, and some labels, and it inserts a properly-priced decorator choice for you.
+Elapsed: 00:00:00.016
+SQL> -- Parameters:
+Elapsed: 00:00:00.016
+SQL> --   p_session_id  - ID of the decorator_session (must exist).
+Elapsed: 00:00:00.018
+SQL> --   p_option_id   - ID of the Option selected.
+Elapsed: 00:00:00.019
+SQL> --   p_item        - Display item name (e.g., "Garage Sink").
+Elapsed: 00:00:00.017
+SQL> --   p_desc        - Optional description of the choice.
+Elapsed: 00:00:00.016
+SQL> -- Notes:
+Elapsed: 00:00:00.018
+SQL> --   - The actual price is auto-filled by trg_decorator_choice_autoprice
+Elapsed: 00:00:00.020
+SQL> --     or pkg_eggshell’s pricing logic.
+Elapsed: 00:00:00.017
+SQL> -- ===========================================================
+Elapsed: 00:00:00.017
+SQL> SET SERVEROUTPUT ON;
+Elapsed: 00:00:00.016
+SQL> CREATE OR REPLACE PROCEDURE pr_add_choice(
+  2    p_session_id  IN NUMBER,
+  3    p_option_id   IN NUMBER,
+  4    p_item        IN VARCHAR2,
+  5    p_desc        IN VARCHAR2
+  6  ) AS
+  7    v_id NUMBER;  
+  8  BEGIN
+  9    -- Call the package procedure; OUT id returned into v_id
+ 10    pkg_eggshell.add_decorator_choice(p_session_id, p_option_id, p_item, p_desc, v_id);
+ 11  
+ 12    -- Print a confirmation message
+ 13    DBMS_OUTPUT.PUT_LINE('Decorator choice inserted with id='||v_id);
+ 14  END;
+ 15  /
+
+Procedure PR_ADD_CHOICE compiled
+
+Elapsed: 00:00:00.073
+Elapsed: 00:00:00.090
+SQL> @Procedure2.sql
+SQL> -- ===========================================================
+Elapsed: 00:00:00.016
+SQL> -- Procedure: pr_record_progress
+Elapsed: 00:00:00.016
+SQL> -- Purpose:
+Elapsed: 00:00:00.017
+SQL> --   Wrapper for pkg_eggshell.record_task_progress.
+Elapsed: 00:00:00.016
+SQL> --   Simplifies recording task progress for a housetask by
+Elapsed: 00:00:00.018
+SQL> --   hiding the OUT parameter and printing the generated ID.
+Elapsed: 00:00:00.016
+SQL> --
+Elapsed: 00:00:00.016
+SQL> -- Parameters:
+Elapsed: 00:00:00.019
+SQL> --   p_task_id   - The HOUSETASK_ID for which progress is being recorded.
+Elapsed: 00:00:00.017
+SQL> --   p_fraction  - Progress as a fraction between 0.00 and 1.00
+Elapsed: 00:00:00.016
+SQL> --                 (1.00 = 100% complete). Checked by triggers.
+Elapsed: 00:00:00.017
+SQL> --   p_est_date  - Estimated completion date for this progress entry.
+Elapsed: 00:00:00.017
+SQL> --                 Defaults to SYSDATE if not provided.
+Elapsed: 00:00:00.017
+SQL> --
+Elapsed: 00:00:00.033
+SQL> -- Behavior:
+Elapsed: 00:00:00.017
+SQL> --   - Calls the pkg_eggshell procedure to insert a new row into TASK_PROGRESS.
+Elapsed: 00:00:00.019
+SQL> --   - pkg_eggshell validates that p_fraction is in [0,1].
+Elapsed: 00:00:00.017
+SQL> --   - A new PROGRESS_ID is generated inside the package.
+Elapsed: 00:00:00.018
+SQL> --   - Prints a confirmation message with the new PROGRESS_ID.
+Elapsed: 00:00:00.017
+SQL> --
+Elapsed: 00:00:00.017
+SQL> -- Business Rule Supported:
+Elapsed: 00:00:00.027
+SQL> --   Task progress must always be stored as a fraction between 0 and 1,
+Elapsed: 00:00:00.017
+SQL> --   and each housetask may have multiple dated progress entries.
+Elapsed: 00:00:00.017
+SQL> -- ===========================================================
+Elapsed: 00:00:00.017
+SQL> CREATE OR REPLACE PROCEDURE pr_record_progress(
+  2    p_task_id   IN NUMBER,
+  3    p_fraction  IN NUMBER,
+  4    p_est_date  IN DATE DEFAULT NULL
+  5  ) AS
+  6    v_pid NUMBER;  
+  7  BEGIN
+  8    -- Call the package procedure that does validation + insert
+  9    pkg_eggshell.record_task_progress(p_task_id, p_fraction, p_est_date, v_pid);
+ 10  
+ 11    -- Print confirmation message 
+ 12    DBMS_OUTPUT.PUT_LINE('Task progress inserted with id='||v_pid);
+ 13  END;
+ 14  /
+
+Procedure PR_RECORD_PROGRESS compiled
+
+Elapsed: 00:00:00.077
+Elapsed: 00:00:00.093
+SQL> 
+SQL> PROMPT Phase 8: Creating indexes and denormalization...
+Phase 8: Creating indexes and denormalization...
+Elapsed: 00:00:00.016
+SQL> @alternate_index.sql
+SQL> -- ===========================================================
+Elapsed: 00:00:00.016
+SQL> -- FILE: alternate_index.sql
+Elapsed: 00:00:00.016
+SQL> -- PURPOSE: Create three composite indexes for performance optimization
+Elapsed: 00:00:00.016
+SQL> -- INDEX 1: housetask(house_house_id, stage) - for construction queries
+Elapsed: 00:00:00.017
+SQL> -- INDEX 2: sale(employee_employee_id, "Date") - for sales reports
+Elapsed: 00:00:00.016
+SQL> -- INDEX 3: decorator_choice(decorator_session_id, price) - for decorator sessions
+Elapsed: 00:00:00.016
+SQL> -- ===========================================================
+Elapsed: 00:00:00.016
+SQL> 
+SQL> CREATE INDEX idx_housetask_house_stage 
+  2  ON housetask(house_house_id, stage);
+
+Index IDX_HOUSETASK_HOUSE_STAGE created.
+
+Elapsed: 00:00:00.038
+SQL> 
+SQL> CREATE INDEX idx_sale_employee_date 
+  2  ON sale(employee_employee_id, "Date");
+
+Index IDX_SALE_EMPLOYEE_DATE created.
+
+Elapsed: 00:00:00.047
+SQL> 
+SQL> CREATE INDEX idx_decorator_choice_session 
+  2  ON decorator_choice(decorator_session_id, price);
+
+Index IDX_DECORATOR_CHOICE_SESSION created.
+
+Elapsed: 00:00:00.039
+SQL> 
+SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.035
+SQL> 
+SQL> -- Verify creation
+Elapsed: 00:00:00.016
+SQL> SELECT index_name, table_name, status
+  2  FROM user_indexes
+  3  WHERE index_name IN ('IDX_HOUSETASK_HOUSE_STAGE', 
+  4                       'IDX_SALE_EMPLOYEE_DATE',
+  5                       'IDX_DECORATOR_CHOICE_SESSION')
+  6  ORDER BY table_name, index_name;
+
+INDEX_NAME
+--------------------------------------------------------------------------------------------------------------------------------
+TABLE_NAME                                                                                                                       STATUS  
+-------------------------------------------------------------------------------------------------------------------------------- --------
+IDX_DECORATOR_CHOICE_SESSION                                                                                                     
+DECORATOR_CHOICE                                                                                                                 VALID   
+
+IDX_HOUSETASK_HOUSE_STAGE                                                                                                        
+HOUSETASK                                                                                                                        VALID   
+
+IDX_SALE_EMPLOYEE_DATE                                                                                                           
+SALE                                                                                                                             VALID   
+
+
+Elapsed: 00:00:00.035
+Elapsed: 00:00:00.056
+SQL> @denormalization.sql
+SQL> -- ===========================================================
+Elapsed: 00:00:00.015
+SQL> -- FILE: denormalization.sql
+Elapsed: 00:00:00.016
+SQL> -- PURPOSE: Add denormalized total_contract_price to SALE table
+Elapsed: 00:00:00.016
+SQL> -- FORMULA: total_contract_price = housestyle.baseprice + lot.lotpremium + SUM(decorator_choice.price)
+Elapsed: 00:00:00.018
+SQL> -- ===========================================================
+Elapsed: 00:00:00.017
+SQL> 
+SQL> -- Add denormalized column
+Elapsed: 00:00:00.016
+SQL> ALTER TABLE sale ADD (
+  2    total_contract_price NUMBER(12, 2)
+  3  );
+
+Table SALE altered.
+
+Elapsed: 00:00:00.039
+SQL> 
+SQL> -- Trigger 1: Auto-calculate price on sale INSERT/UPDATE
+Elapsed: 00:00:00.018
+SQL> CREATE OR REPLACE TRIGGER trg_sale_calc_total
+  2  BEFORE INSERT OR UPDATE OF house_house_id ON sale
+  3  FOR EACH ROW
+  4  BEGIN
+  5    :NEW.total_contract_price := fn_house_total_price(:NEW.house_house_id);
+  6  
+  7    IF :NEW.total_contract_price IS NULL THEN
+  8      :NEW.total_contract_price := 0;
+  9    END IF;
+ 10  END;
+ 11  /
+
+Trigger TRG_SALE_CALC_TOTAL compiled
+
+Elapsed: 00:00:00.086
+SQL> 
+SQL> -- Trigger 2: Recalculate price when decorator choices change
+Elapsed: 00:00:00.016
+SQL> -- Revised version to solve mutable table error
+Elapsed: 00:00:00.016
+SQL> 
+SQL> CREATE OR REPLACE TRIGGER trg_decorator_update_sale
+  2  FOR INSERT OR UPDATE OR DELETE ON decorator_choice
+  3  COMPOUND TRIGGER 
+  4    TYPE session_id_t IS TABLE OF decorator_session.decoratorsession_id%TYPE;
+  5    g_session_ids session_id_t := session_id_t();
+  6  
+  7    AFTER EACH ROW IS
+  8    BEGIN
+  9      g_session_ids.EXTEND;
+ 10      g_session_ids(g_session_ids.LAST) := COALESCE(:NEW.decorator_session_id, :OLD.decorator_session_id);
+ 11    END AFTER EACH ROW;
+ 12  
+ 13    AFTER STATEMENT IS
+ 14      v_house_id house.house_id%TYPE;
+ 15    BEGIN
+ 16      FOR i IN 1..g_session_ids.COUNT LOOP
+ 17  
+ 18        BEGIN
+ 19          SELECT ht.house_house_id
+ 20          INTO v_house_id
+ 21          FROM housetask ht
+ 22          JOIN decorator_session ds ON ht.housetask_id = ds.housetask_housetask_id
+ 23          WHERE ds.decoratorsession_id = g_session_ids(i)
+ 24          AND ROWNUM = 1; 
+ 25        EXCEPTION
+ 26          WHEN NO_DATA_FOUND THEN
+ 27            v_house_id := NULL; 
+ 28        END;
+ 29  
+ 30        IF v_house_id IS NOT NULL THEN
+ 31          UPDATE sale s
+ 32          SET s.total_contract_price = fn_house_total_price(s.house_house_id)
+ 33          WHERE s.house_house_id = v_house_id;
+ 34        END IF;
+ 35  
+ 36      END LOOP;
+ 37    END AFTER STATEMENT;
+ 38  
+ 39  END trg_decorator_update_sale;
+ 40  /
+
+Trigger TRG_DECORATOR_UPDATE_SALE compiled
+
+Elapsed: 00:00:00.081
+SQL> 
+SQL> -- Backfill existing sales
+Elapsed: 00:00:00.017
+SQL> UPDATE sale
+  2  SET total_contract_price = fn_house_total_price(house_house_id)
+  3  WHERE total_contract_price IS NULL;
+
+5 rows updated.
+
+Elapsed: 00:00:00.054
+SQL> 
+SQL> COMMIT;
+
+Commit complete.
+
+Elapsed: 00:00:00.034
+SQL> 
+SQL> PROMPT Denormalization complete. Run test_denormalization.sql to verify.
+Denormalization complete. Run test_denormalization.sql to verify.
+Elapsed: 00:00:00.019
+Elapsed: 00:00:00.039
+SQL> 
+SQL> PROMPT Phase 9: Creating roles and permissions...
+Phase 9: Creating roles and permissions...
+Elapsed: 00:00:00.017
+SQL> @roles.sql
+SQL> -- =========================================
+Elapsed: 00:00:00.017
+SQL> -- Role 1: SALES_ROLE
+Elapsed: 00:00:00.017
+SQL> -- For staff who handle buyers, sales, escrow, and banks
+Elapsed: 00:00:00.018
+SQL> -- =========================================
+Elapsed: 00:00:00.017
+SQL> CREATE ROLE staff_sales_role;
+
+Role STAFF_SALES_ROLE created.
+
+Elapsed: 00:00:00.037
+SQL> 
+SQL> -- Grant privileges needed for managing sales workflow
+Elapsed: 00:00:00.017
+SQL> GRANT SELECT, INSERT, UPDATE ON buyer       TO staff_sales_role;
+
+Grant succeeded.
+
+Elapsed: 00:00:00.035
+SQL> GRANT SELECT, INSERT, UPDATE ON sale        TO staff_sales_role;
+
+Grant succeeded.
+
+Elapsed: 00:00:00.038
+SQL> GRANT SELECT, INSERT, UPDATE ON escrowagent TO staff_sales_role;
+
+Grant succeeded.
+
+Elapsed: 00:00:00.041
+SQL> GRANT SELECT, INSERT, UPDATE ON bank        TO staff_sales_role;
+
+Grant succeeded.
+
+Elapsed: 00:00:00.035
+SQL> GRANT SELECT, INSERT, UPDATE ON bank_worker TO staff_sales_role;
+
+Grant succeeded.
+
+Elapsed: 00:00:00.035
+SQL> 
+SQL> CREATE OR REPLACE VIEW v_sales_summary AS
+  2  SELECT 
+  3      s.sale_id,
+  4      s."Date" AS sale_date,
+  5      s.financing_method,
+  6      s.escrowdeposit,
+  7      b.name       AS buyer_name,
+  8      b.phone      AS buyer_phone,
+  9      e.name       AS employee_name,
+ 10      h.house_id   AS house_id,
+ 11      h.estimatedcompletion
+ 12  FROM sale s
+ 13  JOIN buyer b       ON s.buyer_buyer_id = b.buyer_id
+ 14  JOIN employee e    ON s.employee_employee_id = e.employee_id
+ 15  JOIN house h       ON s.house_house_id = h.house_id
+ 16  JOIN escrowagent ea ON s.escrowagent_escrowagent_id = ea.escrowagent_id;
+
+View V_SALES_SUMMARY created.
+
+Elapsed: 00:00:00.044
+SQL> 
+SQL> -- Grant access
+Elapsed: 00:00:00.016
+SQL> GRANT SELECT ON v_sales_summary TO staff_sales_role;
+
+Grant succeeded.
+
+Elapsed: 00:00:00.036
+SQL> 
+SQL> 
+SQL> -- =========================================
+Elapsed: 00:00:00.017
+SQL> -- Role 2: CONSTRUCTION_ROLE
+Elapsed: 00:00:00.017
+SQL> -- For staff who manage construction tasks, houses, lots, and decorator choices
+Elapsed: 00:00:00.018
+SQL> -- =========================================
+Elapsed: 00:00:00.017
+SQL> CREATE ROLE construction_role;
+
+Role CONSTRUCTION_ROLE created.
+
+Elapsed: 00:00:00.037
+SQL> 
+SQL> CREATE OR REPLACE VIEW v_construction_progress AS
+  2  SELECT 
+  3      h.house_id,
+  4      ht.housetask_id,
+  5      ht.notes           AS task_notes,
+  6      tp.percentage_complete,
+  7      tp.estimatedcompletiondate,
+  8      dc.item            AS decorator_item,
+  9      dc.price           AS decorator_price,
+ 10      p.url              AS photo_url
+ 11  FROM house h
+ 12  JOIN housetask ht        ON h.house_id = ht.house_house_id
+ 13  LEFT JOIN task_progress tp ON ht.housetask_id = tp.housetask_housetask_id
+ 14  LEFT JOIN decorator_session ds ON ht.housetask_id = ds.housetask_housetask_id
+ 15  LEFT JOIN decorator_choice dc  ON ds.decoratorsession_id = dc.decorator_session_id
+ 16  LEFT JOIN photo p              ON ht.housetask_id = p.housetask_housetask_id;
+
+View V_CONSTRUCTION_PROGRESS created.
+
+Elapsed: 00:00:00.040
+SQL> 
+SQL> -- Grant access
+Elapsed: 00:00:00.016
+SQL> GRANT SELECT ON v_construction_progress TO construction_role;
+
+Grant succeeded.
+
+Elapsed: 00:00:00.037
+SQL> 
+SQL> -- Grant privileges needed for construction operations
+Elapsed: 00:00:00.016
+SQL> GRANT SELECT, INSERT, UPDATE ON house              TO construction_role;
+
+Grant succeeded.
+
+Elapsed: 00:00:00.036
+SQL> GRANT SELECT, INSERT, UPDATE ON lot                TO construction_role;
+
+Grant succeeded.
+
+Elapsed: 00:00:00.036
+SQL> GRANT SELECT, INSERT, UPDATE ON housetask          TO construction_role;
+
+Grant succeeded.
+
+Elapsed: 00:00:00.043
+SQL> GRANT SELECT, INSERT, UPDATE ON construction_task  TO construction_role;
+
+Grant succeeded.
+
+Elapsed: 00:00:00.037
+SQL> GRANT SELECT, INSERT, UPDATE ON decorator_session  TO construction_role;
+
+Grant succeeded.
+
+Elapsed: 00:00:00.036
+SQL> GRANT SELECT, INSERT, UPDATE ON decorator_choice   TO construction_role;
+
+Grant succeeded.
+
+Elapsed: 00:00:00.039
+SQL> GRANT SELECT, INSERT, UPDATE ON task_progress      TO construction_role;
+
+Grant succeeded.
+
+Elapsed: 00:00:00.040
+SQL> GRANT SELECT, INSERT, UPDATE ON photo              TO construction_role;
+
+Grant succeeded.
+
+Elapsed: 00:00:00.037
+Elapsed: 00:00:00.054
+SQL> 
+SQL> PROMPT Phase 10: Creating scheduled job...
+Phase 10: Creating scheduled job...
+Elapsed: 00:00:00.017
+SQL> @create_sql_script_job.sql
+SQL> -- ===========================================================
+Elapsed: 00:00:00.017
+SQL> -- FILE: create_sql_script_job.sql
+Elapsed: 00:00:00.020
+SQL> -- PURPOSE: Create a DBMS_SCHEDULER job to run a SQL script.
+Elapsed: 00:00:00.017
+SQL> -- NOTE: Run this script as a privileged user (e.g., SYS or SYSTEM)
+Elapsed: 00:00:00.018
+SQL> --       in SQL Developer or SQLcl. Requires Oracle 12c or higher.
+Elapsed: 00:00:00.018
+SQL> -- ===========================================================
+Elapsed: 00:00:00.017
+SQL> SET SERVEROUTPUT ON;
+Elapsed: 00:00:00.020
+SQL> 
+SQL> BEGIN
+  2    -- Drop the job if it already exists to ensure a clean slate for recreation.
+  3    BEGIN
+  4      DBMS_SCHEDULER.drop_job('RUN_EGGSHELL_PROJECT_SQL', force => TRUE);
+  5      DBMS_OUTPUT.put_line('Dropped existing job: RUN_EGGSHELL_PROJECT_SQL');
+  6    EXCEPTION
+  7      WHEN OTHERS THEN
+  8        IF SQLCODE = -27475 THEN -- ORA-27475: "RUN_EGGSHELL_PROJECT_SQL" does not exist
+  9          DBMS_OUTPUT.put_line('Job did not exist, no need to drop.');
+ 10        ELSE
+ 11          RAISE;
+ 12        END IF;
+ 13    END;
+ 14  
+ 15    -- Create the job to run a SQL script
+ 16    DBMS_SCHEDULER.create_job (
+ 17      job_name        => 'RUN_EGGSHELL_PROJECT_SQL',
+ 18      job_type        => 'SQL_SCRIPT',
+ 19      job_action      => '
+ 20        -- This is an inline SQL Script that the scheduler will execute.
+ 21        -- It sets the working directory and runs our non-interactive master script.
+ 22        cd /Users/bergasanargya/ADBS_CMU/Adv_DB_Project/
+ 23        @scheduled_run.sql
+ 24      ',
+ 25      start_date      => SYSTIMESTAMP,
+ 26      repeat_interval => 'FREQ=DAILY; BYHOUR=3; BYMINUTE=0', -- Example: Run daily at 3:00 AM
+ 27      enabled         => TRUE,
+ 28      auto_drop       => FALSE,
+ 29      comments        => 'Job to clean, install, and test the Eggshell project using a SQL script.'
+ 30    );
+ 31  
+ 32    DBMS_OUTPUT.put_line('Job RUN_EGGSHELL_PROJECT_SQL created and enabled.');
+ 33  
+ 34  END;
+ 35  /
+Job did not exist, no need to drop.
+Job RUN_EGGSHELL_PROJECT_SQL created and enabled.
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.040
+SQL> 
+SQL> -- === Verification and Management ===
+Elapsed: 00:00:00.017
+SQL> 
+SQL> -- Check the status of the job
+Elapsed: 00:00:00.016
+SQL> PROMPT Verifying job status...
+Verifying job status...
+Elapsed: 00:00:00.019
+SQL> SELECT job_name, enabled, state
+  2  FROM user_scheduler_jobs
+  3  WHERE job_name = 'RUN_EGGSHELL_PROJECT_SQL';
+
+JOB_NAME                                                                                                                         ENABL STATE               
+-------------------------------------------------------------------------------------------------------------------------------- ----- --------------------
+RUN_EGGSHELL_PROJECT_SQL                                                                                                         TRUE  SCHEDULED           
+
+Elapsed: 00:00:00.036
+Elapsed: 00:00:00.054
+SQL> 
+SQL> PROMPT 
+
+Elapsed: 00:00:00.017
+SQL> PROMPT =====================================================================
+=====================================================================
+Elapsed: 00:00:00.017
+SQL> PROMPT SETUP COMPLETE - Run verify_eggshell.sql to check installation
+SETUP COMPLETE - Run verify_eggshell.sql to check installation
+Elapsed: 00:00:00.017
+SQL> PROMPT =====================================================================
+=====================================================================
+Elapsed: 00:00:00.022
+SQL> 
+SQL> SET TIMING OFF
+SQL> 
+SQL> PAUSE Press Enter to continue...
+SQL> 
+SQL> PROMPT Step 3: Verification...
+Step 3: Verification...
+SQL> @verify_eggshell.sql
+SQL> -- ===========================================================
+SQL> -- FILE: verify_eggshell.sql
+SQL> -- PURPOSE: Verify all Eggshell database objects exist and are valid
+SQL> -- USE CASE: Run after master_setup.sql to check installation
+SQL> -- UPDATED: Fixed "Option" table case sensitivity and role check
+SQL> -- ===========================================================
+SQL> 
+SQL> SET ECHO OFF
+=====================================================================
+EGGSHELL HOME BUILDER - DATABASE VERIFICATION
+Checking all objects for existence and validity...
+=====================================================================
+
+====== Check 1: Tables (Expected: 22) ======
+
+TABLE_COUNT
+-----------
+         22
+
+
+TABLE_NAME                                                                                                                      
+--------------------------------------------------------------------------------------------------------------------------------
+BANK
+BANK_WORKER
+BUYER
+CONSTRUCTION_TASK
+DECORATOR_CHOICE
+DECORATOR_SESSION
+ELEVATION
+EMPLOYEE
+ESCROWAGENT
+HOUSE
+HOUSESTYLE
+HOUSETASK
+LOT
+OPTIONCATEGORY
+OPTION_STAGE_PRICE
+Option
+PHOTO
+ROOMS
+SALE
+SCHOOL
+SUBDIVISION
+TASK_PROGRESS
+
+22 rows selected. 
+
+
+====== Check 2: Views (Expected: 4) ======
+
+VIEW_COUNT
+----------
+         4
+
+
+OBJECT_NAME                                                                                                                      STATUS 
+-------------------------------------------------------------------------------------------------------------------------------- -------
+V_CONSTRUCTION_PROGRESS                                                                                                          VALID  
+V_CURRENT_OPTION_PRICE                                                                                                           VALID  
+V_HOUSE_STYLE_DETAILS                                                                                                            VALID  
+V_SALES_SUMMARY                                                                                                                  VALID  
+
+
+====== Check 3: Function (Expected: 1) ======
+
+FUNCTION_COUNT
+--------------
+             1
+
+
+OBJECT_NAME                                                                                                                      STATUS 
+-------------------------------------------------------------------------------------------------------------------------------- -------
+FN_HOUSE_TOTAL_PRICE                                                                                                             VALID  
+
+
+====== Check 4: Package (Expected: 2 - spec and body) ======
+
+PACKAGE_COUNT
+-------------
+            2
+
+
+OBJECT_NAME                                                                                                                      OBJECT_TYPE             STATUS 
+-------------------------------------------------------------------------------------------------------------------------------- ----------------------- -------
+PKG_EGGSHELL                                                                                                                     PACKAGE                 VALID  
+PKG_EGGSHELL                                                                                                                     PACKAGE BODY            VALID  
+
+
+====== Check 5: Procedures (Expected: 2) ======
+
+PROCEDURE_COUNT
+---------------
+              2
+
+
+OBJECT_NAME                                                                                                                      STATUS 
+-------------------------------------------------------------------------------------------------------------------------------- -------
+PR_ADD_CHOICE                                                                                                                    VALID  
+PR_RECORD_PROGRESS                                                                                                               VALID  
+
+
+====== Check 6: Triggers (Expected: 8) ======
+
+TRIGGER_COUNT
+-------------
+            8
+
+
+TRIGGER_NAME                                                                                                                     STATUS
+-------------------------------------------------------------------------------------------------------------------------------- --------
+TABLE_NAME                                                                                                                      
+--------------------------------------------------------------------------------------------------------------------------------
+BUYER_BIR                                                                                                                        ENABLED  
+BUYER                                                                                                                           
+
+TRG_CHOICE_SET_PRICE                                                                                                             ENABLED  
+DECORATOR_CHOICE                                                                                                                
+
+TRG_DECORATOR_CHOICE_AUTOPRICE                                                                                                   ENABLED  
+DECORATOR_CHOICE                                                                                                                
+
+TRG_DECORATOR_UPDATE_SALE                                                                                                        ENABLED  
+DECORATOR_CHOICE                                                                                                                
+
+TRG_HOUSE_STAGE_AUTOADVANCE                                                                                                      ENABLED  
+TASK_PROGRESS                                                                                                                   
+
+TRG_SALE_CALC_TOTAL                                                                                                              ENABLED  
+SALE                                                                                                                            
+
+TRG_SESSION_VALIDATE_STAGE                                                                                                       ENABLED  
+DECORATOR_SESSION                                                                                                               
+
+TRG_TASKPROG_VALIDATE                                                                                                            ENABLED  
+TASK_PROGRESS                                                                                                                   
+
+
+8 rows selected. 
+
+
+====== Check 7: Sequences (Expected: 1) ======
+
+SEQUENCE_COUNT
+--------------
+             1
+
+
+SEQUENCE_NAME                                                                                                                    LAST_NUMBER
+-------------------------------------------------------------------------------------------------------------------------------- -----------
+BUYER_SEQ                                                                                                                              24007
+
+
+====== Check 8: Alternate Indexes (Expected: 3) ======
+
+INDEX_COUNT
+-----------
+          3
+
+
+INDEX_NAME
+--------------------------------------------------------------------------------------------------------------------------------
+TABLE_NAME                                                                                                                       UNIQUENES STATUS  
+-------------------------------------------------------------------------------------------------------------------------------- --------- --------
+IDX_DECORATOR_CHOICE_SESSION                                                                                                     
+DECORATOR_CHOICE                                                                                                                 NONUNIQUE VALID   
+
+IDX_HOUSETASK_HOUSE_STAGE                                                                                                        
+HOUSETASK                                                                                                                        NONUNIQUE VALID   
+
+IDX_SALE_EMPLOYEE_DATE                                                                                                           
+SALE                                                                                                                             NONUNIQUE VALID   
+
+
+
+====== Check 9: Denormalized Column (Expected: 1) ======
+
+COLUMN_COUNT
+------------
+           1
+
+
+COLUMN_NAME
+--------------------------------------------------------------------------------------------------------------------------------
+DATA_TYPE                                                                                                                        N
+-------------------------------------------------------------------------------------------------------------------------------- -
+TOTAL_CONTRACT_PRICE                                                                                                             
+NUMBER                                                                                                                           Y
+
+
+
+====== Check 10: Roles (Expected: 2) ======
+
+ROLE_COUNT
+----------
+         2
+
+
+ROLE                                                                                                                            
+--------------------------------------------------------------------------------------------------------------------------------
+CONSTRUCTION_ROLE
+STAFF_SALES_ROLE
+
+
+====== Check 11: Scheduled Job (Expected: 1) ======
+
+ JOB_COUNT
+----------
+         1
+
+
+JOB_NAME                                                                                                                         ENABL STATE                LAST_START_DATE
+-------------------------------------------------------------------------------------------------------------------------------- ----- -------------------- --------------------------------------
+NEXT_RUN_DATE                         
+--------------------------------------
+RUN_EGGSHELL_PROJECT_SQL                                                                                                         TRUE  SCHEDULED                                                   
+11-OCT-25 03.00.26.576823000 AM -04:00
+
+
+
+====== Check 12: Invalid Eggshell Objects (Expected: 0) ======
+
+INVALID_COUNT
+-------------
+            0
+
+no rows selected
+
+=====================================================================
+VERIFICATION SUMMARY
+=====================================================================
+
+OBJECT_TYPE           EXPECTED     ACTUAL STAT
+------------------- ---------- ---------- ----
+Tables                      22         22 PASS
+Views                        4          4 PASS
+Function                     1          1 PASS
+Package (spec+body)          2          2 PASS
+Procedures                   2          2 PASS
+Triggers                     8          8 PASS
+Sequences                    1          1 PASS
+Indexes                      3          3 PASS
+Denorm Column                1          1 PASS
+Roles                        2          2 PASS
+Scheduled Job                1          1 PASS
+
+11 rows selected. 
+
+
+=====================================================================
+If all statuses show PASS, the installation is complete and correct.
+If any show FAIL, review the detailed checks above.
+=====================================================================
+
+=====================================================================
+DEPLOYMENT COMPLETE
+=====================================================================

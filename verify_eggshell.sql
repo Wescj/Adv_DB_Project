@@ -2,6 +2,7 @@
 -- FILE: verify_eggshell.sql
 -- PURPOSE: Verify all Eggshell database objects exist and are valid
 -- USE CASE: Run after master_setup.sql to check installation
+-- UPDATED: Fixed "Option" table case sensitivity and role check
 -- ===========================================================
 
 SET ECHO OFF
@@ -26,7 +27,7 @@ WHERE table_name IN (
     'BANK', 'BANK_WORKER', 'BUYER', 'CONSTRUCTION_TASK', 
     'DECORATOR_CHOICE', 'DECORATOR_SESSION', 'ELEVATION', 'EMPLOYEE', 
     'ESCROWAGENT', 'HOUSE', 'HOUSESTYLE', 'HOUSETASK', 
-    'LOT', 'OPTION', 'OPTION_STAGE_PRICE', 'OPTIONCATEGORY', 
+    'LOT', 'Option', 'OPTION_STAGE_PRICE', 'OPTIONCATEGORY', 
     'PHOTO', 'ROOMS', 'SALE', 'SCHOOL', 'SUBDIVISION', 'TASK_PROGRESS'
 );
 
@@ -36,7 +37,7 @@ WHERE table_name IN (
     'BANK', 'BANK_WORKER', 'BUYER', 'CONSTRUCTION_TASK', 
     'DECORATOR_CHOICE', 'DECORATOR_SESSION', 'ELEVATION', 'EMPLOYEE', 
     'ESCROWAGENT', 'HOUSE', 'HOUSESTYLE', 'HOUSETASK', 
-    'LOT', 'OPTION', 'OPTION_STAGE_PRICE', 'OPTIONCATEGORY', 
+    'LOT', 'Option', 'OPTION_STAGE_PRICE', 'OPTIONCATEGORY', 
     'PHOTO', 'ROOMS', 'SALE', 'SCHOOL', 'SUBDIVISION', 'TASK_PROGRESS'
 )
 ORDER BY table_name;
@@ -210,28 +211,60 @@ WHERE table_name = 'SALE'
 PROMPT 
 PROMPT ====== Check 10: Roles (Expected: 2) ======
 
-SELECT COUNT(*) AS role_count
-FROM dba_roles 
-WHERE role IN ('SALES_ROLE', 'CONSTRUCTION_ROLE');
+-- Use USER_ROLE_PRIVS instead of DBA_ROLES to avoid permission issues
+SELECT COUNT(DISTINCT granted_role) AS role_count
+FROM user_role_privs
+WHERE granted_role IN ('STAFF_SALES_ROLE', 'CONSTRUCTION_ROLE');
 
-SELECT role 
-FROM dba_roles 
-WHERE role IN ('SALES_ROLE', 'CONSTRUCTION_ROLE')
-ORDER BY role;
+SELECT DISTINCT granted_role AS role
+FROM user_role_privs
+WHERE granted_role IN ('STAFF_SALES_ROLE', 'CONSTRUCTION_ROLE')
+ORDER BY granted_role;
 
 -- =====================================================================
--- Check 11: Invalid Objects (Expected: 0)
+-- Check 11: Scheduled Job (Expected: 1)
 -- =====================================================================
 PROMPT 
-PROMPT ====== Check 11: Invalid Objects (Expected: 0) ======
+PROMPT ====== Check 11: Scheduled Job (Expected: 1) ======
 
+SELECT COUNT(*) AS job_count
+FROM user_scheduler_jobs
+WHERE job_name = 'RUN_EGGSHELL_PROJECT_SQL';
+
+SELECT job_name, enabled, state, last_start_date, next_run_date
+FROM user_scheduler_jobs
+WHERE job_name = 'RUN_EGGSHELL_PROJECT_SQL';
+
+-- =====================================================================
+-- Check 12: Invalid Objects (Expected: 0 Eggshell objects)
+-- =====================================================================
+PROMPT 
+PROMPT ====== Check 12: Invalid Eggshell Objects (Expected: 0) ======
+
+-- Only check Eggshell-related objects (exclude old project objects)
 SELECT COUNT(*) AS invalid_count
 FROM user_objects 
-WHERE status = 'INVALID';
+WHERE status = 'INVALID'
+  AND (
+    object_name LIKE 'TRG_%' OR 
+    object_name LIKE 'PKG_%' OR
+    object_name LIKE 'PR_%' OR
+    object_name LIKE 'FN_%' OR
+    object_name LIKE 'V_%' OR
+    object_name = 'BUYER_BIR'
+  );
 
 SELECT object_type, object_name, status 
 FROM user_objects 
-WHERE status = 'INVALID' 
+WHERE status = 'INVALID'
+  AND (
+    object_name LIKE 'TRG_%' OR 
+    object_name LIKE 'PKG_%' OR
+    object_name LIKE 'PR_%' OR
+    object_name LIKE 'FN_%' OR
+    object_name LIKE 'V_%' OR
+    object_name = 'BUYER_BIR'
+  )
 ORDER BY object_type, object_name;
 
 -- =====================================================================
@@ -249,14 +282,14 @@ SELECT
         'BANK', 'BANK_WORKER', 'BUYER', 'CONSTRUCTION_TASK', 
         'DECORATOR_CHOICE', 'DECORATOR_SESSION', 'ELEVATION', 'EMPLOYEE', 
         'ESCROWAGENT', 'HOUSE', 'HOUSESTYLE', 'HOUSETASK', 
-        'LOT', 'OPTION', 'OPTION_STAGE_PRICE', 'OPTIONCATEGORY', 
+        'LOT', 'Option', 'OPTION_STAGE_PRICE', 'OPTIONCATEGORY', 
         'PHOTO', 'ROOMS', 'SALE', 'SCHOOL', 'SUBDIVISION', 'TASK_PROGRESS'
     )) AS actual,
     CASE WHEN (SELECT COUNT(*) FROM user_tables WHERE table_name IN (
         'BANK', 'BANK_WORKER', 'BUYER', 'CONSTRUCTION_TASK', 
         'DECORATOR_CHOICE', 'DECORATOR_SESSION', 'ELEVATION', 'EMPLOYEE', 
         'ESCROWAGENT', 'HOUSE', 'HOUSESTYLE', 'HOUSETASK', 
-        'LOT', 'OPTION', 'OPTION_STAGE_PRICE', 'OPTIONCATEGORY', 
+        'LOT', 'Option', 'OPTION_STAGE_PRICE', 'OPTIONCATEGORY', 
         'PHOTO', 'ROOMS', 'SALE', 'SCHOOL', 'SUBDIVISION', 'TASK_PROGRESS'
     )) = 22 THEN 'PASS' ELSE 'FAIL' END AS status
 FROM dual
@@ -325,6 +358,18 @@ SELECT
     'Denorm Column', 1,
     (SELECT COUNT(*) FROM user_tab_columns WHERE table_name = 'SALE' AND column_name = 'TOTAL_CONTRACT_PRICE'),
     CASE WHEN (SELECT COUNT(*) FROM user_tab_columns WHERE table_name = 'SALE' AND column_name = 'TOTAL_CONTRACT_PRICE') = 1 THEN 'PASS' ELSE 'FAIL' END
+FROM dual
+UNION ALL
+SELECT 
+    'Roles', 2,
+    (SELECT COUNT(DISTINCT granted_role) FROM user_role_privs WHERE granted_role IN ('STAFF_SALES_ROLE', 'CONSTRUCTION_ROLE')),
+    CASE WHEN (SELECT COUNT(DISTINCT granted_role) FROM user_role_privs WHERE granted_role IN ('STAFF_SALES_ROLE', 'CONSTRUCTION_ROLE')) = 2 THEN 'PASS' ELSE 'FAIL' END
+FROM dual
+UNION ALL
+SELECT 
+    'Scheduled Job', 1,
+    (SELECT COUNT(*) FROM user_scheduler_jobs WHERE job_name = 'RUN_EGGSHELL_PROJECT_SQL'),
+    CASE WHEN (SELECT COUNT(*) FROM user_scheduler_jobs WHERE job_name = 'RUN_EGGSHELL_PROJECT_SQL') = 1 THEN 'PASS' ELSE 'FAIL' END
 FROM dual;
 
 PROMPT 

@@ -7,14 +7,14 @@
 SET SERVEROUTPUT ON;
 
 BEGIN
-  -- Drop the job if it already exists to ensure a clean slate for recreation.
+  -- Drop the job if it already exists 
   BEGIN
     DBMS_SCHEDULER.drop_job('RUN_EGGSHELL_PROJECT_SQL', force => TRUE);
     DBMS_OUTPUT.put_line('Dropped existing job: RUN_EGGSHELL_PROJECT_SQL');
   EXCEPTION
     WHEN OTHERS THEN
-      IF SQLCODE = -27475 THEN -- ORA-27475: "RUN_EGGSHELL_PROJECT_SQL" does not exist
-        DBMS_OUTPUT.put_line('Job did not exist, no need to drop.');
+      IF SQLCODE = -27475 THEN 
+        DBMS_OUTPUT.put_line('Job did not exist, don't need to drop.');
       ELSE
         RAISE;
       END IF;
@@ -25,13 +25,9 @@ BEGIN
     job_name        => 'RUN_EGGSHELL_PROJECT_SQL',
     job_type        => 'SQL_SCRIPT',
     job_action      => '
-      -- This is an inline SQL Script that the scheduler will execute.
-      -- It sets the working directory and runs our non-interactive master script.
-      cd /Users/bergasanargya/ADBS_CMU/Adv_DB_Project/
-      @scheduled_run.sql
-    ',
+      -- This is an inline SQL Script that the scheduler will execute.',
     start_date      => SYSTIMESTAMP,
-    repeat_interval => 'FREQ=DAILY; BYHOUR=3; BYMINUTE=0', -- Example: Run daily at 3:00 AM
+    repeat_interval => 'FREQ=DAILY; BYHOUR=3; BYMINUTE=0',
     enabled         => TRUE,
     auto_drop       => FALSE,
     comments        => 'Job to clean, install, and test the Eggshell project using a SQL script.'
@@ -44,8 +40,7 @@ END;
 
 -- === Verification and Management ===
 
--- Check the status of the job
-PROMPT Verifying job status...
+PROMPT Verifying job status
 SELECT job_name, enabled, state
 FROM user_scheduler_jobs
 WHERE job_name = 'RUN_EGGSHELL_PROJECT_SQL';
