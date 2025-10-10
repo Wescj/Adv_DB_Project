@@ -1,5 +1,5 @@
 # Adv_DB_Project
-Eggshell
+Eggshell home builder case
 
 ## Entity Description
 
