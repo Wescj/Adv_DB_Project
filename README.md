@@ -75,7 +75,7 @@ The deployment process automatically runs in **three major phases**, as defined 
 |   2   | Load initial data                             | `@data_init.sql`                                     |
 |   3   | Create views                                  | `@view.sql`, `@view2.sql`                            |
 |   4   | Create functions                              | `@function.sql`                                      |
-|   5   | Create triggers                               | `@trigger1.sql` to `@trigger5.sql`                   |
+|   5   | Create triggers                               | `@trigger1.sql` to `@trigger4.sql`                   |
 |   6   | Implement surrogate keys                      | `@buyer_surrogate.sql`                               |
 |   7   | Create packages and procedures                | `@package.sql`, `@procedure1.sql`, `@procedure2.sql` |
 |   8   | Create indexes and denormalization structures | `@alternate_index.sql`, `@denormalization.sql`       |
