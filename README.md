@@ -106,7 +106,7 @@ The local execution output is also saved in [**output_deploy_eggshell.txt**](out
 
 ---
 
-## assumptions to add:
+## Assumptions:
 house to elevation relationship issue
 id ranges are limited to 2000 each so the numbers are small
 why we use photo blob for style
