@@ -1,6 +1,8 @@
 # Adv_DB_Project
 Eggshell
 
+## Entity Description
+
 | Entity                        | ID Range      | Capacity | Example IDs         |
 | ----------------------------- | ------------- | -------- | ------------------- |
 | **Subdivision**               | `1–2000`      | 2000     | 1, 2, 1999          |
@@ -21,10 +23,12 @@ Eggshell
 | **Bank Worker**               | `32001–34000` | 2000     | 32001–32002         |
 | **Sale**                      | `34001–36000` | 2000     | 34001–34005         |
 
-#assumptions to add:
+## Execution Steps
+git clone and open the project in SQLDeveloper
+run deploy_eggshell.sql
+
+## assumptions to add:
 house to elevation relationship issue
-
 id ranges are limited to 2000 each so the numbers are small
-
 why we use photo blob for style
 
