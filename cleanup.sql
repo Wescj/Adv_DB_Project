@@ -65,7 +65,6 @@ PROMPT Phase 5: Dropping triggers...
 DROP TRIGGER trg_decorator_update_sale;
 DROP TRIGGER trg_sale_calc_total;
 DROP TRIGGER trg_session_validate_stage;
-DROP TRIGGER trg_choice_set_price;
 DROP TRIGGER buyer_bir;
 DROP TRIGGER trg_decorator_choice_autoprice;
 DROP TRIGGER trg_house_stage_autoadvance;
